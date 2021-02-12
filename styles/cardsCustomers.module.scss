@@ -1,0 +1,57 @@
+.commentUser {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Poppins;
+  font-style: normal;
+  background: #f7f7fc;
+  margin-top: 5%;
+  p {
+    font-weight: 600;
+    margin: 0px 0px 0px 0px;
+    font-size: 18px;
+    letter-spacing: 0.75px;
+    color: #4e4b66;
+    span {
+      color: #ff0282;
+    }
+  }
+
+  label[title="tipo-de-usuario"] {
+    font-weight: normal;
+    font-size: 12px;
+    letter-spacing: 0.75px;
+    color: #4e4b66;
+  }
+}
+
+.cards {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  margin: 20px 0px;
+  width: 100%;
+  div[title="usuarios"] {
+    width: 321px;
+    height: 223px;
+    margin: 0px 15px;
+    background: #ffffff;
+    box-shadow: 0px 6px 22px 12px rgba(205, 213, 219, 0.6);
+    border-radius: 54px;
+    padding: 10px 35px;
+    section[title="info-usuario-homify"] {
+      margin: 10px 0px;
+      display: flex;
+      img {
+        margin-right: 10px;
+      }
+      p {
+        text-align: left;
+      }
+    }
+    label[title="comentario"] {
+      font-size: 14px;
+      text-align: left;
+    }
+  }
+}
