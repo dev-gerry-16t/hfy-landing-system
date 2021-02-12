@@ -1,0 +1,25 @@
+.middleMain {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Poppins;
+  font-style: normal;
+  text-align: center;
+  p {
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 36px;
+    letter-spacing: 0.75px;
+    color: #4e4b66;
+    span {
+      color: #ff0282;
+    }
+  }
+
+  label {
+    font-weight: normal;
+    font-size: 15px;
+    letter-spacing: 0.75px;
+    color: #4e4b66;
+  }
+}
