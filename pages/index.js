@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import PrincipalContent from "../components/principalContent";
-import TopInitialSection from "../components/topInitialSection";
-import MiddleInitialSection from "../components/middleInitialSection";
-import PosterRegister from "../components/posterRegister";
-import UserCommentSection from "../components/userCommentsSection";
+import PrincipalContent from "../sections/principalContent";
+import TopInitialSection from "../sections/topInitialSection";
+import MiddleInitialSection from "../sections/middleInitialSection";
+import PosterRegister from "../sections/posterRegister";
+import UserCommentSection from "../sections/userCommentsSection";
+import WhyContractHomify from "../sections/whyContractHomify";
 
 const Home = () => {
   return (
@@ -11,6 +12,7 @@ const Home = () => {
       <TopInitialSection />
       <MiddleInitialSection />
       <PosterRegister />
+      <WhyContractHomify />
       <UserCommentSection />
     </PrincipalContent>
   );
