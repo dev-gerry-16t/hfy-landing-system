@@ -5,6 +5,7 @@ import MiddleInitialSection from "../sections/middleInitialSection";
 import PosterRegister from "../sections/posterRegister";
 import UserCommentSection from "../sections/userCommentsSection";
 import WhyContractHomify from "../sections/whyContractHomify";
+import ScreenshotSection from "../sections/screenshotSection";
 
 const Home = () => {
   return (
@@ -14,6 +15,7 @@ const Home = () => {
       <PosterRegister />
       <WhyContractHomify />
       <UserCommentSection />
+      <ScreenshotSection />
     </PrincipalContent>
   );
 };
