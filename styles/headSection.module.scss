@@ -36,23 +36,24 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  font-family: Poppins;
   font-style: normal;
   line-height: 56px;
   position: relative;
   height: 460px;
   p {
-    font-weight: bold;
+    font-weight: 700;
     font-size: 40px;
     letter-spacing: 0.75px;
     color: #4e4b66;
     text-align: center;
+    font-family: url(https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap);
   }
   label {
     font-weight: normal;
     font-size: 20px;
     letter-spacing: 0.75px;
     color: #4e4b66;
+    font-family: Poppins;
   }
   button {
     font-family: Poppins;
@@ -71,6 +72,7 @@
     position: absolute;
     display: flex;
     height: -webkit-fill-available;
+    background: rgba(242, 247, 255, 0.7);
     img {
       flex: 1 1 auto;
     }
@@ -81,6 +83,6 @@
     position: absolute;
     display: flex;
     height: -webkit-fill-available;
-    backdrop-filter: blur(2px);
+    //backdrop-filter: blur(2px);
   }
 }
