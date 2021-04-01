@@ -38,7 +38,7 @@
         font-weight: 800;
         font-size: 40px;
         line-height: 54px;
-        font-family: url(https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap);
+        font-family: url("https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap");
       }
       button {
         font-family: Poppins;
@@ -60,11 +60,11 @@
   }
 }
 
-.footer-links{
+.footer-links {
   font-family: Poppins;
   font-size: 14px;
   color: #fff;
-  a{
-    margin:0px 10px;
+  a {
+    margin: 0px 10px;
   }
 }

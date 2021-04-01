@@ -1,6 +1,6 @@
 import React from "react";
 
-const PosterRegister = () => {
+const PosterRegister = ({ openModal }) => {
   return (
     <section className="section-poster-register">
       <div className="card-info-register">
@@ -42,7 +42,13 @@ const PosterRegister = () => {
         </section>
         <section className="section-event-register">
           <p>Deja que nosotros nos preocupemos por cobrar</p>
-          <button>Registrarme</button>
+          <button
+            onClick={() => {
+              openModal(true);
+            }}
+          >
+            Registrarme
+          </button>
         </section>
       </div>
     </section>

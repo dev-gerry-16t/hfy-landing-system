@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import stylesHeader from "../styles/headSection.module.scss";
@@ -20,10 +20,10 @@ const Button = styled.button`
   border: none;
   margin: 0px;
   cursor: pointer;
-  outline:none;
+  outline: none;
 `;
 
-const PrincipalContent = ({ children }) => {
+const PrincipalContent = ({ children, openModal }) => {
   return (
     <div className={styles.container}>
       <Head>
@@ -48,8 +48,20 @@ const PrincipalContent = ({ children }) => {
           />
         </div>
         <div className={stylesHeader.secondaryButton}>
-          <button>Iniciar sesión</button>
-          <button>Registrarme</button>
+          <button
+            onClick={() => {
+              window.location.href = "https://app.homify.ai";
+            }}
+          >
+            Iniciar sesión
+          </button>
+          <button
+            onClick={() => {
+              openModal(true);
+            }}
+          >
+            Registrarme
+          </button>
         </div>
       </header>
       <main>{children}</main>
