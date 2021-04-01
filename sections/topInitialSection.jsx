@@ -1,7 +1,7 @@
 import React from "react";
 import stylesHeader from "../styles/headSection.module.scss";
 
-const TopInitialSection = () => {
+const TopInitialSection = ({ openModal }) => {
   return (
     <section className={stylesHeader.initialLegent}>
       <div>
@@ -25,7 +25,13 @@ const TopInitialSection = () => {
         en garantía.
       </p>
       <label lang="es">Ahorra hasta el 50% al mudarte</label>
-      <button>Registrarme</button>
+      <button
+        onClick={() => {
+          openModal(true);
+        }}
+      >
+        Registrarme
+      </button>
     </section>
   );
 };

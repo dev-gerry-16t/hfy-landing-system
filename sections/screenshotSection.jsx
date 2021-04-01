@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 
 const TitleSection = styled.p`
-  font-family: url(https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap);
+  font-family: url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
   font-style: normal;
   font-weight: 700;
   font-size: 34px;
@@ -17,9 +17,10 @@ const Button = styled.button`
   display: flex;
   align-items: center;
   cursor: pointer;
+  outline: none;
 `;
 
-const ScreenshotSection = () => {
+const ScreenshotSection = ({ openModal }) => {
   return (
     <section style={{ display: "flex", padding: "5em 7em" }}>
       <div
@@ -38,13 +39,17 @@ const ScreenshotSection = () => {
           de lidiar con tu inquilino y nosotros nos encargamos de la cobranza
           para que tu renta siempre este a tiempo.
         </p>
-        <Button>
+        <Button
+          onClick={() => {
+            openModal(true);
+          }}
+        >
           <span
             style={{
               fontFamily: "Poppins",
               marginRight: 5,
               color: "#FF0282",
-              fontWeight: 'bold',
+              fontWeight: "bold",
             }}
           >
             Registrarme
