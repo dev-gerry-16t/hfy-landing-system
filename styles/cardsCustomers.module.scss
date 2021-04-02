@@ -3,7 +3,7 @@
   flex-direction: column;
   font-family: Poppins;
   font-style: normal;
-  background: #F7F7FC;
+  background: #f7f7fc;
   margin-top: 5%;
 
   label[title="tipo-de-usuario"] {
@@ -22,8 +22,11 @@
   padding: 35px 0px;
   width: 100%;
   overflow-x: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
   div[title="usuarios"] {
-    width: 340px;
+    max-width: 340px;
     min-width: 340px;
     height: 250px;
     margin: 0px 15px;
@@ -52,4 +55,3 @@
 }
 @media screen and (max-width: 750px) {
 }
-

@@ -31,8 +31,8 @@ const PrincipalContent = ({ children, openModal }) => {
         <link rel="icon" href="/favicon.ico" />
         <meta
           name="viewport"
-          content="width=device-width, user-scalable=1"
-        ></meta>
+          content="width=device-width, initial-scale=1, maximum-scale=1"
+        />
         <meta
           name="Description"
           content="Póliza Jurídica De Arrendamiento - Tu Renta Segura"

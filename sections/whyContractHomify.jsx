@@ -18,6 +18,7 @@ const LabelQuestion = styled.p`
   font-size: 40px;
   line-height: 64px;
   color: #4e4b66;
+  padding: 0px 7rem;
 
   @media screen and (max-width: 970px) {
     padding: 0px 15px;
