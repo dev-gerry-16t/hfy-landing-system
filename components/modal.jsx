@@ -45,10 +45,8 @@ const ModalContent = styled.div`
   }
 
   @media screen and (max-width: 460px) {
-  padding: 20px 5px;
-
+    padding: 20px 5px;
   }
-
 `;
 
 const TitleModal = styled.div`
@@ -79,6 +77,15 @@ const ExitModal = styled.button`
   cursor: pointer;
 `;
 
+const ArrowSvg = styled.svg`
+  width: 38px;
+  height: 38px;
+  @media screen and (max-width: 560px) {
+    width: 30px;
+    height: 30px;
+  }
+`;
+
 const CustomModal = ({ isVisible, onClose, title, children }) => {
   return (
     <ModalComponent
@@ -96,9 +103,7 @@ const CustomModal = ({ isVisible, onClose, title, children }) => {
                 onClose();
               }}
             >
-              <svg
-                width="38"
-                height="38"
+              <ArrowSvg
                 viewBox="0 0 48 48"
                 fill="none"
                 xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +122,7 @@ const CustomModal = ({ isVisible, onClose, title, children }) => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                 />
-              </svg>
+              </ArrowSvg>
             </ExitModal>
             <TitleModalH1>{title}</TitleModalH1>
           </TitleModal>

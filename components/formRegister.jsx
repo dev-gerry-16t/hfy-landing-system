@@ -47,7 +47,6 @@ const InputStyle = styled.input`
 `;
 
 const InputRange = styled.input`
-  background: #ff0282 !important;
 `;
 
 const LabelRent = styled.p`
