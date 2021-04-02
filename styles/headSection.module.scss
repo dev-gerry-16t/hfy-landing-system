@@ -86,3 +86,17 @@
     //backdrop-filter: blur(2px);
   }
 }
+
+@media screen and (max-width: 750px) {
+  .header {
+    padding: 1rem 2%;
+  }
+}
+
+@media screen and (max-width: 560px) {
+  .secondaryButton {
+    button:last-child {
+      display: none;
+    }
+  }
+}

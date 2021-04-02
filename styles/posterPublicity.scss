@@ -68,3 +68,44 @@
     margin: 0px 10px;
   }
 }
+
+@media screen and (max-width: 970px) {
+  .section-poster-register {
+    padding: 4em 1em;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .section-poster-register {
+    padding: 0em 1em;
+    .card-info-register {
+      .section-icon-register {
+        display: none;
+      }
+      .section-event-register {
+        padding: 0px 3em;
+        p {
+          font-size: 30px;
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .section-poster-register {
+    padding: 0em 0em;
+    .card-info-register {
+      .section-icon-register {
+        display: none;
+      }
+      .section-event-register {
+        padding: 0px 1em;
+        p {
+          font-size: 24px;
+        }
+      }
+    }
+  }
+}
+

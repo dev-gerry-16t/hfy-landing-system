@@ -6,6 +6,9 @@ const Flex = styled.div`
   display: flex;
   margin-bottom: 5%;
   justify-content: space-around;
+  @media screen and (max-width: 470px) {
+    flex-direction: column;
+  }
 `;
 
 const LabelQuestion = styled.p`
@@ -15,11 +18,24 @@ const LabelQuestion = styled.p`
   font-size: 40px;
   line-height: 64px;
   color: #4e4b66;
+  padding: 0px 7rem;
+
+  @media screen and (max-width: 970px) {
+    padding: 0px 15px;
+  }
+`;
+
+const PrincipalSection = styled.section`
+  padding: "0px 8%";
+
+  @media screen and (max-width: 970px) {
+    padding: "0px 0px";
+  }
 `;
 
 const WhyContractHomify = () => {
   return (
-    <section style={{ padding: "0px 8%" }}>
+    <PrincipalSection>
       <div>
         <LabelQuestion>
           ¿Por qué contratar <br />
@@ -55,7 +71,7 @@ const WhyContractHomify = () => {
           />
         </Flex>
       </div>
-    </section>
+    </PrincipalSection>
   );
 };
 

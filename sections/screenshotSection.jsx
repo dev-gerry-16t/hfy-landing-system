@@ -1,6 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
+const PrincipalSection = styled.section`
+  display: flex;
+  padding: 5em 7em;
+
+  @media screen and (max-width: 970px) {
+    padding: 2em 2em;
+  }
+`;
+
 const TitleSection = styled.p`
   font-family: url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
   font-style: normal;
@@ -20,18 +29,41 @@ const Button = styled.button`
   outline: none;
 `;
 
+const DivStyleScreenshot = styled.div`
+  flex: 2 1 auto;
+  text-align: center;
+  @media screen and (max-width: 970px) {
+    flex: 1 1 auto;
+    align-self: center;
+  }
+  @media screen and (max-width: 750px) {
+    display: none;
+  }
+`;
+
+const ImgScreenshot = styled.img`
+  width: 500px;
+  @media screen and (max-width: 970px) {
+    width: 300px;
+  }
+`;
+
+const DivTextScreenshot = styled.div`
+  width: 370px;
+  flex: 1 1 auto;
+  align-self: center;
+  @media screen and (max-width: 560px) {
+    width: auto;
+  }
+`;
+
 const ScreenshotSection = ({ openModal }) => {
   return (
-    <section style={{ display: "flex", padding: "5em 7em" }}>
-      <div
-        style={{
-          flex: "2 1 auto",
-          textAlign: "center",
-        }}
-      >
-        <img width="500" src="/screenshot.png" alt="screenshot-app-homify" />
-      </div>
-      <div style={{ width: 370, flex: "1 1 auto", alignSelf: "center" }}>
+    <PrincipalSection>
+      <DivStyleScreenshot>
+        <ImgScreenshot src="/screenshot.png" alt="screenshot-app-homify" />
+      </DivStyleScreenshot>
+      <DivTextScreenshot>
         <TitleSection>Firma electrónica</TitleSection>
         <p style={{ fontFamily: "Poppins", lineHeight: "30px" }}>
           Al contratar una
@@ -56,8 +88,8 @@ const ScreenshotSection = ({ openModal }) => {
           </span>
           <img src="/Vector.png" alt="Registrarme-Homify" />
         </Button>
-      </div>
-    </section>
+      </DivTextScreenshot>
+    </PrincipalSection>
   );
 };
 

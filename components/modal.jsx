@@ -40,6 +40,15 @@ const ModalContent = styled.div`
   width: 610px;
   border: none;
   border-radius: 16px;
+  @media screen and (max-width: 750px) {
+    width: auto;
+  }
+
+  @media screen and (max-width: 460px) {
+  padding: 20px 5px;
+
+  }
+
 `;
 
 const TitleModal = styled.div`
@@ -82,7 +91,6 @@ const CustomModal = ({ isVisible, onClose, title, children }) => {
         <div>
           <TitleModal>
             <ExitModal
-              className="arrow-back-to"
               type="button"
               onClick={() => {
                 onClose();
