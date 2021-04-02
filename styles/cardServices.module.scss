@@ -12,7 +12,7 @@
     height: 214px;
     background: #fff;
     border-radius: 16px;
-    transition: all .2s ease-in-out; 
+    transition: all 0.2s ease-in-out;
     label {
       margin-top: 10px;
       font-family: Poppins;
@@ -21,7 +21,7 @@
       font-size: 16px;
       letter-spacing: 0.75px;
       color: #4e4b66;
-      span{
+      span {
         color: #ff0282;
       }
     }
@@ -32,5 +32,36 @@
       color: #4e4b66;
       text-align: center;
     }
+  }
+}
+
+.contentCards {
+  display: flex;
+  flex-direction: column;
+}
+
+@media screen and (max-width: 970px) {
+  .cards {
+    padding: 0px 0%;
+  }
+}
+
+@media screen and (max-width: 750px) {
+  .contentCards {
+    flex-direction: row;
+    justify-content: space-evenly;
+  }
+  .cards {
+    flex-direction: column;
+    div {
+      margin-top: 45px;
+    }
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .contentCards {
+    flex-direction: column;
+    align-items: center;
   }
 }

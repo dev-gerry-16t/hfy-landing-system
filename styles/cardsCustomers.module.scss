@@ -18,10 +18,13 @@
   display: flex;
   flex-wrap: nowrap;
   justify-content: space-around;
-  margin: 20px 0px;
+  margin: 0px 0px 20px 0px;
+  padding: 35px 0px;
   width: 100%;
+  overflow-x: scroll;
   div[title="usuarios"] {
     width: 340px;
+    min-width: 340px;
     height: 250px;
     margin: 0px 15px;
     background: #ffffff;
@@ -44,3 +47,9 @@
     }
   }
 }
+
+@media screen and (max-width: 970px) {
+}
+@media screen and (max-width: 750px) {
+}
+

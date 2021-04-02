@@ -14,6 +14,10 @@ const Circle = styled.div`
 const Card = styled.div`
   width: 440px;
   display: flex;
+  @media screen and (max-width: 470px) {
+    width: auto;
+    margin-bottom: 15px;
+  }
 `;
 
 const Subject = styled.p`

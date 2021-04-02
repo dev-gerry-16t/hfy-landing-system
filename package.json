@@ -14,5 +14,8 @@
     "react-number-format": "^4.5.3",
     "sass": "^1.32.7",
     "styled-components": "^5.2.3"
+  },
+  "devDependencies": {
+    "babel-plugin-styled-components": "^1.12.0"
   }
 }

@@ -74,6 +74,50 @@ const ButtonSend = styled.button`
   width: 45%;
 `;
 
+const DivTwoInputs = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+  position: relative;
+
+  @media screen and (max-width: 520px) {
+    flex-direction: column;
+  }
+`;
+
+const DivCurrentRent = styled.div`
+  padding: 0px 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+  @media screen and (max-width: 520px) {
+    padding: 0px 0px;
+  }
+`;
+
+const DivForm = styled.div`
+  padding: 0px 2rem;
+  @media screen and (max-width: 520px) {
+    padding: 0px 0px;
+  }
+`;
+
+const DivRange = styled.div`
+  padding: 0px 2rem;
+  @media screen and (max-width: 520px) {
+    padding: 0px 0px;
+  }
+`;
+
+const DivPrincipal = styled.div`
+  padding: 10px 20px;
+  @media screen and (max-width: 520px) {
+    padding: 0px 0px;
+  }
+`;
+
 const FormRegister = ({ onClose }) => {
   const [dataForm, setDataForm] = useState({
     idProspectType: 1,
@@ -88,7 +132,7 @@ const FormRegister = ({ onClose }) => {
   });
 
   return (
-    <div style={{ padding: "10px 20px" }}>
+    <DivPrincipal>
       <div
         style={{
           display: "flex",
@@ -121,7 +165,7 @@ const FormRegister = ({ onClose }) => {
           id={3}
         />
       </div>
-      <div style={{ padding: "0px 2rem" }}>
+      <DivForm>
         {dataForm.idProspectType === 2 && (
           <SelectStyle name="cars" id="cars">
             <option
@@ -171,15 +215,7 @@ const FormRegister = ({ onClose }) => {
             </svg>
           }
         />
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            margin: 0,
-            padding: 0,
-            position: "relative",
-          }}
-        >
+        <DivTwoInputs>
           <CustomInput
             value={dataForm.lastName}
             placeHolder="Apellido Paterno"
@@ -222,7 +258,7 @@ const FormRegister = ({ onClose }) => {
               </svg>
             }
           />
-        </div>
+        </DivTwoInputs>
         <CustomInput
           value={dataForm.phoneNumber}
           placeHolder="Teléfono"
@@ -292,16 +328,8 @@ const FormRegister = ({ onClose }) => {
             icon={<div />}
           />
         )}
-      </div>
-      <div
-        style={{
-          padding: "0px 2rem",
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          marginBottom: 15,
-        }}
-      >
+      </DivForm>
+      <DivCurrentRent>
         <LabelRent>Monto de renta</LabelRent>
         <NumberFormat
           value={dataForm.budgeAmount}
@@ -317,12 +345,8 @@ const FormRegister = ({ onClose }) => {
             });
           }}
         />
-      </div>
-      <div
-        style={{
-          padding: "0px 3rem",
-        }}
-      >
+      </DivCurrentRent>
+      <DivRange>
         <InputRange
           value={dataForm.budgeAmount}
           style={{ width: "100%" }}
@@ -337,7 +361,7 @@ const FormRegister = ({ onClose }) => {
             });
           }}
         />
-      </div>
+      </DivRange>
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "35px" }}
       >
@@ -363,7 +387,7 @@ const FormRegister = ({ onClose }) => {
           Enviar
         </ButtonSend>
       </div>
-    </div>
+    </DivPrincipal>
   );
 };
 

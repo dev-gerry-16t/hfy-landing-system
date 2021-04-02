@@ -12,12 +12,24 @@ const TitleComments = styled.p`
   letter-spacing: 0.75px;
   color: #4e4b66;
   margin: 0px;
+  @media screen and (max-width: 470px) {
+    font-size: 28px;
+    line-height: 34px;
+  }
+`;
+
+const DivHeadSection = styled.div`
+  display: flex;
+  padding: 35px 7em;
+  @media screen and (max-width: 970px) {
+    padding: 35px 1em;
+  }
 `;
 
 const UserCommentSection = () => {
   return (
     <section className={stylesCustomersInfo.commentUser}>
-      <div style={{ display: "flex", padding: "35px 7em" }}>
+      <DivHeadSection>
         <svg
           width="143"
           height="120"
@@ -39,7 +51,7 @@ const UserCommentSection = () => {
           </TitleComments>
           <label>Conoce las experiencias de nuestros usuarios</label>
         </div>
-      </div>
+      </DivHeadSection>
       <section className={stylesCustomersInfo.cards}>
         <WidgetCardComment
           name="Patricia"
