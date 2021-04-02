@@ -44,7 +44,15 @@ const HeaderSection = styled.header`
 `;
 
 const HeaderNavigation = styled.div`
-  @media screen and (max-width: 470px) {
+  font-family: url("https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap");
+  font-style: normal;
+  font-weight: bold;
+  font-size: 14px;
+  color: #18191f;
+  a {
+    margin: 0px 10px;
+  }
+  @media screen and (max-width: 750px) {
     & {
       display: none;
     }
@@ -67,8 +75,17 @@ const PrincipalContent = ({ children, openModal }) => {
         ></meta>
       </Head>
       <HeaderSection>
-        <div>
-          <HeaderNavigation>Navegacion</HeaderNavigation>
+        <div
+          style={{
+            justifySelf: "center",
+            alignSelf: "center",
+          }}
+        >
+          <HeaderNavigation>
+            <a>Asesor</a>
+            <a>Propietario</a>
+            <a>Inquilino</a>
+          </HeaderNavigation>
         </div>
         <div style={{ justifySelf: "center" }}>
           <svg
