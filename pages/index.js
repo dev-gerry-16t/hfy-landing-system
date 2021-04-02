@@ -35,19 +35,21 @@ const Home = () => {
           setIsVisibleModal(visible);
         }}
       />
-      <MiddleInitialSection />
-      <PosterRegister
-        openModal={(visible) => {
-          setIsVisibleModal(visible);
-        }}
-      />
-      <WhyContractHomify />
-      <UserCommentSection />
-      <ScreenshotSection
-        openModal={(visible) => {
-          setIsVisibleModal(visible);
-        }}
-      />
+      <div style={{background:'#fff'}}>
+        <MiddleInitialSection />
+        <PosterRegister
+          openModal={(visible) => {
+            setIsVisibleModal(visible);
+          }}
+        />
+        <WhyContractHomify />
+        <UserCommentSection />
+        <ScreenshotSection
+          openModal={(visible) => {
+            setIsVisibleModal(visible);
+          }}
+        />
+      </div>
     </PrincipalContent>
   );
 };
