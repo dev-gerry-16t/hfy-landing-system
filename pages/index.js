@@ -24,7 +24,11 @@ const Home = () => {
         }}
         title="Compártenos tus datos"
       >
-        <FormRegister />
+        <FormRegister
+          onClose={(visible) => {
+            setIsVisibleModal(visible);
+          }}
+        />
       </CustomModal>
       <TopInitialSection
         openModal={(visible) => {

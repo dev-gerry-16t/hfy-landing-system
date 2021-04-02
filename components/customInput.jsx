@@ -20,7 +20,7 @@ const InputStyle = styled.input`
 
 const CustomInput = ({ value, onChange, placeHolder, icon }) => {
   return (
-    <div style={{ margin: "35px 0px", position: "relative" }}>
+    <div style={{ margin: "0px 0px 35px 0px", position: "relative" }}>
       <InputStyle
         placeholder={placeHolder}
         type="text"

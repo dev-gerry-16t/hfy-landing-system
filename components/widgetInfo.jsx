@@ -8,12 +8,12 @@ const Circle = styled.div`
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  background: #f4f5f7
+  background: #f4f5f7;
 `;
 
 const Card = styled.div`
   width: 440px;
-  display: flex
+  display: flex;
 `;
 
 const Subject = styled.p`
@@ -23,7 +23,7 @@ const Subject = styled.p`
   font-size: 20px;
   line-height: 32px;
   color: #4e4b66;
-  margin: 0px
+  margin: 0px;
 `;
 
 const BodyText = styled.span`
@@ -32,7 +32,7 @@ const BodyText = styled.span`
   font-weight: normal;
   font-size: 14px;
   line-height: 26px;
-  color: #4e4b66
+  color: #4e4b66;
 `;
 
 const WidgetInfo = ({ src, title, text }) => {
