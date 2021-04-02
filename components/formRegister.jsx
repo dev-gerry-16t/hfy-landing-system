@@ -126,7 +126,7 @@ const FormRegister = ({ onClose }) => {
     phoneNumber: "",
     emailAddress: "",
     budgeAmount: 0,
-    idPolicy: 1,
+    idPolicy: "",
     realState: "",
   });
 
@@ -170,16 +170,21 @@ const FormRegister = ({ onClose }) => {
       <DivForm>
         {dataForm.idProspectType === 2 && (
           <SelectStyle
-            name="cars"
-            id="cars"
+            placeHolder="Póliza"
             value={dataForm.idPolicy}
             onChange={(e) => {
-              setDataForm({ ...dataForm, idPolicy: Number(e.target.value) });
+              setDataForm({ ...dataForm, idPolicy: e.target.value });
             }}
           >
-            <option value={1}>Póliza Básica</option>
-            <option value={2}>Póliza Pro</option>
-            <option value={3}>Renta Segura</option>
+            <option value={"D074A10F-9E68-48D8-B80E-6EFC634DC77B"}>
+              Homify Básica
+            </option>
+            <option value={"1AB46DFE-C916-494D-8FCE-6D297D774138"}>
+              Homify Pro
+            </option>
+            <option value={"CD806B63-4B85-4A94-9D1C-2DE1735294F5"}>
+              Renta Segura
+            </option>
           </SelectStyle>
         )}
         <CustomInput
@@ -359,8 +364,13 @@ const FormRegister = ({ onClose }) => {
       >
         <ButtonSend
           onClick={async () => {
+            let ENVIRONMENT = "http://localhost:3001";
+            if (window.location.hostname === "homify.ai") {
+              ENVIRONMENT = "https://api.homify.ai";
+            }
+
             const result = await fetch(
-              "http://localhost:3001/api/leads/addLandingProspect",
+              `${ENVIRONMENT}/api/leads/addLandingProspect`,
               {
                 method: "POST",
                 body: JSON.stringify(dataForm),
