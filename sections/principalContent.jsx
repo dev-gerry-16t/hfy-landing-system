@@ -23,9 +23,21 @@ const Button = styled.button`
   outline: none;
 `;
 
+const BottomInformation = styled.div`
+  display: flex;
+  justify-content: space-between;
+  padding: 0px 7rem;
+  @media screen and (max-width: 970px) {
+    padding: 0px 1rem;
+  }
+@media screen and (max-width: 470px) {
+  justify-content: center;
+}
+`;
+
 const PrincipalContent = ({ children, openModal }) => {
   return (
-    <div className={styles.container}>
+    <>
       <Head>
         <title>Homify - Mi Renta Segura</title>
         <link rel="icon" href="/favicon.ico" />
@@ -82,17 +94,11 @@ const PrincipalContent = ({ children, openModal }) => {
             <a>Aviso de privacidad</a>
           </div>
         </Navegation>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            padding: "0px 7rem",
-          }}
-        >
+        <BottomInformation>
           <div style={{ color: "#D9DBE1", fontSize: 12 }}>
             © 2020 Homify. All rights reserved
           </div>
-          <div>
+          <div className='social-media'>
             <Button>
               <img src="/Instagram.png" alt="instagram" />
             </Button>
@@ -100,9 +106,9 @@ const PrincipalContent = ({ children, openModal }) => {
               <img src="/Twitter.png" alt="twitter" />
             </Button>
           </div>
-        </div>
+        </BottomInformation>
       </Footer>
-    </div>
+    </>
   );
 };
 
