@@ -1,22 +1,14 @@
 import React from "react";
+import SectionCityScapeLeft from "../components/sectionCItyScapeLeft";
+import SectionCityScapeRight from "../components/sectionCItyScapeRight";
 import stylesHeader from "../styles/headSection.module.scss";
 
 const TopInitialSection = ({ openModal }) => {
   return (
     <section className={stylesHeader.initialLegent}>
       <div>
-        <img
-          src="/cityscapeLeft.png"
-          alt="city Homify"
-          width={50}
-          height={"100%"}
-        />
-        <img
-          src="/cityscapeRight.png"
-          alt="City Homify"
-          width={50}
-          height={"100%"}
-        />
+        <SectionCityScapeLeft />
+        <SectionCityScapeRight />
       </div>
       <div></div>
       <p>

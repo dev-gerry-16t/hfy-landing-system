@@ -14,6 +14,7 @@ const SelectStyle = styled.select`
   font-weight: bold;
   padding: 5px 5px;
   margin-bottom: 35px;
+  background: transparent;
   &:focus {
     outline: #c6cdfc;
   }
@@ -46,8 +47,7 @@ const InputStyle = styled.input`
   }
 `;
 
-const InputRange = styled.input`
-`;
+const InputRange = styled.input``;
 
 const LabelRent = styled.p`
   font-family: Poppins;
@@ -126,7 +126,7 @@ const FormRegister = ({ onClose }) => {
     phoneNumber: "",
     emailAddress: "",
     budgeAmount: 0,
-    idPolicy: null,
+    idPolicy: 1,
     realState: "",
   });
 
@@ -140,6 +140,7 @@ const FormRegister = ({ onClose }) => {
         }}
       >
         <WidgetUserType
+          value={dataForm.idProspectType}
           onClick={(value) => {
             setDataForm({ ...dataForm, idProspectType: value });
           }}
@@ -148,6 +149,7 @@ const FormRegister = ({ onClose }) => {
           id={2}
         />
         <WidgetUserType
+          value={dataForm.idProspectType}
           onClick={(value) => {
             setDataForm({ ...dataForm, idProspectType: value });
           }}
@@ -156,6 +158,7 @@ const FormRegister = ({ onClose }) => {
           id={1}
         />
         <WidgetUserType
+          value={dataForm.idProspectType}
           onClick={(value) => {
             setDataForm({ ...dataForm, idProspectType: value });
           }}
@@ -166,31 +169,17 @@ const FormRegister = ({ onClose }) => {
       </div>
       <DivForm>
         {dataForm.idProspectType === 2 && (
-          <SelectStyle name="cars" id="cars">
-            <option
-              onClick={() => {
-                setDataForm({ ...dataForm, idPolicy: 1 });
-              }}
-              value="1"
-            >
-              Póliza Básica
-            </option>
-            <option
-              onClick={() => {
-                setDataForm({ ...dataForm, idPolicy: 2 });
-              }}
-              value="2"
-            >
-              Póliza Pro
-            </option>
-            <option
-              onClick={() => {
-                setDataForm({ ...dataForm, idPolicy: 3 });
-              }}
-              value="3"
-            >
-              Renta Segura
-            </option>
+          <SelectStyle
+            name="cars"
+            id="cars"
+            value={dataForm.idPolicy}
+            onChange={(e) => {
+              setDataForm({ ...dataForm, idPolicy: Number(e.target.value) });
+            }}
+          >
+            <option value={1}>Póliza Básica</option>
+            <option value={2}>Póliza Pro</option>
+            <option value={3}>Renta Segura</option>
           </SelectStyle>
         )}
         <CustomInput
@@ -328,39 +317,43 @@ const FormRegister = ({ onClose }) => {
           />
         )}
       </DivForm>
-      <DivCurrentRent>
-        <LabelRent>Monto de renta</LabelRent>
-        <NumberFormat
-          value={dataForm.budgeAmount}
-          customInput={InputStyle}
-          thousandSeparator=","
-          decimalSeparator="."
-          prefix={"$"}
-          onValueChange={(values) => {
-            const { formattedValue, value, floatValue } = values;
-            setDataForm({
-              ...dataForm,
-              budgeAmount: floatValue,
-            });
-          }}
-        />
-      </DivCurrentRent>
-      <DivRange>
-        <InputRange
-          value={dataForm.budgeAmount}
-          style={{ width: "100%" }}
-          type="range"
-          step="100"
-          min="0"
-          max="25000"
-          onChange={(e) => {
-            setDataForm({
-              ...dataForm,
-              budgeAmount: e.target.value,
-            });
-          }}
-        />
-      </DivRange>
+      {dataForm.idProspectType !== 3 && (
+        <>
+          <DivCurrentRent>
+            <LabelRent>Monto de renta</LabelRent>
+            <NumberFormat
+              value={dataForm.budgeAmount}
+              customInput={InputStyle}
+              thousandSeparator=","
+              decimalSeparator="."
+              prefix={"$"}
+              onValueChange={(values) => {
+                const { formattedValue, value, floatValue } = values;
+                setDataForm({
+                  ...dataForm,
+                  budgeAmount: floatValue,
+                });
+              }}
+            />
+          </DivCurrentRent>
+          <DivRange>
+            <InputRange
+              value={dataForm.budgeAmount}
+              style={{ width: "100%" }}
+              type="range"
+              step="100"
+              min="0"
+              max="25000"
+              onChange={(e) => {
+                setDataForm({
+                  ...dataForm,
+                  budgeAmount: e.target.value,
+                });
+              }}
+            />
+          </DivRange>
+        </>
+      )}
       <div
         style={{ display: "flex", justifyContent: "center", marginTop: "35px" }}
       >

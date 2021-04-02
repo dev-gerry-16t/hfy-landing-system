@@ -17,7 +17,7 @@
 .cards {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-around;
+  justify-content: center;
   margin: 0px 0px 20px 0px;
   padding: 35px 0px;
   width: 100%;
@@ -54,4 +54,7 @@
 @media screen and (max-width: 970px) {
 }
 @media screen and (max-width: 750px) {
+  .cards {
+    justify-content: normal;
+  }
 }
