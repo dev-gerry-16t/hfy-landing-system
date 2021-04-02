@@ -17,7 +17,7 @@
       position: absolute;
       width: 100%;
       bottom: 0;
-      left: 25px;
+      left: 0px;
     }
     .section-icon-register {
       flex: 1 1 auto;
@@ -93,6 +93,14 @@
 }
 
 @media screen and (max-width: 470px) {
+  .footer-links {
+    display: none;
+  }
+  .social-media{
+    display: none;
+
+  }
+
   .section-poster-register {
     padding: 0em 0em;
     .card-info-register {
@@ -108,4 +116,3 @@
     }
   }
 }
-
