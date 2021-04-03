@@ -59,7 +59,7 @@ const DivTextScreenshot = styled.div`
 
 const ScreenshotSection = ({ openModal }) => {
   return (
-    <PrincipalSection>
+    <PrincipalSection title="Ventajas de homify">
       <DivStyleScreenshot>
         <ImgScreenshot src="/screenshot.png" alt="screenshot-app-homify" />
       </DivStyleScreenshot>

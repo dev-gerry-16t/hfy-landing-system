@@ -35,7 +35,7 @@ const PrincipalSection = styled.section`
 
 const WhyContractHomify = () => {
   return (
-    <PrincipalSection>
+    <PrincipalSection title="Por que contratar homify">
       <div>
         <LabelQuestion>
           ¿Por qué contratar <br />

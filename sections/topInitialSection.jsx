@@ -5,7 +5,10 @@ import stylesHeader from "../styles/headSection.module.scss";
 
 const TopInitialSection = ({ openModal }) => {
   return (
-    <section className={stylesHeader.initialLegent}>
+    <section
+      title="Renta sin aval y sin depósito en garantía."
+      className={stylesHeader.initialLegent}
+    >
       <div>
         <SectionCityScapeLeft />
         <SectionCityScapeRight />

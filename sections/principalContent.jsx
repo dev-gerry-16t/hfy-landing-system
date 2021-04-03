@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import stylesHeader from "../styles/headSection.module.scss";
@@ -60,6 +60,16 @@ const HeaderNavigation = styled.div`
 `;
 
 const PrincipalContent = ({ children, openModal }) => {
+  const [isVisibleNav, setIsVisibleNav] = useState(false);
+
+  useEffect(() => {
+    if (isVisibleNav === true) {
+      document.getElementById("id-side-menu-panel").style.width = "250px";
+    } else if (isVisibleNav === false) {
+      document.getElementById("id-side-menu-panel").style.width = "0px";
+    }
+  }, [isVisibleNav]);
+
   return (
     <>
       <Head>
@@ -70,8 +80,8 @@ const PrincipalContent = ({ children, openModal }) => {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <meta
-          name="Description"
-          content="Póliza Jurídica De Arrendamiento - Tu Renta Segura"
+          name="description"
+          content="La mejor póliza jurídica de arrendamiento , si tu inquilino no paga nosotros te pagamos, tu renta segura, contrata hoy mismo al mejor precio del mercado."
         ></meta>
       </Head>
       <HeaderSection>
@@ -198,6 +208,46 @@ const PrincipalContent = ({ children, openModal }) => {
           >
             Registrarme
           </button>
+          <button
+            onClick={() => {
+              setIsVisibleNav(!isVisibleNav);
+            }}
+          >
+            <svg
+              width="22"
+              height="18"
+              viewBox="0 0 22 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21 16.25H1"
+                stroke="#4E4B66"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M21 8.75H1"
+                stroke="#4E4B66"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M21 1.5H1"
+                stroke="#4E4B66"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+          <div id="id-side-menu-panel" className={stylesHeader.myLinks}>
+            <a href="#news">News</a>
+            <a href="#contact">Contact</a>
+            <a href="#about">About</a>
+          </div>
         </div>
       </HeaderSection>
       <main>{children}</main>

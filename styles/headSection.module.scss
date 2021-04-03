@@ -5,11 +5,37 @@
   padding: 1rem 10%;
 }
 
+.myLinks {
+  width: 0;
+  position: fixed;
+  z-index: 101;
+  height: 100%;
+  top: 0;
+  left: 0;
+  background-color: #ff0282;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  display: none;
+  a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #fff;
+    display: block;
+    transition: 0.3s;
+  }
+
+  a:hover {
+    color: #f1f1f1;
+  }
+}
+
 .secondaryButton {
   display: flex;
   justify-content: center;
   align-items: center;
-  button:first-child {
+  button:nth-child(1) {
     border: 1px solid #ff0282;
     font-family: Poppins;
     box-sizing: border-box;
@@ -20,7 +46,7 @@
     outline: none;
     cursor: pointer;
   }
-  button:last-child {
+  button:nth-child(2) {
     font-family: Poppins;
     color: #ffffff;
     background: #ff0282;
@@ -30,6 +56,12 @@
     margin: 0px 5px;
     outline: none;
     cursor: pointer;
+  }
+  button:nth-child(3) {
+    background: transparent;
+    border: none;
+    outline: none;
+    display: none;
   }
 }
 
@@ -95,7 +127,7 @@
 
 @media screen and (max-width: 750px) {
   .secondaryButton {
-    button:last-child {
+    button:nth-child(2) {
       display: none;
     }
   }
@@ -108,15 +140,23 @@
 }
 
 @media screen and (max-width: 470px) {
+  .myLinks {
+    display: block;
+  }
   .secondaryButton {
-    button:first-child {
+    justify-content: flex-end;
+    padding-right: 10px;
+    button:nth-child(1) {
       display: none;
+    }
+    button:nth-child(3) {
+      display: block;
     }
   }
   .initialLegent {
     height: 460px;
     div:nth-child(1) {
-      svg:nth-child(1){
+      svg:nth-child(1) {
         display: none;
       }
     }
