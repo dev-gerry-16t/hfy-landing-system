@@ -2,7 +2,10 @@ import React from "react";
 
 const PosterRegister = ({ openModal }) => {
   return (
-    <section className="section-poster-register">
+    <section
+      title="Nosotros nos preocupamos por cobrar"
+      className="section-poster-register"
+    >
       <div className="card-info-register">
         <svg
           width="1015"
@@ -40,7 +43,10 @@ const PosterRegister = ({ openModal }) => {
             alt="Nosotros nos preocupamos por cobrar"
           />
         </section>
-        <section className="section-event-register">
+        <section
+          title="Registrarme en homify"
+          className="section-event-register"
+        >
           <p>Deja que nosotros nos preocupemos por cobrar</p>
           <button
             onClick={() => {

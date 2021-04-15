@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import stylesHeader from "../styles/headSection.module.scss";
@@ -60,6 +61,23 @@ const HeaderNavigation = styled.div`
 `;
 
 const PrincipalContent = ({ children, openModal }) => {
+  const [isVisibleNav, setIsVisibleNav] = useState(false);
+
+  useEffect(() => {
+    if (isVisibleNav === true) {
+      document.getElementById("id-side-menu-panel").style.width = "250px";
+    } else if (isVisibleNav === false) {
+      document.getElementById("id-side-menu-panel").style.width = "0px";
+    }
+  }, [isVisibleNav]);
+
+  useEffect(() => {
+    const badyBox = document.getElementsByTagName("main")[0];
+    badyBox.addEventListener("click", () => {
+      setIsVisibleNav(false);
+    });
+  }, []);
+
   return (
     <>
       <Head>
@@ -70,8 +88,8 @@ const PrincipalContent = ({ children, openModal }) => {
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
         <meta
-          name="Description"
-          content="Póliza Jurídica De Arrendamiento - Tu Renta Segura"
+          name="description"
+          content="La mejor póliza jurídica de arrendamiento , si tu inquilino no paga nosotros te pagamos, tu renta segura, contrata hoy mismo al mejor precio del mercado."
         ></meta>
       </Head>
       <HeaderSection>
@@ -82,9 +100,15 @@ const PrincipalContent = ({ children, openModal }) => {
           }}
         >
           <HeaderNavigation>
-            <a>Asesor</a>
-            <a>Propietario</a>
-            <a>Inquilino</a>
+            <Link href="/">
+              <a>Asesor</a>
+            </Link>
+            <Link href="/">
+              <a>Propietario</a>
+            </Link>
+            <Link href="/">
+              <a>Inquilino</a>
+            </Link>
           </HeaderNavigation>
         </div>
         <div style={{ justifySelf: "center" }}>
@@ -198,6 +222,66 @@ const PrincipalContent = ({ children, openModal }) => {
           >
             Registrarme
           </button>
+          <button
+            onClick={() => {
+              setIsVisibleNav(!isVisibleNav);
+            }}
+          >
+            <svg
+              width="22"
+              height="18"
+              viewBox="0 0 22 18"
+              fill="none"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                d="M21 16.25H1"
+                stroke="#4E4B66"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M21 8.75H1"
+                stroke="#4E4B66"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+              <path
+                d="M21 1.5H1"
+                stroke="#4E4B66"
+                strokeWidth="2"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              />
+            </svg>
+          </button>
+          <div id="id-side-menu-panel" className={stylesHeader.myLinks}>
+            <Link href="/">
+              <a>Asesor</a>
+            </Link>
+            <Link href="/">
+              <a>Propietario</a>
+            </Link>
+            <Link href="/">
+              <a>Inquilino</a>
+            </Link>
+            <a href="https://app.homify.ai">Iniciar Sesión</a>
+            <Link href="/">
+              <a
+                onClick={() => {
+                  setIsVisibleNav(!isVisibleNav);
+                  openModal(true);
+                }}
+              >
+                Registrarme
+              </a>
+            </Link>
+            <Link href="/aviso-de-privacidad">
+              <a>Aviso de privacidad</a>
+            </Link>
+          </div>
         </div>
       </HeaderSection>
       <main>{children}</main>
@@ -304,12 +388,14 @@ const PrincipalContent = ({ children, openModal }) => {
             <a>Pricing</a>
             <a>Careers</a>
             <a>Help</a>
-            <a>Aviso de privacidad</a>
+            <Link href="/aviso-de-privacidad">
+              <a>Aviso de privacidad</a>
+            </Link>
           </div>
         </Navegation>
         <BottomInformation>
           <div style={{ color: "#D9DBE1", fontSize: 12 }}>
-            © 2020 Homify. All rights reserved
+            © 2021 Homify. All rights reserved
           </div>
           <div className="social-media">
             <Button>

@@ -28,7 +28,10 @@ const DivHeadSection = styled.div`
 
 const UserCommentSection = () => {
   return (
-    <section className={stylesCustomersInfo.commentUser}>
+    <section
+      title="Que dicen de nosotros"
+      className={stylesCustomersInfo.commentUser}
+    >
       <DivHeadSection>
         <svg
           width="143"
@@ -52,7 +55,10 @@ const UserCommentSection = () => {
           <label>Conoce las experiencias de nuestros usuarios</label>
         </div>
       </DivHeadSection>
-      <section className={stylesCustomersInfo.cards}>
+      <section
+        title="Mi experiencia en homify"
+        className={stylesCustomersInfo.cards}
+      >
         <WidgetCardComment
           name="Patricia"
           lastName="Rivera"

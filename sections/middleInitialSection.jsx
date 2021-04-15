@@ -6,7 +6,10 @@ import stylesInfoServices from "../styles/cardServices.module.scss";
 const MiddleInitialSection = () => {
   return (
     <>
-      <section className={stylesMiddle.middleMain}>
+      <section
+        title="El software de gestión de inmuebles que piensa en todos"
+        className={stylesMiddle.middleMain}
+      >
         <p>
           El software de gestión de inmuebles
           <br /> que <span>piensa en todos</span>
@@ -16,7 +19,10 @@ const MiddleInitialSection = () => {
           <br /> comunicados y tengan acceso a toda su información relevante
         </label>
       </section>
-      <section className={stylesCardsUser.cards}>
+      <section
+        title="Propietarios Inquilinos y Asesores inmobiliarios"
+        className={stylesCardsUser.cards}
+      >
         <div>
           <img
             src="/Propietario.png"
@@ -40,14 +46,20 @@ const MiddleInitialSection = () => {
           <label lang="es">Asesor</label>
         </div>
       </section>
-      <section className={stylesMiddle.middleMain}>
+      <section
+        title="Todo lo que necesitas para rentar, administrar y organizar"
+        className={stylesMiddle.middleMain}
+      >
         <p style={{ marginTop: "5%" }}>
           ¡<span>Todo lo que necesitas</span> para rentar, administrar y
           organizar!
         </p>
       </section>
       <div className={stylesInfoServices.contentCards}>
-        <section className={stylesInfoServices.cards}>
+        <section
+          title="Renta sin aval a través de nuestra garantía de renta"
+          className={stylesInfoServices.cards}
+        >
           <div>
             <img
               src="/sinaval.png"
@@ -88,7 +100,10 @@ const MiddleInitialSection = () => {
             </p>
           </div>
         </section>
-        <section className={stylesInfoServices.cards}>
+        <section
+          title="Solicita reparaciones, almacena documentos, paga tus servicios"
+          className={stylesInfoServices.cards}
+        >
           <div>
             <img
               src="/reparaciones.png"
