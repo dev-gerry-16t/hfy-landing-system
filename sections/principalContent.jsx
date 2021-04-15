@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
 import stylesHeader from "../styles/headSection.module.scss";
@@ -70,6 +71,13 @@ const PrincipalContent = ({ children, openModal }) => {
     }
   }, [isVisibleNav]);
 
+  useEffect(() => {
+    const badyBox = document.getElementsByTagName("main")[0];
+    badyBox.addEventListener("click", () => {
+      setIsVisibleNav(false);
+    });
+  }, []);
+
   return (
     <>
       <Head>
@@ -92,9 +100,15 @@ const PrincipalContent = ({ children, openModal }) => {
           }}
         >
           <HeaderNavigation>
-            <a>Asesor</a>
-            <a>Propietario</a>
-            <a>Inquilino</a>
+            <Link href="/">
+              <a>Asesor</a>
+            </Link>
+            <Link href="/">
+              <a>Propietario</a>
+            </Link>
+            <Link href="/">
+              <a>Inquilino</a>
+            </Link>
           </HeaderNavigation>
         </div>
         <div style={{ justifySelf: "center" }}>
@@ -244,9 +258,29 @@ const PrincipalContent = ({ children, openModal }) => {
             </svg>
           </button>
           <div id="id-side-menu-panel" className={stylesHeader.myLinks}>
-            <a href="#news">News</a>
-            <a href="#contact">Contact</a>
-            <a href="#about">About</a>
+            <Link href="/">
+              <a>Asesor</a>
+            </Link>
+            <Link href="/">
+              <a>Propietario</a>
+            </Link>
+            <Link href="/">
+              <a>Inquilino</a>
+            </Link>
+            <a href="https://app.homify.ai">Iniciar Sesión</a>
+            <Link href="/">
+              <a
+                onClick={() => {
+                  setIsVisibleNav(!isVisibleNav);
+                  openModal(true);
+                }}
+              >
+                Registrarme
+              </a>
+            </Link>
+            <Link href="/aviso-de-privacidad">
+              <a>Aviso de privacidad</a>
+            </Link>
           </div>
         </div>
       </HeaderSection>
@@ -354,12 +388,14 @@ const PrincipalContent = ({ children, openModal }) => {
             <a>Pricing</a>
             <a>Careers</a>
             <a>Help</a>
-            <a>Aviso de privacidad</a>
+            <Link href="/aviso-de-privacidad">
+              <a>Aviso de privacidad</a>
+            </Link>
           </div>
         </Navegation>
         <BottomInformation>
           <div style={{ color: "#D9DBE1", fontSize: 12 }}>
-            © 2020 Homify. All rights reserved
+            © 2021 Homify. All rights reserved
           </div>
           <div className="social-media">
             <Button>
