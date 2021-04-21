@@ -346,6 +346,7 @@ const FormRegister = ({ onClose, dataPolicy }) => {
         <CustomInput
           value={dataForm.phoneNumber}
           placeHolder="Teléfono *"
+          type='number'
           error={dataErrors.phoneNumber}
           warning={false}
           labelError={"Este campo es requerido"}
