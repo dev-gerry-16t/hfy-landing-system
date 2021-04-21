@@ -9,7 +9,7 @@ import ScreenshotSection from "../sections/screenshotSection";
 import CustomModal from "../components/modal";
 import FormRegister from "../components/formRegister";
 
-const Home = () => {
+const Home = ({ dataPolicy }) => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   return (
     <PrincipalContent
@@ -28,6 +28,7 @@ const Home = () => {
           onClose={(visible) => {
             setIsVisibleModal(visible);
           }}
+          dataPolicy={dataPolicy}
         />
       </CustomModal>
       <TopInitialSection
@@ -35,7 +36,7 @@ const Home = () => {
           setIsVisibleModal(visible);
         }}
       />
-      <div style={{background:'#fff'}}>
+      <div style={{ background: "#fff" }}>
         <MiddleInitialSection />
         <PosterRegister
           openModal={(visible) => {
@@ -52,6 +53,28 @@ const Home = () => {
       </div>
     </PrincipalContent>
   );
+};
+
+Home.getInitialProps = async (ctx) => {
+  const response = await fetch(
+    "https://api.homify.ai/api/catalogs/getAllPolicies",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idCustomer: null,
+        idCustomerTenant: null,
+        idSystemUser: null,
+        idLoginHistory: null,
+        type: 3,
+        idProspectType: 2,
+      }),
+    }
+  );
+  const responseResult = await response.json();
+  return { dataPolicy: responseResult.response };
 };
 
 export default Home;
