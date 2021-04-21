@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import isNil from "lodash/isNil";
+import isEmpty from "lodash/isEmpty";
 import NumberFormat from "react-number-format";
 import styled from "styled-components";
 import CustomInput from "./customInput";
@@ -13,13 +15,28 @@ const SelectStyle = styled.select`
   font-family: Poppins;
   font-weight: bold;
   padding: 5px 5px;
-  margin-bottom: 35px;
+  margin-bottom: 5px;
+  margin-top: 20px;
   background: transparent;
   &:focus {
     outline: #c6cdfc;
   }
   &::placeholder {
     font-weight: 100;
+  }
+`;
+
+const DivPriceAmount = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  div {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    h2 {
+      margin-right: 5px;
+    }
   }
 `;
 
@@ -106,7 +123,7 @@ const DivForm = styled.div`
 const DivRange = styled.div`
   padding: 0px 2rem;
   @media screen and (max-width: 520px) {
-    padding: 0px 0px;
+    padding: 0px 1rem;
   }
 `;
 
@@ -117,7 +134,7 @@ const DivPrincipal = styled.div`
   }
 `;
 
-const FormRegister = ({ onClose }) => {
+const FormRegister = ({ onClose, dataPolicy }) => {
   const [dataForm, setDataForm] = useState({
     idProspectType: 1,
     givenName: "",
@@ -129,6 +146,39 @@ const FormRegister = ({ onClose }) => {
     idPolicy: "",
     realState: "",
   });
+  const [minumunPolicy, setTaxMinumunPolicy] = useState(0);
+  const [taxPolicy, setTaxPolicy] = useState(0);
+  const [tax, setTax] = useState(0);
+  const [percentPayment, setPercentPayment] = useState(1);
+
+  const parseFormatCurrency = (money, fraction, maxFraction) => {
+    let resultNumber = "";
+    if (isNil(money) === false) {
+      const formatMoneyJson = {
+        style: "currency",
+        currency: "USD",
+        minimumFractionDigits: fraction,
+        maximumFractionDigits: maxFraction || 20,
+      };
+      const locale = "en-US";
+      const moneyFormat = new Intl.NumberFormat(locale, formatMoneyJson);
+      resultNumber = moneyFormat.format(money);
+    }
+    return resultNumber;
+  };
+
+  useEffect(() => {
+    if (isEmpty(dataForm.idPolicy) === false) {
+      const selectData = dataPolicy.find((row) => {
+        return row.idPolicy === dataForm.idPolicy;
+      });
+      const totalPolicyTax = selectData.percentBase;
+      const totalTax = selectData.taxBase;
+      setTaxPolicy(totalPolicyTax);
+      setTaxMinumunPolicy(selectData.minimunAmount);
+      setTax(totalTax);
+    }
+  }, [dataForm.idPolicy]);
 
   return (
     <DivPrincipal>
@@ -168,25 +218,6 @@ const FormRegister = ({ onClose }) => {
         />
       </div>
       <DivForm>
-        {dataForm.idProspectType === 2 && (
-          <SelectStyle
-            placeHolder="Póliza"
-            value={dataForm.idPolicy}
-            onChange={(e) => {
-              setDataForm({ ...dataForm, idPolicy: e.target.value });
-            }}
-          >
-            <option value={"D074A10F-9E68-48D8-B80E-6EFC634DC77B"}>
-              Homify Básica
-            </option>
-            <option value={"1AB46DFE-C916-494D-8FCE-6D297D774138"}>
-              Homify Pro
-            </option>
-            <option value={"CD806B63-4B85-4A94-9D1C-2DE1735294F5"}>
-              Renta Segura
-            </option>
-          </SelectStyle>
-        )}
         <CustomInput
           value={dataForm.givenName}
           placeHolder="Nombre"
@@ -281,6 +312,7 @@ const FormRegister = ({ onClose }) => {
         <CustomInput
           value={dataForm.emailAddress}
           placeHolder="Email"
+          type="email"
           onChange={(value) => {
             setDataForm({ ...dataForm, emailAddress: value });
           }}
@@ -357,6 +389,66 @@ const FormRegister = ({ onClose }) => {
               }}
             />
           </DivRange>
+          <DivForm>
+            {dataForm.idProspectType === 2 && (
+              <>
+                <SelectStyle
+                  placeHolder="Póliza"
+                  value={dataForm.idPolicy}
+                  onChange={(e, a) => {
+                    setDataForm({ ...dataForm, idPolicy: e.target.value });
+                  }}
+                >
+                  <option disabled selected value="">
+                    -- Selecciona una póliza --{" "}
+                  </option>
+                  {dataPolicy.map((row) => {
+                    return <option value={row.idPolicy}>{row.text}</option>;
+                  })}
+                </SelectStyle>
+                {isEmpty(dataForm.idPolicy) === false &&
+                  dataForm.budgeAmount > 0 && (
+                    <DivPriceAmount>
+                      <p>Costo por cobertura de Póliza</p>
+                      {isNil(dataForm.budgeAmount) === false &&
+                      minumunPolicy > dataForm.budgeAmount * taxPolicy ? (
+                        <div>
+                          <h2>
+                            {isNil(dataForm.budgeAmount) === false &&
+                            isNil(dataForm.budgeAmount) === false
+                              ? parseFormatCurrency(minumunPolicy, 2, 2)
+                              : "$0.00"}
+                          </h2>
+                          <strong>MXN</strong>
+                          <span style={{ marginLeft: 5 }}>
+                            {" "}
+                            + IVA {tax * 100}%
+                          </span>
+                        </div>
+                      ) : (
+                        <div>
+                          <h2>
+                            {isNil(dataForm.budgeAmount) === false &&
+                            isNil(dataForm.budgeAmount) === false
+                              ? parseFormatCurrency(
+                                  dataForm.budgeAmount * taxPolicy,
+                                  2,
+                                  2
+                                )
+                              : "$0.00"}
+                          </h2>
+                          <strong>MXN</strong>
+                          <span style={{ marginLeft: 5 }}>
+                            {" "}
+                            + IVA {tax * 100}%
+                          </span>
+                        </div>
+                      )}
+                    </DivPriceAmount>
+                  )}
+              </>
+            )}
+          </DivForm>
         </>
       )}
       <div

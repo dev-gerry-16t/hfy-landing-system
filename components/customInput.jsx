@@ -18,12 +18,12 @@ const InputStyle = styled.input`
   }
 `;
 
-const CustomInput = ({ value, onChange, placeHolder, icon }) => {
+const CustomInput = ({ value, onChange, placeHolder, icon, type = "text" }) => {
   return (
     <div style={{ margin: "0px 0px 35px 0px", position: "relative" }}>
       <InputStyle
         placeholder={placeHolder}
-        type="text"
+        type={type}
         value={value}
         onChange={(e) => {
           onChange(e.target.value);
