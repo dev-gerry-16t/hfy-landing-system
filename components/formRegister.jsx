@@ -135,7 +135,16 @@ const DivPrincipal = styled.div`
 `;
 
 const FormRegister = ({ onClose, dataPolicy }) => {
-  const [dataForm, setDataForm] = useState({
+  const initialErrors = {
+    email: false,
+    name: false,
+    lastName: false,
+    phoneNumber: false,
+    fakeEmail: false,
+  };
+  const [dataErrors, setDataErrors] = useState(initialErrors);
+
+  const initialStates = {
     idProspectType: 1,
     givenName: "",
     lastName: "",
@@ -145,7 +154,9 @@ const FormRegister = ({ onClose, dataPolicy }) => {
     budgeAmount: 0,
     idPolicy: "",
     realState: "",
-  });
+  };
+
+  const [dataForm, setDataForm] = useState(initialStates);
   const [minumunPolicy, setTaxMinumunPolicy] = useState(0);
   const [taxPolicy, setTaxPolicy] = useState(0);
   const [tax, setTax] = useState(0);
@@ -165,6 +176,47 @@ const FormRegister = ({ onClose, dataPolicy }) => {
       resultNumber = moneyFormat.format(money);
     }
     return resultNumber;
+  };
+
+  const validateInformation = (data) => {
+    let dataNameValid = true;
+    let dataLastNameValid = true;
+    let dataPhoneNumberValid = true;
+    let dataEmailAddressValid = true;
+    let dataFakeEmailAddressValid = true;
+
+    let dataError = dataErrors;
+
+    if (isEmpty(data.givenName) === true) {
+      dataNameValid = false;
+      dataError = { ...dataError, name: true };
+    }
+    if (isEmpty(data.lastName) === true) {
+      dataLastNameValid = false;
+      dataError = { ...dataError, lastName: true };
+    }
+    if (isEmpty(data.phoneNumber) === true) {
+      dataPhoneNumberValid = false;
+      dataError = { ...dataError, phoneNumber: true };
+    }
+    if (isEmpty(data.emailAddress) === true) {
+      dataEmailAddressValid = false;
+      dataError = { ...dataError, email: true };
+    }
+    if (isEmpty(data.emailAddress) === false) {
+      const regExp = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
+      const validateEmail = regExp.test(data.emailAddress);
+      dataFakeEmailAddressValid = validateEmail;
+      dataError = { ...dataError, fakeEmail: !validateEmail };
+    }
+    setDataErrors(dataError);
+    return (
+      dataNameValid &&
+      dataLastNameValid &&
+      dataPhoneNumberValid &&
+      dataEmailAddressValid &&
+      dataFakeEmailAddressValid
+    );
   };
 
   useEffect(() => {
@@ -220,10 +272,14 @@ const FormRegister = ({ onClose, dataPolicy }) => {
       <DivForm>
         <CustomInput
           value={dataForm.givenName}
-          placeHolder="Nombre"
+          placeHolder="Nombre *"
           onChange={(value) => {
+            setDataErrors({ ...dataErrors, name: false });
             setDataForm({ ...dataForm, givenName: value });
           }}
+          error={dataErrors.name}
+          warning={false}
+          labelError={"Este campo es requerido"}
           icon={
             <svg
               width="16"
@@ -242,10 +298,14 @@ const FormRegister = ({ onClose, dataPolicy }) => {
         <DivTwoInputs>
           <CustomInput
             value={dataForm.lastName}
-            placeHolder="Apellido Paterno"
+            placeHolder="Apellido Paterno *"
             onChange={(value) => {
+              setDataErrors({ ...dataErrors, lastName: false });
               setDataForm({ ...dataForm, lastName: value });
             }}
+            warning={false}
+            error={dataErrors.lastName}
+            labelError={"Este campo es requerido"}
             icon={
               <svg
                 width="16"
@@ -285,8 +345,12 @@ const FormRegister = ({ onClose, dataPolicy }) => {
         </DivTwoInputs>
         <CustomInput
           value={dataForm.phoneNumber}
-          placeHolder="Teléfono"
+          placeHolder="Teléfono *"
+          error={dataErrors.phoneNumber}
+          warning={false}
+          labelError={"Este campo es requerido"}
           onChange={(value) => {
+            setDataErrors({ ...dataErrors, phoneNumber: false });
             setDataForm({ ...dataForm, phoneNumber: value });
           }}
           icon={
@@ -311,9 +375,14 @@ const FormRegister = ({ onClose, dataPolicy }) => {
         />
         <CustomInput
           value={dataForm.emailAddress}
-          placeHolder="Email"
+          placeHolder="Correo *"
+          warning={dataErrors.fakeEmail}
+          error={dataErrors.email}
+          labelError={"Este campo es requerido"}
+          labelWarning={"No es un correo válido"}
           type="email"
           onChange={(value) => {
+            setDataErrors({ ...dataErrors, email: false, fakeEmail: false });
             setDataForm({ ...dataForm, emailAddress: value });
           }}
           icon={
@@ -463,21 +532,26 @@ const FormRegister = ({ onClose, dataPolicy }) => {
             ) {
               ENVIRONMENT = "https://api.homify.ai";
             }
+            const next = await validateInformation(dataForm);
 
-            const result = await fetch(
-              `${ENVIRONMENT}/api/leads/addLandingProspect`,
-              {
-                method: "POST",
-                body: JSON.stringify(dataForm),
-                headers: {
-                  "Content-Type": "application/json",
-                },
+            if (next === true) {
+              const result = await fetch(
+                `${ENVIRONMENT}/api/leads/addLandingProspect`,
+                {
+                  method: "POST",
+                  body: JSON.stringify(dataForm),
+                  headers: {
+                    "Content-Type": "application/json",
+                  },
+                }
+              );
+              const response = await result.json();
+              if (response.response.stateCode === 200) {
+                onClose(false);
+                setDataForm(initialStates);
+                setDataErrors(initialErrors);
+              } else {
               }
-            );
-            const response = await result.json();
-            if (response.response.stateCode === 200) {
-              onClose(false);
-            } else {
             }
           }}
         >

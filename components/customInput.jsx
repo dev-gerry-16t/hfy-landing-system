@@ -18,7 +18,32 @@ const InputStyle = styled.input`
   }
 `;
 
-const CustomInput = ({ value, onChange, placeHolder, icon, type = "text" }) => {
+const DivError = styled.div`
+  background: ${(props) => (props.warning === true ? "#FEEFEF" : "#fff4ec")};
+  border-radius: 8px;
+  color: ${(props) => (props.warning === true ? "#DA1414" : "#cf6e23")};
+  font-family: "Poppins";
+  padding: 2px 10px;
+  position: absolute;
+  width: 100%;
+  font-size: 14px;
+  transition: all 0.2s ease-in-out;
+  /* visibility: ${(props) => (props.error === true ? "visible" : "hidden")}; */
+  opacity: ${(props) =>
+    props.error === true || props.warning === true ? "1" : "0"};
+`;
+
+const CustomInput = ({
+  value,
+  onChange,
+  placeHolder,
+  icon,
+  type = "text",
+  error,
+  labelError,
+  warning,
+  labelWarning,
+}) => {
   return (
     <div style={{ margin: "0px 0px 35px 0px", position: "relative" }}>
       <InputStyle
@@ -38,6 +63,9 @@ const CustomInput = ({ value, onChange, placeHolder, icon, type = "text" }) => {
       >
         {icon}
       </div>
+      <DivError error={error} warning={warning}>
+        {warning === true ? labelWarning : labelError}
+      </DivError>
     </div>
   );
 };
