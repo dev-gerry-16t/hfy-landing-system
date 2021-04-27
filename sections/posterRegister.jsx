@@ -1,11 +1,8 @@
 import React from "react";
 
-const PosterRegister = ({ openModal }) => {
+const PosterRegister = ({ openModal, title, titleCard, titleCard2 }) => {
   return (
-    <section
-      title="Nosotros nos preocupamos por cobrar"
-      className="section-poster-register"
-    >
+    <section title={title} className="section-poster-register">
       <div className="card-info-register">
         <svg
           width="1015"
@@ -35,19 +32,15 @@ const PosterRegister = ({ openModal }) => {
             fill="white"
           />
         </svg>
-        <section className="section-icon-register">
-          <img
-            width="160"
-            height="170"
-            src="/payment-hand.png"
-            alt="Nosotros nos preocupamos por cobrar"
-          />
-        </section>
         <section
           title="Registrarme en homify"
           className="section-event-register"
         >
-          <p>Deja que nosotros nos preocupemos por cobrar</p>
+          <p>
+            {titleCard}
+            <br />
+            {titleCard2}
+          </p>
           <button
             onClick={() => {
               openModal(true);
@@ -55,6 +48,14 @@ const PosterRegister = ({ openModal }) => {
           >
             Registrarme
           </button>
+        </section>
+        <section className="section-icon-register">
+          <img
+            width="145"
+            height="170"
+            src="/homify-poster.png"
+            alt="Nosotros nos preocupamos por cobrar"
+          />
         </section>
       </div>
     </section>

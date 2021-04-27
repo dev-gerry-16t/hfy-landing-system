@@ -3,23 +3,26 @@ import SectionCityScapeLeft from "../components/sectionCItyScapeLeft";
 import SectionCityScapeRight from "../components/sectionCItyScapeRight";
 import stylesHeader from "../styles/headSection.module.scss";
 
-const TopInitialSection = ({ openModal }) => {
+const TopInitialSection = ({
+  openModal,
+  title1,
+  title2,
+  subTitle,
+  titleSection,
+}) => {
   return (
-    <section
-      title="Renta sin aval y sin depósito en garantía."
-      className={stylesHeader.initialLegent}
-    >
+    <section title={titleSection} className={stylesHeader.initialLegent}>
       <div>
         <SectionCityScapeLeft />
         <SectionCityScapeRight />
       </div>
       <div></div>
       <p>
-        Renta sin aval y sin depósito
+        {title1}
         <br />
-        en garantía.
+        {title2}
       </p>
-      <label lang="es">Ahorra hasta el 50% al mudarte</label>
+      <label lang="es">{subTitle}</label>
       <button
         onClick={() => {
           openModal(true);
