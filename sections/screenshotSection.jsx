@@ -66,10 +66,10 @@ const ScreenshotSection = ({ openModal }) => {
       <DivTextScreenshot>
         <TitleSection>Firma electrónica</TitleSection>
         <p style={{ fontFamily: "Poppins", lineHeight: "30px" }}>
-          Al contratar una
-          <strong> Póliza Jurídica de Arrendamiento Renta Segura</strong> dejas
-          de lidiar con tu inquilino y nosotros nos encargamos de la cobranza
-          para que tu renta siempre este a tiempo.
+          Proceso 100% digital con la{" "}
+          <strong>garantía de arrendamiento HOMIFY,</strong> dejas de lidiar con
+          el papeleo y tiempos, trámite rápido y sencillo. Respuesta en menos de
+          48 hrs.
         </p>
         <Button
           onClick={() => {

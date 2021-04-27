@@ -383,11 +383,11 @@ const PrincipalContent = ({ children, openModal }) => {
             />
           </svg>
           <div className="footer-links">
-            <a>About</a>
+            {/* <a>About</a>
             <a>Features</a>
             <a>Pricing</a>
             <a>Careers</a>
-            <a>Help</a>
+            <a>Help</a> */}
             <Link href="/aviso-de-privacidad">
               <a>Aviso de privacidad</a>
             </Link>

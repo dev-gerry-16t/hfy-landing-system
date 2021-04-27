@@ -47,27 +47,25 @@ const WhyContractHomify = () => {
         <Flex>
           <WidgetInfo
             src="/01.png"
-            title="Líderes en el mercado"
-            text="Somos una firma especializada en el ramo jurídico inmobiliario con mas
-          de 20 años de experiencia, nuestros productos son innovadores y únicos
-          en el mercado."
+            title="Comisiones más altas"
+            text="Somos una firma especializada en el ramo jurídico inmobiliario con mas de 20 años de experiencia, nuestros productos son innovadores y únicos en el mercado. "
           />
           <WidgetInfo
             src="/04.png"
-            title="Procesos"
+            title="Investigación y aprobación en 24 hrs."
             text="Procesos automatizados y revisión manual a través de una mesa de control interna para tener siempre la seguridad que nuestro contrato no tiene huecos legales"
           />
         </Flex>
         <Flex>
           <WidgetInfo
             src="/011.png"
-            title="Tecnología"
+            title="Administra tus renovaciones y/o nuevos clientes"
             text="Utilizamos tecnología y sistemas tradicionales para la investigación del inquilino, lo que nos permite tener una respuesta rápida y ágil que nuestros competidores."
           />
           <WidgetInfo
             src="/07.png"
-            title="Sin gastos ocultos"
-            text="Una vez hecho el pago de tu póliza jurídica no tienes que pagar nada, todos los gastos corren por parte de Homify, estamos tan seguros de nuestro producto que si tu inquilino no paga, "
+            title="Cartera Homify"
+            text="Una vez hecho el pago de tu póliza jurídica no tienes que pagar nada, todos los gastos corren por parte de Homify, estamos tan seguros de nuestro producto que si tu inquilino no paga, nosotros te pagamos"
           />
         </Flex>
       </div>
