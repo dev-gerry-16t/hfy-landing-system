@@ -185,9 +185,9 @@ const Home = ({ dataPolicy }) => {
               <path
                 d="M3 25.7413C3 25.7413 51.7635 33.2016 87.025 27.1371C122.286 21.0726 165.493 2.67157 165.493 2.67157"
                 stroke="#D9DBE1"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-dasharray="2 6"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeDasharray="2 6"
               />
             </svg>
           </DivLines>
@@ -210,9 +210,9 @@ const Home = ({ dataPolicy }) => {
               <path
                 d="M3 4.21155C3 4.21155 51.7635 -0.32251 87.025 5.74197C122.286 11.8064 165.493 27.2812 165.493 27.2812"
                 stroke="#D9DBE1"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-dasharray="2 6"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeDasharray="2 6"
               />
             </svg>
           </DivLines>
@@ -235,9 +235,9 @@ const Home = ({ dataPolicy }) => {
               <path
                 d="M3 25.7168C3 25.7168 51.7635 33.1771 87.025 27.1125C122.287 21.048 165.493 2.6469 165.493 2.6469"
                 stroke="#D9DBE1"
-                stroke-width="4"
-                stroke-linecap="round"
-                stroke-dasharray="2 6"
+                strokeWidth="4"
+                strokeLinecap="round"
+                strokeDasharray="2 6"
               />
             </svg>
           </DivLines>
