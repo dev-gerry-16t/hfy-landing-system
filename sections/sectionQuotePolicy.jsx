@@ -220,11 +220,7 @@ const RowInformation = styled.p`
 `;
 
 const ContentInformation = styled.div`
-  max-height: 160px;
-  overflow-y: scroll;
-  &::-webkit-scrollbar {
-    display: none;
-  }
+  
 `;
 
 const SectionQuotePolicy = ({ dataPolicy, onSelectPolicy }) => {
