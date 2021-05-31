@@ -64,6 +64,8 @@ const Home = ({ dataPolicy }) => {
             setIsVisibleModal(visible);
           }}
           dataPolicy={dataPolicy}
+          userType={3}
+          policyType={null}
         />
       </CustomModal>
       <TopInitialSection

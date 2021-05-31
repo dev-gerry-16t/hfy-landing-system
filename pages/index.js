@@ -11,6 +11,7 @@ const Home = ({ dataPolicy }) => {
       openModal={(visible) => {
         setIsVisibleModal(visible);
       }}
+      visibleFooter={false}
     >
       <CustomModal
         isVisible={isVisibleModal}
@@ -24,6 +25,9 @@ const Home = ({ dataPolicy }) => {
             setIsVisibleModal(visible);
           }}
           dataPolicy={dataPolicy}
+          userType={null}
+          policyType={null}
+          amountPolicy={null}
         />
       </CustomModal>
       <TopInitialYourInterest

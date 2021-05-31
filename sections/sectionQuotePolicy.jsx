@@ -386,7 +386,10 @@ const SectionQuotePolicy = ({ dataPolicy, onSelectPolicy }) => {
                     <button
                       type="button"
                       onClick={() => {
-                        onSelectPolicy(rowMap);
+                        onSelectPolicy({
+                          ...rowMap,
+                          budgeAmount: dataForm.budgeAmount,
+                        });
                       }}
                     >
                       Seleccionar Póliza
@@ -480,7 +483,10 @@ const SectionQuotePolicy = ({ dataPolicy, onSelectPolicy }) => {
                       <button
                         type="button"
                         onClick={() => {
-                          onSelectPolicy(rowMap);
+                          onSelectPolicy({
+                            ...rowMap,
+                            budgeAmount: dataForm.budgeAmount,
+                          });
                         }}
                       >
                         Seleccionar Póliza

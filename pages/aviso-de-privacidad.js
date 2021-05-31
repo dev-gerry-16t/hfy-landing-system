@@ -54,6 +54,9 @@ const AvisoDePrivacidad = ({ dataPolicy }) => {
             setIsVisibleModal(visible);
           }}
           dataPolicy={dataPolicy}
+          userType={null}
+          policyType={null}
+          amountPolicy={null}
         />
       </CustomModal>
       <div style={{ marginBottom: "5rem" }}>

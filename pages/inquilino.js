@@ -24,6 +24,9 @@ const DivLines = styled.div`
 
 const Home = ({ dataPolicy }) => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const [isSelectPolicy, setIsSelectPolicy] = useState(null);
+  const [isSelectAmount, setIsSelectAmount] = useState(0);
+
   return (
     <PrincipalContent
       openModal={(visible) => {
@@ -42,6 +45,9 @@ const Home = ({ dataPolicy }) => {
             setIsVisibleModal(visible);
           }}
           dataPolicy={dataPolicy}
+          userType={1}
+          policyType={isSelectPolicy}
+          amountPolicy={isSelectAmount}
         />
       </CustomModal>
       <TopInitialSection
@@ -244,7 +250,11 @@ const Home = ({ dataPolicy }) => {
         </SectionProcessHomify>
         <SectionQuotePolicy
           dataPolicy={dataPolicy}
-          onSelectPolicy={(data) => {}}
+          onSelectPolicy={(data) => {
+            setIsSelectPolicy(data.idPolicy);
+            setIsVisibleModal(true);
+            setIsSelectAmount(data.budgeAmount);
+          }}
         />
         <PosterRegister
           openModal={(visible) => {

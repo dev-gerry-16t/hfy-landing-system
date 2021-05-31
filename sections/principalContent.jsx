@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import isNil from "lodash/isNil";
 import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
@@ -119,7 +120,7 @@ const HeaderNavigation = styled.div`
   }
 `;
 
-const PrincipalContent = ({ children, openModal }) => {
+const PrincipalContent = ({ children, openModal, visibleFooter }) => {
   const [isVisibleNav, setIsVisibleNav] = useState(false);
 
   useEffect(() => {
@@ -142,6 +143,42 @@ const PrincipalContent = ({ children, openModal }) => {
       <Head>
         <title>Homify - Mi Renta Segura</title>
         <link rel="icon" href="/favicon.ico" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=UA-169194787-1"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-169194787-1');
+          `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `!function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '221574086446727'); 
+  fbq('track', 'PageView');
+`,
+          }}
+        />
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            src="https://www.facebook.com/tr?id=221574086446727&ev=PageView&noscript=1"
+          />
+        </noscript>
+
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -317,13 +354,13 @@ const PrincipalContent = ({ children, openModal }) => {
             </svg>
           </button>
           <div id="id-side-menu-panel" className={stylesHeader.myLinks}>
-            <Link href="/">
+            <Link href="/asesor">
               <a>Asesor</a>
             </Link>
-            <Link href="/">
+            <Link href="/arrendador">
               <a>Propietario</a>
             </Link>
-            <Link href="/">
+            <Link href="/inquilino">
               <a>Inquilino</a>
             </Link>
             <a href="https://app.homify.ai">Iniciar Sesión</a>
@@ -344,83 +381,86 @@ const PrincipalContent = ({ children, openModal }) => {
         </div>
       </HeaderSection>
       <main>{children}</main>
-      <Footer>
-        <Navegation>
-          <GeneralInformation>
-            <div>
-              <LogoHomify>
-                <img src="/homify-logo-v2.png" alt="Homify Mi Renta segura" />
-              </LogoHomify>
-              <Address>
-                <span>
-                  Porfirio Diaz 32, Insurgentes San Borja, 03100, Benito Juárez,
-                  CDMX
-                </span>
-              </Address>
-              <div className="social-media">
-                <Button
-                  onClick={() => {
-                    window.location.href =
-                      "https://www.instagram.com/homifyrentasegura/";
-                  }}
-                >
-                  <img src="/Facebook.png" alt="Facebook" />
-                </Button>
-                <Button
-                  onClick={() => {
-                    window.location.href =
-                      "https://www.linkedin.com/in/homify-m%C3%A9xico-6526a81ab/";
-                  }}
-                >
-                  <img src="/LinkedIn.png" alt="LinkedIn" />
-                </Button>
-                <Button
-                  onClick={() => {
-                    window.location.href =
-                      "https://www.instagram.com/homifyrentasegura/";
-                  }}
-                >
-                  <img src="/Instagram.png" alt="instagram" />
-                </Button>
+      {isNil(visibleFooter) === true && (
+        <Footer>
+          <Navegation>
+            <GeneralInformation>
+              <div>
+                <LogoHomify>
+                  <img src="/homify-logo-v2.png" alt="Homify Mi Renta segura" />
+                </LogoHomify>
+                <Address>
+                  <span>
+                    Porfirio Diaz 32, Insurgentes San Borja, 03100, Benito
+                    Juárez, CDMX
+                  </span>
+                </Address>
+                <div className="social-media">
+                  <Button
+                    onClick={() => {
+                      window.location.href =
+                        "https://www.facebook.com/Homify-M%C3%A9xico-103177134820342";
+                    }}
+                  >
+                    <img src="/Facebook.png" alt="Facebook" />
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      window.location.href =
+                        "https://www.linkedin.com/in/homify-m%C3%A9xico-6526a81ab/";
+                    }}
+                  >
+                    <img src="/LinkedIn.png" alt="LinkedIn" />
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      window.location.href =
+                        "https://www.instagram.com/homifyrentasegura/";
+                    }}
+                  >
+                    <img src="/Instagram.png" alt="instagram" />
+                  </Button>
+                </div>
               </div>
+            </GeneralInformation>
+            <ContactLink>
+              <div>
+                <h3>Contacto</h3>
+                <p>Tel: 55 6584 0419 </p>
+                <p>
+                  Whatsapp:{" "}
+                  <a href="https://wa.me/5215537011025" target="_blank">
+                    55 3701 1025
+                  </a>{" "}
+                </p>
+                <p>
+                  Mail:{" "}
+                  <a href="mailto:contacto@homify.ai" target="_blank">
+                    contacto@homify.ai
+                  </a>
+                </p>
+              </div>
+            </ContactLink>
+            <ContactLink>
+              <div>
+                <h3>Blog</h3>
+                <p>
+                  {" "}
+                  <Link href="/aviso-de-privacidad">
+                    <a>Aviso de privacidad</a>
+                  </Link>
+                </p>
+              </div>
+            </ContactLink>
+          </Navegation>
+          <BottomInformation>
+            <div style={{ color: "#D9DBE1", fontSize: 12 }}>
+              © 2021 RENTAL PAYMENS S.A.P.I. DE C.V. Todos los derechos
+              reservados.
             </div>
-          </GeneralInformation>
-          <ContactLink>
-            <div>
-              <h3>Contacto</h3>
-              <p>Tel: 55 6584 0419 </p>
-              <p>
-                Whatsapp:{" "}
-                <a href="https://wa.me/5215537011025" target="_blank">
-                  55 3701 1025
-                </a>{" "}
-              </p>
-              <p>
-                Mail:{" "}
-                <a href="mailto:contacto@homify.ai" target="_blank">
-                  contacto@homify.ai
-                </a>
-              </p>
-            </div>
-          </ContactLink>
-          <ContactLink>
-            <div>
-              <h3>Blog</h3>
-              <p>
-                {" "}
-                <Link href="/aviso-de-privacidad">
-                  <a>Aviso de privacidad</a>
-                </Link>
-              </p>
-            </div>
-          </ContactLink>
-        </Navegation>
-        <BottomInformation>
-          <div style={{ color: "#D9DBE1", fontSize: 12 }}>
-            © 2021 Homify. All rights reserved
-          </div>
-        </BottomInformation>
-      </Footer>
+          </BottomInformation>
+        </Footer>
+      )}
     </>
   );
 };
