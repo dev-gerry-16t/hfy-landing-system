@@ -50,50 +50,49 @@ const TopInitialYourInterest = ({ openModal }) => {
         title="Homify piensa en todos propietarios inquilinos y asesores inmobiliarios"
         className={stylesCardsUser.cards1}
       >
-        <div
-          title="Arrendador"
-          type={selectUserType === 1 ? "select" : "unselect"}
-          onClick={() => {
-            setSelectUserType(1);
-          }}
-        >
-          <img
-            src="/Propietario.png"
-            alt="Propietario Homify"
-            width={112}
-            height={133}
-          />
-          <label lang="es">Soy propietario</label>
-        </div>
-        <div
-          title="Arrendatario"
-          type={selectUserType === 2 ? "select" : "unselect"}
-          onClick={() => {
-            setSelectUserType(2);
-          }}
-        >
-          <img
-            src="/Inquilino.png"
-            alt="Inquilino Homify"
-            width={112}
-            height={133}
-          />
-          <label>Soy inquilino</label>
-        </div>
-        <div
-          title="Asesor inmobiliario"
-          type={selectUserType === 3 ? "select" : "unselect"}
-          onClick={() => {
-            setSelectUserType(3);
-          }}
-        >
-          <img src="/Asesor.png" alt="Asesor Homify" width={112} height={133} />
-          <label lang="es">Soy asesor</label>
-        </div>
+        <Link href="/arrendador" passHref>
+          <div
+            title="Arrendador"
+            type={selectUserType === 1 ? "select" : "unselect"}
+          >
+            <img
+              src="/Propietario.png"
+              alt="Propietario Homify"
+              width={112}
+              height={133}
+            />
+            <label lang="es">Soy propietario</label>
+          </div>
+        </Link>
+        <Link href="/inquilino" passHref>
+          <div
+            title="Arrendatario"
+            type={selectUserType === 2 ? "select" : "unselect"}
+          >
+            <img
+              src="/Inquilino.png"
+              alt="Inquilino Homify"
+              width={112}
+              height={133}
+            />
+            <label>Soy inquilino</label>
+          </div>
+        </Link>
+        <Link href="/asesor" passHref>
+          <div
+            title="Asesor inmobiliario"
+            type={selectUserType === 3 ? "select" : "unselect"}
+          >
+            <img
+              src="/Asesor.png"
+              alt="Asesor Homify"
+              width={112}
+              height={133}
+            />
+            <label lang="es">Soy asesor</label>
+          </div>
+        </Link>
       </section>
-      <Link href={redirectTo(selectUserType)} passHref>
-        <Button />
-      </Link>
     </section>
   );
 };
