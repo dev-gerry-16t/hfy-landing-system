@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import isNil from "lodash/isNil";
 import Link from "next/link";
 import Head from "next/head";
 import styles from "../styles/Home.module.css";
@@ -10,10 +11,69 @@ const Footer = styled.footer`
   font-family: Poppins;
 `;
 
+const ContactLink = styled.div`
+  display: flex;
+  justify-content: center;
+  h3 {
+    color: #ffffff;
+  }
+  p {
+    color: #d9dbe1;
+  }
+  @media screen and (max-width: 570px) {
+    font-size: 12px;
+  }
+  @media screen and (max-width: 420px) {
+    justify-content: left;
+  }
+`;
+
 const Navegation = styled.div`
-  padding-top: 30px;
-  text-align: center;
-  margin-bottom: 5%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  padding: 2% 10%;
+
+  @media screen and (max-width: 570px) {
+    padding: 2% 10px;
+  }
+  @media screen and (max-width: 420px) {
+    padding: 2% 5px;
+    grid-template-columns: repeat(1, 1fr);
+  }
+`;
+
+const Address = styled.div`
+  max-width: 315px;
+  margin: 10px 0px;
+  span {
+    color: #d9dbe1;
+    font-size: 16px;
+  }
+  @media screen and (max-width: 570px) {
+    span {
+      font-size: 12px;
+    }
+  }
+`;
+const LogoHomify = styled.div`
+  @media screen and (max-width: 570px) {
+    img {
+      width: 150px;
+    }
+  }
+`;
+
+const GeneralInformation = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media screen and (max-width: 420px) {
+    justify-content: left;
+    align-items: flex-start;
+  }
 `;
 
 const Button = styled.button`
@@ -60,7 +120,7 @@ const HeaderNavigation = styled.div`
   }
 `;
 
-const PrincipalContent = ({ children, openModal }) => {
+const PrincipalContent = ({ children, openModal, visibleFooter }) => {
   const [isVisibleNav, setIsVisibleNav] = useState(false);
 
   useEffect(() => {
@@ -83,6 +143,42 @@ const PrincipalContent = ({ children, openModal }) => {
       <Head>
         <title>Homify - Mi Renta Segura</title>
         <link rel="icon" href="/favicon.ico" />
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=UA-169194787-1"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'UA-169194787-1');
+          `,
+          }}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `!function(f,b,e,v,n,t,s)
+  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+  n.queue=[];t=b.createElement(e);t.async=!0;
+  t.src=v;s=b.getElementsByTagName(e)[0];
+  s.parentNode.insertBefore(t,s)}(window,document,'script',
+  'https://connect.facebook.net/en_US/fbevents.js');
+  fbq('init', '221574086446727'); 
+  fbq('track', 'PageView');
+`,
+          }}
+        />
+        <noscript>
+          <img
+            height="1"
+            width="1"
+            src="https://www.facebook.com/tr?id=221574086446727&ev=PageView&noscript=1"
+          />
+        </noscript>
+
         <meta
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
@@ -100,13 +196,13 @@ const PrincipalContent = ({ children, openModal }) => {
           }}
         >
           <HeaderNavigation>
-            <Link href="/">
+            <Link href="/asesor">
               <a>Asesor</a>
             </Link>
-            <Link href="/">
+            <Link href="/arrendador">
               <a>Propietario</a>
             </Link>
-            <Link href="/">
+            <Link href="/inquilino">
               <a>Inquilino</a>
             </Link>
           </HeaderNavigation>
@@ -258,13 +354,13 @@ const PrincipalContent = ({ children, openModal }) => {
             </svg>
           </button>
           <div id="id-side-menu-panel" className={stylesHeader.myLinks}>
-            <Link href="/">
+            <Link href="/asesor">
               <a>Asesor</a>
             </Link>
-            <Link href="/">
+            <Link href="/arrendador">
               <a>Propietario</a>
             </Link>
-            <Link href="/">
+            <Link href="/inquilino">
               <a>Inquilino</a>
             </Link>
             <a href="https://app.homify.ai">Iniciar Sesión</a>
@@ -285,128 +381,86 @@ const PrincipalContent = ({ children, openModal }) => {
         </div>
       </HeaderSection>
       <main>{children}</main>
-      <Footer>
-        <Navegation>
-          <svg
-            width="96"
-            height="28"
-            viewBox="0 0 96 28"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            style={{ marginBottom: 15 }}
-          >
-            <path
-              d="M23.0152 9.72241V26.8336"
-              stroke="white"
-              strokeWidth="5"
-              strokeMiterlimit="10"
-            />
-            <path
-              d="M3.1459 15.167V26.8338"
-              stroke="white"
-              strokeWidth="5"
-              strokeMiterlimit="10"
-            />
-            <path
-              d="M3.52745 26.834H23.0153"
-              stroke="white"
-              strokeWidth="5"
-              strokeMiterlimit="10"
-            />
-            <path
-              d="M23.0153 9.72253L13.0806 1.16626"
-              stroke="white"
-              strokeWidth="5"
-              strokeMiterlimit="10"
-            />
-            <path
-              d="M3.1459 9.72253L13.0806 1.16626"
-              stroke="white"
-              strokeWidth="5"
-              strokeMiterlimit="10"
-            />
-            <path
-              d="M23.0153 10.8887C23.6482 10.8887 24.1613 10.3665 24.1613 9.72243C24.1613 9.07831 23.6482 8.55615 23.0153 8.55615C22.3824 8.55615 21.8694 9.07831 21.8694 9.72243C21.8694 10.3665 22.3824 10.8887 23.0153 10.8887Z"
-              fill="white"
-            />
-            <path
-              d="M13.0807 2.33255C13.7136 2.33255 14.2267 1.81039 14.2267 1.16628C14.2267 0.52216 13.7136 0 13.0807 0C12.4478 0 11.9347 0.52216 11.9347 1.16628C11.9347 1.81039 12.4478 2.33255 13.0807 2.33255Z"
-              fill="white"
-            />
-            <path
-              d="M3.14596 10.8887C3.77885 10.8887 4.29191 10.3665 4.29191 9.72243C4.29191 9.07831 3.77885 8.55615 3.14596 8.55615C2.51306 8.55615 2 9.07831 2 9.72243C2 10.3665 2.51306 10.8887 3.14596 10.8887Z"
-              fill="white"
-            />
-            <path
-              d="M3.14596 16.3333C3.77885 16.3333 4.29191 15.8111 4.29191 15.167C4.29191 14.5229 3.77885 14.0007 3.14596 14.0007C2.51306 14.0007 2 14.5229 2 15.167C2 15.8111 2.51306 16.3333 3.14596 16.3333Z"
-              fill="white"
-            />
-            <path
-              d="M3.14596 28C3.77885 28 4.29191 27.4779 4.29191 26.8338C4.29191 26.1896 3.77885 25.6675 3.14596 25.6675C2.51306 25.6675 2 26.1896 2 26.8338C2 27.4779 2.51306 28 3.14596 28Z"
-              fill="white"
-            />
-            <path
-              d="M23.0153 28C23.6482 28 24.1613 27.4779 24.1613 26.8338C24.1613 26.1896 23.6482 25.6675 23.0153 25.6675C22.3824 25.6675 21.8694 26.1896 21.8694 26.8338C21.8694 27.4779 22.3824 28 23.0153 28Z"
-              fill="white"
-            />
-            <path
-              d="M94.4711 24.1114C95.3155 24.1114 95.9999 23.4148 95.9999 22.5554C95.9999 21.6961 95.3155 20.9995 94.4711 20.9995C93.6268 20.9995 92.9423 21.6961 92.9423 22.5554C92.9423 23.4148 93.6268 24.1114 94.4711 24.1114Z"
-              fill="white"
-            />
-            <path
-              d="M35.0519 12.2915C36.167 12.2915 37.0397 12.6185 37.6699 13.2724C38.3001 13.9263 38.6147 14.8408 38.6139 16.0161V22.792H35.2697V16.8088C35.2697 16.2928 35.1496 15.8933 34.9093 15.6103C34.669 15.3254 34.3284 15.1843 33.8875 15.1843C33.6471 15.1766 33.4084 15.2262 33.1903 15.3294C32.9723 15.4325 32.781 15.5863 32.6319 15.7782C32.3133 16.1751 32.154 16.6968 32.154 17.3436V22.792H28.8006V8.68384H32.1487V13.7762C32.8123 12.7855 33.7801 12.2906 35.0519 12.2915Z"
-              fill="white"
-            />
-            <path
-              d="M49.5359 21.6432C48.5352 22.6599 47.237 23.1683 45.6413 23.1683C44.0455 23.1683 42.7478 22.6599 41.7479 21.6432C40.7489 20.6265 40.2495 19.312 40.2495 17.6997C40.2495 16.1016 40.7489 14.7943 41.7479 13.7776C42.7469 12.7609 44.0447 12.2521 45.6413 12.2512C47.2387 12.2512 48.5369 12.76 49.5359 13.7776C50.5349 14.7952 51.0344 16.1025 51.0344 17.6997C51.0344 19.312 50.5349 20.6265 49.5359 21.6432ZM44.123 19.8965C44.4751 20.4125 44.9811 20.67 45.6413 20.6691C45.9404 20.6797 46.2374 20.6146 46.5058 20.4798C46.7742 20.345 47.0056 20.1446 47.1793 19.8965C47.5314 19.3949 47.7074 18.6617 47.7074 17.697C47.7074 16.7466 47.5287 16.017 47.1714 15.5082C46.8141 14.9994 46.3044 14.745 45.6426 14.745C44.9816 14.745 44.4755 14.9994 44.1243 15.5082C43.7731 16.017 43.5971 16.7466 43.5962 17.697C43.5971 18.6635 43.7727 19.3976 44.123 19.8992V19.8965Z"
-              fill="white"
-            />
-            <path
-              d="M64.8175 12.2512C65.908 12.2512 66.768 12.5881 67.3973 13.2617C68.0266 13.9353 68.3412 14.8664 68.3412 16.0551V22.7921H64.9931V16.6893C64.9931 16.2015 64.8822 15.8146 64.6618 15.5311C64.5536 15.391 64.4142 15.2793 64.255 15.2052C64.0959 15.1311 63.9217 15.0968 63.7468 15.1051C63.5277 15.0996 63.3104 15.1468 63.1126 15.243C62.9148 15.3392 62.7422 15.4817 62.6088 15.6587C62.3157 16.0296 62.1696 16.5186 62.1705 17.126V22.7921H58.8211V16.6893C58.8211 16.2015 58.7115 15.8146 58.491 15.5311C58.3828 15.3912 58.2433 15.2796 58.0842 15.2055C57.9251 15.1315 57.7509 15.097 57.5761 15.1051C57.3551 15.0974 57.1356 15.1436 56.9357 15.2399C56.7359 15.3362 56.5617 15.4798 56.4275 15.6587C56.1406 16.0296 55.9971 16.5186 55.9971 17.126V22.7921H52.6504V12.5683H55.8044L55.9008 13.8569C56.5635 12.782 57.5048 12.2468 58.7247 12.2512C60.1259 12.2512 61.1187 12.8335 61.7031 13.998C62.4161 12.8344 63.4542 12.2521 64.8175 12.2512Z"
-              fill="white"
-            />
-            <path
-              d="M73.8308 11.2611H70.4827V8.6853H73.8308V11.2611ZM73.8308 22.7921H70.4827V12.5684H73.8308V22.7921Z"
-              fill="white"
-            />
-            <path
-              d="M82.0056 11.1024H81.0709C80.6942 11.1024 80.428 11.1848 80.2722 11.3496C80.1164 11.5144 80.0385 11.7755 80.0385 12.133V12.6301L82.0056 12.571V14.8296L80.0385 14.7705V22.7947H76.6931V14.788L75.1946 14.8269V12.5683L76.6931 12.6086V12.0711C76.6931 9.81204 77.9002 8.68294 80.3144 8.68384H82.0056V11.1024Z"
-              fill="white"
-            />
-            <path
-              d="M87.9848 19.2851L89.8728 12.5669H93.3964L89.4054 24.4151C89.0938 25.3001 88.685 25.9244 88.1789 26.2881C87.6728 26.6518 86.9656 26.8309 86.0573 26.8256H83.7601V24.0604H85.1226C85.4029 24.0771 85.6824 24.0153 85.9306 23.8817C86.137 23.7383 86.2912 23.5295 86.3689 23.2878L86.4666 23.0096L82.494 12.5682H86.0982L87.6337 17.4671L87.9848 19.2851Z"
-              fill="white"
-            />
-            <path
-              d="M19.1074 13.7051C17.9773 16.8196 15.5547 22.7263 12.802 23.2745C12.1988 23.3777 11.5791 23.2647 11.0488 22.9547C9.29286 21.9469 8.07826 19.0742 7.39042 17.0669C8.47432 18.7639 10.4797 21.1649 13.1902 20.3279C15.8121 19.5136 17.9205 16.0309 19.1074 13.7051Z"
-              fill="white"
-            />
-          </svg>
-          <div className="footer-links">
-            {/* <a>About</a>
-            <a>Features</a>
-            <a>Pricing</a>
-            <a>Careers</a>
-            <a>Help</a> */}
-            <Link href="/aviso-de-privacidad">
-              <a>Aviso de privacidad</a>
-            </Link>
-          </div>
-        </Navegation>
-        <BottomInformation>
-          <div style={{ color: "#D9DBE1", fontSize: 12 }}>
-            © 2021 Homify. All rights reserved
-          </div>
-          <div className="social-media">
-            <Button>
-              <img src="/Instagram.png" alt="instagram" />
-            </Button>
-            <Button>
-              <img src="/Twitter.png" alt="twitter" />
-            </Button>
-          </div>
-        </BottomInformation>
-      </Footer>
+      {isNil(visibleFooter) === true && (
+        <Footer>
+          <Navegation>
+            <GeneralInformation>
+              <div>
+                <LogoHomify>
+                  <img src="/homify-logo-v2.png" alt="Homify Mi Renta segura" />
+                </LogoHomify>
+                <Address>
+                  <span>
+                    Porfirio Diaz 32, Insurgentes San Borja, 03100, Benito
+                    Juárez, CDMX
+                  </span>
+                </Address>
+                <div className="social-media">
+                  <Button
+                    onClick={() => {
+                      window.location.href =
+                        "https://www.facebook.com/Homify-M%C3%A9xico-103177134820342";
+                    }}
+                  >
+                    <img src="/Facebook.png" alt="Facebook" />
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      window.location.href =
+                        "https://www.linkedin.com/in/homify-m%C3%A9xico-6526a81ab/";
+                    }}
+                  >
+                    <img src="/LinkedIn.png" alt="LinkedIn" />
+                  </Button>
+                  <Button
+                    onClick={() => {
+                      window.location.href =
+                        "https://www.instagram.com/homifyrentasegura/";
+                    }}
+                  >
+                    <img src="/Instagram.png" alt="instagram" />
+                  </Button>
+                </div>
+              </div>
+            </GeneralInformation>
+            <ContactLink>
+              <div>
+                <h3>Contacto</h3>
+                <p>Tel: 55 6584 0419 </p>
+                <p>
+                  Whatsapp:{" "}
+                  <a href="https://wa.me/5215537011025" target="_blank">
+                    55 3701 1025
+                  </a>{" "}
+                </p>
+                <p>
+                  Mail:{" "}
+                  <a href="mailto:contacto@homify.ai" target="_blank">
+                    contacto@homify.ai
+                  </a>
+                </p>
+              </div>
+            </ContactLink>
+            <ContactLink>
+              <div>
+                <h3>Blog</h3>
+                <p>
+                  {" "}
+                  <Link href="/aviso-de-privacidad">
+                    <a>Aviso de privacidad</a>
+                  </Link>
+                </p>
+              </div>
+            </ContactLink>
+          </Navegation>
+          <BottomInformation>
+            <div style={{ color: "#D9DBE1", fontSize: 12 }}>
+              © 2021 RENTAL PAYMENS S.A.P.I. DE C.V. Todos los derechos
+              reservados.
+            </div>
+          </BottomInformation>
+        </Footer>
+      )}
     </>
   );
 };

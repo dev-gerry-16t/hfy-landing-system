@@ -10,6 +10,7 @@ import CustomModal from "../components/modal";
 import FormRegister from "../components/formRegister";
 import WidgetStepProcess from "../components/widgetStepsProcess";
 import SectionProcessHomify from "../sections/sectionProcessHomify";
+import SectionQuotePolicy from "../sections/sectionQuotePolicy";
 
 const DivLines = styled.div`
   max-width: 168px;
@@ -23,6 +24,9 @@ const DivLines = styled.div`
 
 const Home = ({ dataPolicy }) => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
+  const [isSelectPolicy, setIsSelectPolicy] = useState(null);
+  const [isSelectAmount, setIsSelectAmount] = useState(0);
+
   return (
     <PrincipalContent
       openModal={(visible) => {
@@ -41,6 +45,9 @@ const Home = ({ dataPolicy }) => {
             setIsVisibleModal(visible);
           }}
           dataPolicy={dataPolicy}
+          userType={1}
+          policyType={isSelectPolicy}
+          amountPolicy={isSelectAmount}
         />
       </CustomModal>
       <TopInitialSection
@@ -241,6 +248,14 @@ const Home = ({ dataPolicy }) => {
             label="Firma electrónica"
           />
         </SectionProcessHomify>
+        <SectionQuotePolicy
+          dataPolicy={dataPolicy}
+          onSelectPolicy={(data) => {
+            setIsSelectPolicy(data.idPolicy);
+            setIsVisibleModal(true);
+            setIsSelectAmount(data.budgeAmount);
+          }}
+        />
         <PosterRegister
           openModal={(visible) => {
             setIsVisibleModal(visible);
