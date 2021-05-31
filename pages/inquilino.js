@@ -10,6 +10,7 @@ import CustomModal from "../components/modal";
 import FormRegister from "../components/formRegister";
 import WidgetStepProcess from "../components/widgetStepsProcess";
 import SectionProcessHomify from "../sections/sectionProcessHomify";
+import SectionQuotePolicy from "../sections/sectionQuotePolicy";
 
 const DivLines = styled.div`
   max-width: 168px;
@@ -241,6 +242,10 @@ const Home = ({ dataPolicy }) => {
             label="Firma electrónica"
           />
         </SectionProcessHomify>
+        <SectionQuotePolicy
+          dataPolicy={dataPolicy}
+          onSelectPolicy={(data) => {}}
+        />
         <PosterRegister
           openModal={(visible) => {
             setIsVisibleModal(visible);
