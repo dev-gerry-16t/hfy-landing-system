@@ -72,7 +72,7 @@ const AvisoDePrivacidad = ({ dataPolicy }) => {
 
               <p>
                 Por medio del presente, se hace constar{" "}
-                <strong>“Rental Payments”, S.A. DE C.V.</strong>, es responsable
+                <strong>“RENTAL PAYMENTS”, S.A. DE C.V.</strong>, es responsable
                 de recabar sus datos personales, así como del uso que se le dé a
                 los mismos y de su protección, siendo su domicilio en Avenida
                 Porfirio Díaz número 32, Colonia Insurgentes San Borja, Alcaldía
@@ -98,7 +98,7 @@ const AvisoDePrivacidad = ({ dataPolicy }) => {
                 &nbsp;La veracidad de la información proporcionada por el
                 solicitante es responsabilidad de quien suscribió dicha
                 solicitud, por lo que libera de toda responsabilidad a{" "}
-                <strong>“Rental Payments”, S.A. DE C.V.</strong>, de cualquier
+                <strong>“RENTAL PAYMENTS”, S.A. DE C.V.</strong>, de cualquier
                 responsabilidad al respecto.
               </p>
 
@@ -113,7 +113,7 @@ const AvisoDePrivacidad = ({ dataPolicy }) => {
               </p>
 
               <p>
-                <strong>“Rental Payments”, S.A. DE C.V.</strong>, no cederá los
+                <strong>“RENTAL PAYMENTS”, S.A. DE C.V.</strong>, no cederá los
                 datos de los contratantes a terceros salvo solicitud previa y
                 consentimiento expreso del titular, y en los supuestos
                 contemplados por el artículo <strong>37</strong> de la Ley
@@ -130,21 +130,21 @@ const AvisoDePrivacidad = ({ dataPolicy }) => {
                 <strong>Acceso:</strong> Usted podrá elegir la manera de
                 comunicarse, ya sea vía telefónica o mediante escrito directo, a
                 los teléfonos o al domicilio, para efectos de que{" "}
-                <strong>“Rental Payments”, S.A. DE C.V.</strong>, le proporcione
+                <strong>“RENTAL PAYMENTS”, S.A. DE C.V.</strong>, le proporcione
                 los Datos Personales relacionados con Usted, y que se encuentren
                 en su posesión, de conformidad con la Ley.
               </p>
 
               <p>
                 <strong>Rectificación:</strong> Usted podrá solicitar por
-                escrito a <strong>“Rental Payments”, S.A. DE C.V.</strong>, que
+                escrito a <strong>“RENTAL PAYMENTS”, S.A. DE C.V.</strong>, que
                 cualquiera de sus Datos Personales, sean corregidos o
                 modificados, según corresponda, de conformidad con la Ley.
               </p>
 
               <p>
                 &nbsp;<strong>Cancelación:</strong> Usted podrá solicitar por
-                escrito a <strong>“Rental Payments”, S.A. DE C.V.</strong>, que
+                escrito a <strong>“RENTAL PAYMENTS”, S.A. DE C.V.</strong>, que
                 se cancelen o den de baja sus Datos Personales, siempre y cuando
                 exista una causa que justifique dicha acción y no tenga Usted
                 obligaciones pendientes de cubrir de conformidad con la Ley.
@@ -153,7 +153,7 @@ const AvisoDePrivacidad = ({ dataPolicy }) => {
               <p>
                 <strong>Oposición:</strong> En caso de que Usted no tenga
                 relación u obligación legal alguna con{" "}
-                <strong>“Rental Payments”, S.A. DE C.V.</strong>, y decida no
+                <strong>“RENTAL PAYMENTS”, S.A. DE C.V.</strong>, y decida no
                 contratar para sí ninguno de los servicios que ésta le ofrece,
                 puede hacer uso de este derecho, no compartiendo dato alguno.
               </p>
