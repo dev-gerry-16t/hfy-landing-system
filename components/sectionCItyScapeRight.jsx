@@ -6,6 +6,10 @@ const SectionCityScapeRight = () => {
       viewBox="0 0 724 568"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      style={{
+        background:
+          "linear-gradient(\n270.6deg\n, rgba(255, 255, 255, 0) 56.18%, #FFFFFF 99.63%)",
+      }}
     >
       <g opacity="0.3">
         <path

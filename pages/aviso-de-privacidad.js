@@ -67,7 +67,7 @@ const AvisoDePrivacidad = ({ dataPolicy }) => {
             </div>
             <div style={{ fontSize: 16 }}>
               <p>
-                <strong>“Rental Payments” S.A. DE C.V.</strong>
+                <strong>“Rental Payments”, S.A. DE C.V.</strong>
               </p>
 
               <p>

@@ -11,7 +11,14 @@ const TopInitialSection = ({
   titleSection,
 }) => {
   return (
-    <section title={titleSection} className={stylesHeader.initialLegent}>
+    <section
+      title={titleSection}
+      className={stylesHeader.initialLegent}
+      style={{
+        background:
+          "radial-gradient(circle, rgba(255,255,255,1) 1%, rgba(255,255,255,1) 20%, rgba(255,255,255,0) 59%)",
+      }}
+    >
       <div>
         <SectionCityScapeLeft />
         <SectionCityScapeRight />

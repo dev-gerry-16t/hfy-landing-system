@@ -37,7 +37,7 @@ const TopInitialYourInterest = ({ openModal }) => {
 
   return (
     <section
-      title="Cuéntanos cual es tu interés"
+      title="Cuéntanos que eres"
       className={stylesHeader.initialLegentv2}
     >
       <div className={stylesHeader.sectionChild1}>
@@ -45,7 +45,7 @@ const TopInitialYourInterest = ({ openModal }) => {
         <SectionCityScapeRight />
       </div>
       <div className={stylesHeader.sectionChild2}></div>
-      <p>Cuéntanos cual es tu interés...</p>
+      <p>Cuéntanos que eres...</p>
       <section
         title="Homify piensa en todos propietarios inquilinos y asesores inmobiliarios"
         className={stylesCardsUser.cards1}
