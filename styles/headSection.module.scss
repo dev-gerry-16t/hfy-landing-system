@@ -74,12 +74,12 @@
   position: relative;
   height: 70vh;
   p {
-    font-weight: 700;
+    font-weight: bold;
     font-size: 40px;
     letter-spacing: 0.75px;
     color: #4e4b66;
     text-align: center;
-    font-family: url("https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap");
+    font-family: Poppins;
   }
   label {
     font-weight: normal;
@@ -135,12 +135,13 @@
   position: relative;
   height: 560px;
   p {
-    font-weight: 700;
+    font-weight: bold;
     font-size: 40px;
     letter-spacing: 0.75px;
     color: #4e4b66;
     text-align: center;
-    font-family: url("https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap");
+    font-family: Poppins;
+    margin-top: 3em;
   }
   label {
     font-weight: normal;
