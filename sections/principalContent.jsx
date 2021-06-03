@@ -455,8 +455,7 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
           </Navegation>
           <BottomInformation>
             <div style={{ color: "#D9DBE1", fontSize: 12 }}>
-              © 2021 RENTAL PAYMENS S.A.P.I. DE C.V. Todos los derechos
-              reservados.
+              © 2021 RENTAL PAYMENTS S.A. DE C.V. Todos los derechos reservados.
             </div>
           </BottomInformation>
         </Footer>
