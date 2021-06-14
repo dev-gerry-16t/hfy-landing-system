@@ -313,13 +313,6 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
           </button>
           <button
             onClick={() => {
-              openModal(true);
-            }}
-          >
-            Registrarme
-          </button>
-          <button
-            onClick={() => {
               setIsVisibleNav(!isVisibleNav);
             }}
           >
@@ -371,7 +364,7 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
                   openModal(true);
                 }}
               >
-                Registrarme
+                ¡Me interesa!
               </a>
             </Link>
             <Link href="/aviso-de-privacidad">

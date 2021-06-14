@@ -46,18 +46,18 @@
     outline: none;
     cursor: pointer;
   }
+  // button:nth-child(2) {
+  //   font-family: Poppins;
+  //   color: #ffffff;
+  //   background: #ff0282;
+  //   border-radius: 16px;
+  //   border: none;
+  //   padding: 2px 20px;
+  //   margin: 0px 5px;
+  //   outline: none;
+  //   cursor: pointer;
+  // }
   button:nth-child(2) {
-    font-family: Poppins;
-    color: #ffffff;
-    background: #ff0282;
-    border-radius: 16px;
-    border: none;
-    padding: 2px 20px;
-    margin: 0px 5px;
-    outline: none;
-    cursor: pointer;
-  }
-  button:nth-child(3) {
     background: transparent;
     border: none;
     outline: none;
@@ -159,7 +159,7 @@
     background: #ff0282;
     border-radius: 16px;
     border: none;
-    padding: 2px 20px;
+    padding: 15px 5em;
     margin: 0px 5px;
     outline: none;
     cursor: pointer;
@@ -214,7 +214,7 @@
     button:nth-child(1) {
       display: none;
     }
-    button:nth-child(3) {
+    button:nth-child(2) {
       display: block;
     }
   }
