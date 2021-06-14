@@ -436,7 +436,7 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
             </ContactLink>
             <ContactLink>
               <div>
-                <h3>Blog</h3>
+                <h3>Acerca de Homify</h3>
                 <p>
                   {" "}
                   <Link href="/aviso-de-privacidad">
