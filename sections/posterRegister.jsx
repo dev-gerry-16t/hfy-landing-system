@@ -46,7 +46,7 @@ const PosterRegister = ({ openModal, title, titleCard, titleCard2 }) => {
               openModal(true);
             }}
           >
-            Registrarme
+            ¡Me interesa!
           </button>
         </section>
         <section className="section-icon-register">

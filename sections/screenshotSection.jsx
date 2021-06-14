@@ -84,7 +84,7 @@ const ScreenshotSection = ({ openModal }) => {
               fontWeight: "bold",
             }}
           >
-            Registrarme
+            ¡Me interesa!
           </span>
           <img src="/Vector.png" alt="Registrarme-Homify" />
         </Button>
