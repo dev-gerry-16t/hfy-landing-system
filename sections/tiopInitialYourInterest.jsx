@@ -45,13 +45,14 @@ const TopInitialYourInterest = ({ openModal }) => {
         <SectionCityScapeRight />
       </div>
       <div className={stylesHeader.sectionChild2}></div>
-      <p>Cuéntanos que eres...</p>
+      <p>Cuéntanos cual es tu perfil...</p>
       <section
         title="Homify piensa en todos propietarios inquilinos y asesores inmobiliarios"
         className={stylesCardsUser.cards1}
       >
         <Link href="/arrendador" passHref>
           <div
+            style={{ position: "relative", marginBottom: 40 }}
             title="Arrendador"
             type={selectUserType === 1 ? "select" : "unselect"}
           >
@@ -61,11 +62,14 @@ const TopInitialYourInterest = ({ openModal }) => {
               width={112}
               height={133}
             />
-            <label lang="es">Soy propietario</label>
+            <label style={{ position: "absolute", bottom: 215 }} lang="es">
+              Soy propietario
+            </label>
           </div>
         </Link>
         <Link href="/inquilino" passHref>
           <div
+            style={{ position: "relative", marginBottom: 40 }}
             title="Arrendatario"
             type={selectUserType === 2 ? "select" : "unselect"}
           >
@@ -75,11 +79,14 @@ const TopInitialYourInterest = ({ openModal }) => {
               width={112}
               height={133}
             />
-            <label>Soy inquilino</label>
+            <label style={{ position: "absolute", bottom: 215 }}>
+              Soy inquilino
+            </label>
           </div>
         </Link>
         <Link href="/asesor" passHref>
           <div
+            style={{ position: "relative", marginBottom: 40 }}
             title="Asesor inmobiliario"
             type={selectUserType === 3 ? "select" : "unselect"}
           >
@@ -89,7 +96,9 @@ const TopInitialYourInterest = ({ openModal }) => {
               width={112}
               height={133}
             />
-            <label lang="es">Soy asesor</label>
+            <label style={{ position: "absolute", bottom: 215 }} lang="es">
+              Soy asesor
+            </label>
           </div>
         </Link>
       </section>

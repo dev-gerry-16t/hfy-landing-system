@@ -11,6 +11,7 @@ import FormRegister from "../components/formRegister";
 import WidgetStepProcess from "../components/widgetStepsProcess";
 import SectionProcessHomify from "../sections/sectionProcessHomify";
 import SectionQuotePolicy from "../sections/sectionQuotePolicy";
+import WhyContractHomify from "../sections/whyContractHomifyUser";
 
 const DivLines = styled.div`
   max-width: 168px;
@@ -272,6 +273,7 @@ const Home = ({ dataPolicy }) => {
           titleCard="Contrata tu garantía de"
           titleCard2="rentas HOMIFY"
         />
+        <WhyContractHomify />
         <UserCommentSection />
         <ScreenshotSection
           openModal={(visible) => {

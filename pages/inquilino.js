@@ -11,6 +11,7 @@ import FormRegister from "../components/formRegister";
 import WidgetStepProcess from "../components/widgetStepsProcess";
 import SectionProcessHomify from "../sections/sectionProcessHomify";
 import SectionQuotePolicy from "../sections/sectionQuotePolicy";
+import WhyContractHomify from "../sections/whyContractHomifyUser";
 
 const DivLines = styled.div`
   max-width: 168px;
@@ -126,7 +127,11 @@ const Home = ({ dataPolicy }) => {
             {
               source: "/reparaciones.png",
               alt: "Solicita reparaciones",
-              label: <label lang="es">Solicita reparaciones</label>,
+              label: (
+                <label lang="es">
+                  Solicita <span>reparaciones</span>
+                </label>
+              ),
               pText: (
                 <p>
                   Reporta a tu arrendador o recibe algún comentario de cualquier
@@ -137,7 +142,11 @@ const Home = ({ dataPolicy }) => {
             {
               source: "/documentos.png",
               alt: "Almacena documentos",
-              label: <label lang="es">Almacena documentos</label>,
+              label: (
+                <label lang="es">
+                  <span>Almacena</span> documentos
+                </label>
+              ),
               pText: (
                 <p>
                   ¡Adiós papeleo! Todos tus documentos importantes en un solo
@@ -148,7 +157,11 @@ const Home = ({ dataPolicy }) => {
             {
               source: "/servicios.png",
               alt: "Paga tus servicios",
-              label: <label lang="es">Paga tus servicios</label>,
+              label: (
+                <label lang="es">
+                  Paga tus <span>servicios</span>
+                </label>
+              ),
               pText: <p>Paga todos tus servicios o deudas dentro de la app</p>,
             },
             {
@@ -264,6 +277,7 @@ const Home = ({ dataPolicy }) => {
           titleCard="Estás a un paso,"
           titleCard2="de rentar tu nuevo hogar"
         />
+        <WhyContractHomify />
         <UserCommentSection />
         <ScreenshotSection
           openModal={(visible) => {

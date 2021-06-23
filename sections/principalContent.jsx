@@ -364,7 +364,7 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
                   openModal(true);
                 }}
               >
-                ¡Me interesa!
+                Contáctame
               </a>
             </Link>
             <Link href="/aviso-de-privacidad">

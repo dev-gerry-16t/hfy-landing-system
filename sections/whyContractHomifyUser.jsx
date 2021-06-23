@@ -47,25 +47,32 @@ const WhyContractHomify = () => {
         <Flex>
           <WidgetInfo
             src="/01.png"
-            title="Incrementa tus ingresos."
-            text="Con los beneficios Homify, no solo ayudamos a tus clientes a tener mejores condiciones y beneficios, si no a ti como asesor, te ayudamos a generar más ingresos e incrementar tu cartera de clientes."
+            title="Líderes de mercado"
+            text="Somos una firma especializada en el ramo jurídico inmobiliario con mas de 10 años de experiencia, nuestros productos son innovadores y únicos en el mercado."
           />
           <WidgetInfo
             src="/04.png"
-            title="Investigación y aprobación en 24 hrs."
-            text="Sabemos que tu tiempo y el de tus clientes es muy importante, por eso nuestros tiempos de respuesta son muy bajos. Pero con la misma calidad y seguridad para tus clientes."
+            title="Tecnología"
+            text="Utilizamos tecnología y sistemas no tradicionales para la investigación del inquilino, lo que nos permite tener una respuesta más rápida y ágil que nuestros competidores."
           />
         </Flex>
         <Flex>
           <WidgetInfo
             src="/011.png"
-            title="Administra tu cartera y/o nuevos clientes"
-            text="Desarrollamos una plataforma en la que administrar tus clientes y seguimientos, será muy sencillo y practico, así como brindarte muchos herramientas y beneficios para captar nuevos clientes."
+            title="Procesos"
+            text="Procesos automatizados y revisión manual a través de una mesa de control interna para tener siempre la seguridad que nuestro contrato no tiene huecos legales."
           />
           <WidgetInfo
             src="/07.png"
-            title="Cartera Homify"
-            text="De nuestra cartera de clientes que busquen tus servicios, podrás gestionar y administrar nuevos clientes para ti y administrarlos en la app para mejor control."
+            title="Sin gastos ocultos"
+            text={
+              <div>
+                Una vez hecho el pago de tu póliza jurídica no tienes que pagar
+                nada, todos los gastos corren por parte de Homify, estamos tan
+                seguros de nuestro producto que si tu inquilino no paga,{" "}
+                <strong>NOSOTROS TE PAGAMOS!</strong>
+              </div>
+            }
           />
         </Flex>
       </div>
