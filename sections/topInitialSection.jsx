@@ -35,7 +35,7 @@ const TopInitialSection = ({
           openModal(true);
         }}
       >
-        <strong style={{ letterSpacing: 2 }}>¡Me interesa!</strong>
+        <strong style={{ letterSpacing: 2 }}>Contáctame</strong>
       </button>
     </section>
   );
