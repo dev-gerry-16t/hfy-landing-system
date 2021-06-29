@@ -219,7 +219,13 @@ const RowInformation = styled.p`
   }
 `;
 
-const ContentInformation = styled.div``;
+const ContentInformation = styled.div`
+  height: 335px;
+  overflow-y: scroll;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
 
 const SectionQuotePolicy = ({ dataPolicy, onSelectPolicy }) => {
   const initialStates = {
@@ -375,6 +381,7 @@ const SectionQuotePolicy = ({ dataPolicy, onSelectPolicy }) => {
                       justifyContent: "center",
                       marginBottom: 5,
                       background: "#fff",
+                      borderRadius: 16,
                     }}
                   >
                     <button
@@ -472,6 +479,7 @@ const SectionQuotePolicy = ({ dataPolicy, onSelectPolicy }) => {
                         justifyContent: "center",
                         marginBottom: 5,
                         background: "#fff",
+                        borderRadius: 16,
                       }}
                     >
                       <button
