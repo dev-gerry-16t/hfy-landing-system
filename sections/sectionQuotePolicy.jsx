@@ -219,9 +219,7 @@ const RowInformation = styled.p`
   }
 `;
 
-const ContentInformation = styled.div`
-  
-`;
+const ContentInformation = styled.div``;
 
 const SectionQuotePolicy = ({ dataPolicy, onSelectPolicy }) => {
   const initialStates = {
@@ -399,8 +397,8 @@ const SectionQuotePolicy = ({ dataPolicy, onSelectPolicy }) => {
                   <CardPolicyMorePopular>
                     <div>
                       <TitleCard>
-                        Póliza <br />
-                        <span>Segura</span>
+                        {namePolicy.text1} <br />
+                        <span>{namePolicy.text2}</span>
                         <br />
                       </TitleCard>
                       {rowMap.requiresEndorsement === true && (
