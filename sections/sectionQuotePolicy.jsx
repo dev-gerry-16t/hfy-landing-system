@@ -144,7 +144,7 @@ const CardPolicy = styled.div`
   }
 
   @media screen and (max-width: 590px) {
-    margin-bottom: ${(props) => (props.mostPopular ? "15em" : "0px")};
+    margin-bottom: ${(props) => (props.mostPopular ? "16em" : "0px")};
   }
 `;
 
