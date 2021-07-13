@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import isNil from "lodash/isNil";
 import isEmpty from "lodash/isEmpty";
+import ReCAPTCHA from "react-google-recaptcha";
 import NumberFormat from "react-number-format";
 import styled from "styled-components";
 import CustomInput from "./customInput";
@@ -169,6 +170,8 @@ const FormRegister = ({
   const [tax, setTax] = useState(0);
   const [percentPayment, setPercentPayment] = useState(1);
   const [finishForm, setFinishForm] = useState(false);
+
+  const recaptchaV3 = useRef(null);
 
   const parseFormatCurrency = (money, fraction, maxFraction) => {
     let resultNumber = "";
@@ -512,6 +515,15 @@ const FormRegister = ({
             </DivForm>
           </>
         )}
+        <div>
+          <ReCAPTCHA
+            sitekey="6LegXpMbAAAAANSPSPVL8QaYBb1g6zw7LzIF3WHg"
+            onChange={(e) => {}}
+            style={{ display: "inline-block" }}
+            size="invisible"
+            ref={recaptchaV3}
+          />
+        </div>
         <div
           style={{
             display: "flex",
@@ -528,6 +540,7 @@ const FormRegister = ({
               ) {
                 ENVIRONMENT = "https://api.homify.ai";
               }
+              const getCaptchaToken = await recaptchaV3.current.executeAsync();
               const next = await validateInformation(dataForm);
 
               if (next === true) {
@@ -535,7 +548,10 @@ const FormRegister = ({
                   `${ENVIRONMENT}/api/leads/addLandingProspect`,
                   {
                     method: "POST",
-                    body: JSON.stringify(dataForm),
+                    body: JSON.stringify({
+                      ...dataForm,
+                      captchaToken: getCaptchaToken,
+                    }),
                     headers: {
                       "Content-Type": "application/json",
                     },
@@ -856,6 +872,15 @@ const FormRegister = ({
               </DivForm>
             </>
           )}
+          <div>
+            <ReCAPTCHA
+              sitekey="6LegXpMbAAAAANSPSPVL8QaYBb1g6zw7LzIF3WHg"
+              onChange={(e) => {}}
+              style={{ display: "inline-block" }}
+              size="invisible"
+              ref={recaptchaV3}
+            />
+          </div>
           <div
             style={{
               display: "flex",
@@ -872,14 +897,18 @@ const FormRegister = ({
                 ) {
                   ENVIRONMENT = "https://api.homify.ai";
                 }
+                const getCaptchaToken =
+                  await recaptchaV3.current.executeAsync();
                 const next = await validateInformation(dataForm);
-
                 if (next === true) {
                   const result = await fetch(
                     `${ENVIRONMENT}/api/leads/addLandingProspect`,
                     {
                       method: "POST",
-                      body: JSON.stringify(dataForm),
+                      body: JSON.stringify({
+                        ...dataForm,
+                        captchaToken: getCaptchaToken,
+                      }),
                       headers: {
                         "Content-Type": "application/json",
                       },
