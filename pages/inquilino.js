@@ -291,7 +291,7 @@ const Home = ({ dataPolicy }) => {
 
 Home.getInitialProps = async (ctx) => {
   const response = await fetch(
-    "https://hfy-back-system-prod-v2.herokuapp.com/api/catalogs/getAllPolicies",
+    "https://api.homify.ai/api/catalogs/getAllPolicies",
     {
       method: "POST",
       headers: {

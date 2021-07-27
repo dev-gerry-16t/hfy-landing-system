@@ -526,7 +526,7 @@ const FormRegister = ({
                 window.location.hostname === "homify.ai" ||
                 window.location.hostname === "www.homify.ai"
               ) {
-                ENVIRONMENT = "https://hfy-back-system-prod-v2.herokuapp.com";
+                ENVIRONMENT = "https://api.homify.ai";
               }
               const next = await validateInformation(dataForm);
 
@@ -870,7 +870,7 @@ const FormRegister = ({
                   window.location.hostname === "homify.ai" ||
                   window.location.hostname === "www.homify.ai"
                 ) {
-                  ENVIRONMENT = "https://hfy-back-system-prod-v2.herokuapp.com";
+                  ENVIRONMENT = "https://api.homify.ai";
                 }
                 const next = await validateInformation(dataForm);
 

@@ -370,6 +370,9 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
             <Link href="/aviso-de-privacidad">
               <a>Aviso de privacidad</a>
             </Link>
+            <Link href="/terminos-y-condiciones">
+              <a>Términos y Condiciones</a>
+            </Link>
           </div>
         </div>
       </HeaderSection>
@@ -441,6 +444,12 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
                   {" "}
                   <Link href="/aviso-de-privacidad">
                     <a>Aviso de privacidad</a>
+                  </Link>
+                </p>
+                <p>
+                  {" "}
+                  <Link href="/terminos-y-condiciones">
+                    <a>Términos y Condiciones</a>
                   </Link>
                 </p>
               </div>
