@@ -61,7 +61,7 @@ const TerminosYCondiciones = ({ dataPolicy }) => {
       </CustomModal>
       <div style={{ marginBottom: "5rem" }}>
         <ArticleSection>
-          <section title="Aviso de privacidad">
+          <section title="Términos y Condiciones">
             <div style={{ textAlign: "center" }}>
               <TitleSection>Términos y Condiciones</TitleSection>
             </div>
