@@ -170,6 +170,7 @@ const FormRegister = ({
   const [tax, setTax] = useState(0);
   const [percentPayment, setPercentPayment] = useState(1);
   const [finishForm, setFinishForm] = useState(false);
+  const [clickSend, setClickSend] = useState(false);
 
   const recaptchaV3 = useRef(null);
 
@@ -263,6 +264,7 @@ const FormRegister = ({
   if (isNil(userType) === false && finishForm === false) {
     component = (
       <DivPrincipal>
+        <div className={clickSend === true ? "loader-auth-spiner" : ""}></div>
         <DivForm>
           <CustomInput
             value={dataForm.givenName}
@@ -542,8 +544,8 @@ const FormRegister = ({
               }
               const getCaptchaToken = await recaptchaV3.current.executeAsync();
               const next = await validateInformation(dataForm);
-
-              if (next === true) {
+              if (next === true && clickSend === false) {
+                setClickSend(true);
                 const result = await fetch(
                   `${ENVIRONMENT}/api/leads/addLandingProspect`,
                   {
@@ -569,6 +571,7 @@ const FormRegister = ({
                   }, 10000);
                 } else {
                 }
+                setClickSend(false);
               }
             }}
           >
@@ -581,6 +584,7 @@ const FormRegister = ({
     if (finishForm === false) {
       component = (
         <DivPrincipal>
+          <div className={clickSend === true ? "loader-auth-spiner" : ""}></div>
           <div
             style={{
               display: "flex",
@@ -900,7 +904,9 @@ const FormRegister = ({
                 const getCaptchaToken =
                   await recaptchaV3.current.executeAsync();
                 const next = await validateInformation(dataForm);
-                if (next === true) {
+
+                if (next === true && clickSend === false) {
+                  setClickSend(true);
                   const result = await fetch(
                     `${ENVIRONMENT}/api/leads/addLandingProspect`,
                     {
@@ -926,6 +932,7 @@ const FormRegister = ({
                     }, 10000);
                   } else {
                   }
+                  setClickSend(false);
                 }
               }}
             >

@@ -370,6 +370,9 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
             <Link href="/aviso-de-privacidad">
               <a>Aviso de privacidad</a>
             </Link>
+            <Link href="/terminos-y-condiciones">
+              <a>Términos y Condiciones</a>
+            </Link>
           </div>
         </div>
       </HeaderSection>
@@ -391,24 +394,30 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
                 <div className="social-media">
                   <Button
                     onClick={() => {
-                      window.location.href =
-                        "https://www.facebook.com/Homify-M%C3%A9xico-103177134820342";
+                      window.open(
+                        "https://www.facebook.com/Homify-M%C3%A9xico-103177134820342",
+                        "_blank"
+                      );
                     }}
                   >
                     <img src="/Facebook.png" alt="Facebook" />
                   </Button>
                   <Button
                     onClick={() => {
-                      window.location.href =
-                        "https://www.linkedin.com/in/homify-m%C3%A9xico-6526a81ab/";
+                      window.open(
+                        "https://www.linkedin.com/in/homify-m%C3%A9xico-6526a81ab/",
+                        "_blank"
+                      );
                     }}
                   >
                     <img src="/LinkedIn.png" alt="LinkedIn" />
                   </Button>
                   <Button
                     onClick={() => {
-                      window.location.href =
-                        "https://www.instagram.com/homifyrentasegura/";
+                      window.open(
+                        "https://www.instagram.com/homifyrentasegura/",
+                        "_blank"
+                      );
                     }}
                   >
                     <img src="/Instagram.png" alt="instagram" />
@@ -441,6 +450,12 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
                   {" "}
                   <Link href="/aviso-de-privacidad">
                     <a>Aviso de privacidad</a>
+                  </Link>
+                </p>
+                <p>
+                  {" "}
+                  <Link href="/terminos-y-condiciones">
+                    <a>Términos y Condiciones</a>
                   </Link>
                 </p>
               </div>
