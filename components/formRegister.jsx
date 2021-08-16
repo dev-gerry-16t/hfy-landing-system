@@ -285,6 +285,7 @@ const FormRegister = ({
         <DivForm>
           <CustomInput
             name="fname"
+            autocomplete="given-name"
             value={dataForm.givenName}
             placeHolder="Nombre *"
             onChange={(value) => {
@@ -311,7 +312,8 @@ const FormRegister = ({
           />
           <DivTwoInputs>
             <CustomInput
-              name="lname"
+              name="fname"
+              autocomplete="family-name"
               value={dataForm.lastName}
               placeHolder="Apellido Paterno *"
               onChange={(value) => {
@@ -657,6 +659,7 @@ const FormRegister = ({
           <DivForm>
             <CustomInput
               name="fname"
+              autocomplete="given-name"
               value={dataForm.givenName}
               placeHolder="Nombre *"
               onChange={(value) => {
@@ -683,7 +686,8 @@ const FormRegister = ({
             />
             <DivTwoInputs>
               <CustomInput
-                name="lname"
+                name="fname"
+                autocomplete="family-name"
                 value={dataForm.lastName}
                 placeHolder="Apellido Paterno *"
                 onChange={(value) => {
