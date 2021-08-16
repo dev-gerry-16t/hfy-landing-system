@@ -284,6 +284,7 @@ const FormRegister = ({
         <div className={clickSend === true ? "loader-auth-spiner" : ""}></div>
         <DivForm>
           <CustomInput
+            name="fname"
             value={dataForm.givenName}
             placeHolder="Nombre *"
             onChange={(value) => {
@@ -310,6 +311,7 @@ const FormRegister = ({
           />
           <DivTwoInputs>
             <CustomInput
+              name="lname"
               value={dataForm.lastName}
               placeHolder="Apellido Paterno *"
               onChange={(value) => {
@@ -654,6 +656,7 @@ const FormRegister = ({
           </div>
           <DivForm>
             <CustomInput
+              name="fname"
               value={dataForm.givenName}
               placeHolder="Nombre *"
               onChange={(value) => {
@@ -680,6 +683,7 @@ const FormRegister = ({
             />
             <DivTwoInputs>
               <CustomInput
+                name="lname"
                 value={dataForm.lastName}
                 placeHolder="Apellido Paterno *"
                 onChange={(value) => {

@@ -43,6 +43,7 @@ const CustomInput = ({
   labelError,
   warning,
   labelWarning,
+  name = "",
 }) => {
   return (
     <div style={{ margin: "0px 0px 35px 0px", position: "relative" }}>
@@ -53,6 +54,7 @@ const CustomInput = ({
         onChange={(e) => {
           onChange(e.target.value);
         }}
+        name={name}
       />
       <div
         style={{
