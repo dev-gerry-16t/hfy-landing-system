@@ -541,6 +541,10 @@ const FormRegister = ({
                 window.location.hostname === "www.homify.ai"
               ) {
                 ENVIRONMENT = "https://api.homify.ai";
+              } else if (window.location.hostname === "localhost") {
+                ENVIRONMENT = "http://localhost:3001";
+              } else {
+                ENVIRONMENT = "https://apitest.homify.ai";
               }
               const getCaptchaToken = await recaptchaV3.current.executeAsync();
               const next = await validateInformation(dataForm);
@@ -900,6 +904,10 @@ const FormRegister = ({
                   window.location.hostname === "www.homify.ai"
                 ) {
                   ENVIRONMENT = "https://api.homify.ai";
+                } else if (window.location.hostname === "localhost") {
+                  ENVIRONMENT = "http://localhost:3001";
+                } else {
+                  ENVIRONMENT = "https://apitest.homify.ai";
                 }
                 const getCaptchaToken =
                   await recaptchaV3.current.executeAsync();
