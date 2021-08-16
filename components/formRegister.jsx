@@ -7,6 +7,16 @@ import styled from "styled-components";
 import CustomInput from "./customInput";
 import WidgetUserType from "./widgetUserType";
 
+const DivErrorApi = styled.div`
+  background: #fff4ec;
+  border-radius: 8px;
+  color: #cf6e23;
+  font-family: "Poppins";
+  padding: 2px 10px;
+  font-size: 14px;
+  margin-top: 15px;
+`;
+
 const SelectStyle = styled.select`
   width: 100%;
   border: 1px solid #d6d8e7;
@@ -164,6 +174,12 @@ const FormRegister = ({
     realState: "",
   };
 
+  const initialStatesError = {
+    error: false,
+    message:
+      "Parece que hubo un error al enviar tu información, intenta nuevamente o envianos un correo a contacto@homify.ai",
+  };
+
   const [dataForm, setDataForm] = useState(initialStates);
   const [minumunPolicy, setTaxMinumunPolicy] = useState(0);
   const [taxPolicy, setTaxPolicy] = useState(0);
@@ -171,6 +187,7 @@ const FormRegister = ({
   const [percentPayment, setPercentPayment] = useState(1);
   const [finishForm, setFinishForm] = useState(false);
   const [clickSend, setClickSend] = useState(false);
+  const [errorApi, setErrorApi] = useState(initialStatesError);
 
   const recaptchaV3 = useRef(null);
 
@@ -514,6 +531,9 @@ const FormRegister = ({
                     )}
                 </>
               )}
+              {errorApi.error === true && (
+                <DivErrorApi>{errorApi.message}</DivErrorApi>
+              )}
             </DivForm>
           </>
         )}
@@ -536,7 +556,6 @@ const FormRegister = ({
           <ButtonSend
             onClick={async () => {
               let ENVIRONMENT = "http://localhost:3001";
-              console.log('window.location.hostname',window.location.hostname);
               if (
                 window.location.hostname === "homify.ai" ||
                 window.location.hostname === "www.homify.ai"
@@ -571,10 +590,18 @@ const FormRegister = ({
                   setDataErrors(initialErrors);
                   window.fbq("track", "CompleteRegistration");
                   window.fbq("track", "Lead");
-                  setTimeout(() => {
-                    setFinishForm(false);
-                  }, 10000);
                 } else {
+                  setErrorApi({
+                    error: true,
+                    message:
+                      isNil(response.response) === false &&
+                      isNil(response.response.message) === false
+                        ? response.response.message
+                        : initialStatesError.message,
+                  });
+                  setTimeout(() => {
+                    setErrorApi(initialStatesError);
+                  }, 10000);
                 }
                 setClickSend(false);
               }
@@ -878,6 +905,9 @@ const FormRegister = ({
                       )}
                   </>
                 )}
+                {errorApi.error === true && (
+                  <DivErrorApi>{errorApi.message}</DivErrorApi>
+                )}
               </DivForm>
             </>
           )}
@@ -900,8 +930,6 @@ const FormRegister = ({
             <ButtonSend
               onClick={async () => {
                 let ENVIRONMENT = "http://localhost:3001";
-                console.log('window.location.hostname',window.location.hostname);
-
                 if (
                   window.location.hostname === "homify.ai" ||
                   window.location.hostname === "www.homify.ai"
@@ -938,10 +966,18 @@ const FormRegister = ({
                     setDataErrors(initialErrors);
                     window.fbq("track", "CompleteRegistration");
                     window.fbq("track", "Lead");
-                    setTimeout(() => {
-                      setFinishForm(false);
-                    }, 10000);
                   } else {
+                    setErrorApi({
+                      error: true,
+                      message:
+                        isNil(response.response) === false &&
+                        isNil(response.response.message) === false
+                          ? response.response.message
+                          : initialStatesError.message,
+                    });
+                    setTimeout(() => {
+                      setErrorApi(initialStatesError);
+                    }, 10000);
                   }
                   setClickSend(false);
                 }
