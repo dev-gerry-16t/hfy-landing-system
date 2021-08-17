@@ -294,7 +294,7 @@ const FormRegister = ({
             }}
             error={dataErrors.name}
             warning={false}
-            labelError={"Este campo es requerido"}
+            labelError="Este campo es requerido"
             icon={
               <svg
                 width="16"
