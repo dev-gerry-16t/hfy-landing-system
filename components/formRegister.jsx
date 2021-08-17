@@ -277,6 +277,7 @@ const FormRegister = ({
       setDataForm({ ...dataForm, idProspectType: userType });
     }
   }, [userType]);
+  
 
   if (isNil(userType) === false && finishForm === false) {
     component = (
