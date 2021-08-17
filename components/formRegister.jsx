@@ -312,8 +312,8 @@ const FormRegister = ({
           />
           <DivTwoInputs>
             <CustomInput
-              name="fname"
-              autocomplete="family-name"
+              name="mname"
+              autocomplete="additional-name"
               value={dataForm.lastName}
               placeHolder="Apellido Paterno *"
               onChange={(value) => {
@@ -339,6 +339,8 @@ const FormRegister = ({
               }
             />
             <CustomInput
+              name="lname"
+              autocomplete="family-name"
               value={dataForm.mothersMaidenName}
               placeHolder="Apellido Materno"
               onChange={(value) => {
@@ -361,6 +363,8 @@ const FormRegister = ({
             />
           </DivTwoInputs>
           <CustomInput
+            name="mobile"
+            autocomplete="tel"
             value={dataForm.phoneNumber}
             placeHolder="Teléfono *"
             type="number"
@@ -392,6 +396,8 @@ const FormRegister = ({
             }
           />
           <CustomInput
+            name="email"
+            autocomplete="email"
             value={dataForm.emailAddress}
             placeHolder="Correo *"
             warning={dataErrors.fakeEmail}
@@ -686,8 +692,8 @@ const FormRegister = ({
             />
             <DivTwoInputs>
               <CustomInput
-                name="fname"
-                autocomplete="family-name"
+                name="mname"
+                autocomplete="additional-name"
                 value={dataForm.lastName}
                 placeHolder="Apellido Paterno *"
                 onChange={(value) => {
@@ -713,6 +719,8 @@ const FormRegister = ({
                 }
               />
               <CustomInput
+                name="lname"
+                autocomplete="family-name"
                 value={dataForm.mothersMaidenName}
                 placeHolder="Apellido Materno"
                 onChange={(value) => {
@@ -735,6 +743,8 @@ const FormRegister = ({
               />
             </DivTwoInputs>
             <CustomInput
+              name="mobile"
+              autocomplete="tel"
               value={dataForm.phoneNumber}
               placeHolder="Teléfono *"
               type="number"
@@ -766,6 +776,8 @@ const FormRegister = ({
               }
             />
             <CustomInput
+              name="email"
+              autocomplete="email"
               value={dataForm.emailAddress}
               placeHolder="Correo *"
               warning={dataErrors.fakeEmail}
