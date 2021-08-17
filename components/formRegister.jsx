@@ -277,7 +277,6 @@ const FormRegister = ({
       setDataForm({ ...dataForm, idProspectType: userType });
     }
   }, [userType]);
-  
 
   if (isNil(userType) === false && finishForm === false) {
     component = (
@@ -295,7 +294,7 @@ const FormRegister = ({
             }}
             error={dataErrors.name}
             warning={false}
-            labelError={"Este campo es requerido"}
+            labelError="Este campo es requerido"
             icon={
               <svg
                 width="16"
