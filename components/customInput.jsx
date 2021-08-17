@@ -44,6 +44,7 @@ const CustomInput = ({
   warning,
   labelWarning,
   name = "",
+  autocomplete = "",
 }) => {
   return (
     <div style={{ margin: "0px 0px 35px 0px", position: "relative" }}>
@@ -55,6 +56,7 @@ const CustomInput = ({
           onChange(e.target.value);
         }}
         name={name}
+        autocomplete={autocomplete}
       />
       <div
         style={{
