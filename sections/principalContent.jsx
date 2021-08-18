@@ -143,7 +143,7 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
       <Head>
         <title>Homify - Mi Renta Segura</title>
         <link rel="icon" href="/favicon.ico" />
-        <script
+        {/* <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=UA-169194787-1"
         ></script>
@@ -153,6 +153,21 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
             function gtag(){dataLayer.push(arguments);}
             gtag('js', new Date());
             gtag('config', 'UA-169194787-1');
+          `,
+          }}
+        /> */}
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=G-V3GXMT81EX"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'G-V3GXMT81EX');
           `,
           }}
         />
