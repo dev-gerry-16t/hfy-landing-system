@@ -171,6 +171,40 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
           `,
           }}
         />
+
+        <script
+          async
+          src="https://www.googletagmanager.com/gtag/js?id=AW-315229769"
+        ></script>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+          
+            gtag('config', 'AW-315229769');
+          `,
+          }}
+        />
+
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `function gtag_report_conversion(url) {
+              var callback = function () {
+                if (typeof(url) != 'undefined') {
+                  window.location = url;
+                }
+              };
+              gtag('event', 'conversion', {
+                  'send_to': 'AW-315229769/hslcCI-y6eoCEMmMqJYB',
+                  'event_callback': callback
+              });
+              return false;
+            }
+          `,
+          }}
+        />
+
         <script
           dangerouslySetInnerHTML={{
             __html: `!function(f,b,e,v,n,t,s)

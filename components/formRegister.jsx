@@ -565,6 +565,7 @@ const FormRegister = ({
         >
           <ButtonSend
             onClick={async () => {
+              window.gtag_report_conversion();
               let ENVIRONMENT = "http://localhost:3001";
               if (
                 window.location.hostname === "homify.ai" ||
@@ -949,6 +950,8 @@ const FormRegister = ({
           >
             <ButtonSend
               onClick={async () => {
+                window.gtag_report_conversion();
+
                 let ENVIRONMENT = "http://localhost:3001";
                 if (
                   window.location.hostname === "homify.ai" ||
