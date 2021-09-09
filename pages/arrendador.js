@@ -23,7 +23,7 @@ const DivLines = styled.div`
   }
 `;
 
-const Home = ({ dataPolicy }) => {
+const Home = ({ dataPolicy, dataCountry }) => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [isSelectPolicy, setIsSelectPolicy] = useState(null);
   const [isSelectAmount, setIsSelectAmount] = useState(0);
@@ -48,6 +48,7 @@ const Home = ({ dataPolicy }) => {
           userType={2}
           policyType={isSelectPolicy}
           amountPolicy={isSelectAmount}
+          dataCountry={dataCountry}
         />
       </CustomModal>
       <TopInitialSection

@@ -23,7 +23,7 @@ const DivLines = styled.div`
   }
 `;
 
-const Home = ({ dataPolicy }) => {
+const Home = ({ dataPolicy, dataCountry }) => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [isSelectPolicy, setIsSelectPolicy] = useState(null);
   const [isSelectAmount, setIsSelectAmount] = useState(0);
@@ -46,6 +46,7 @@ const Home = ({ dataPolicy }) => {
             setIsVisibleModal(visible);
           }}
           dataPolicy={dataPolicy}
+          dataCountry={dataCountry}
           userType={1}
           policyType={isSelectPolicy}
           amountPolicy={isSelectAmount}
@@ -308,7 +309,24 @@ Home.getInitialProps = async (ctx) => {
     }
   );
   const responseResult = await response.json();
-  return { dataPolicy: responseResult.response };
+
+  const responseCountry = await fetch(
+    "http://localhost:3001/api/leads/catalog/getAllCountries",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: 1,
+      }),
+    }
+  );
+  const responseResultCountry = await responseCountry.json();
+  return {
+    dataPolicy: responseResult.response,
+    dataCountry: responseResultCountry.response,
+  };
 };
 
 export default Home;

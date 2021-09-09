@@ -123,6 +123,15 @@ const HeaderNavigation = styled.div`
 const PrincipalContent = ({ children, openModal, visibleFooter }) => {
   const [isVisibleNav, setIsVisibleNav] = useState(false);
 
+  const geoSuccess = (position) => {
+    const startPos = position;
+    console.log("startPos", startPos);
+  };
+
+  const getError = (error) => {
+    console.log("error", error);
+  };
+
   useEffect(() => {
     if (isVisibleNav === true) {
       document.getElementById("id-side-menu-panel").style.width = "250px";
@@ -136,6 +145,7 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
     badyBox.addEventListener("click", () => {
       setIsVisibleNav(false);
     });
+    //navigator.geolocation.getCurrentPosition(geoSuccess, getError);
   }, []);
 
   return (

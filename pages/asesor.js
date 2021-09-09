@@ -40,7 +40,7 @@ const ButtonClient = styled.button`
   padding: 1em 5em;
 `;
 
-const Home = ({ dataPolicy }) => {
+const Home = ({ dataPolicy, dataCountry }) => {
   const [isVisibleModal, setIsVisibleModal] = useState(false);
   const [isSelectClient, setIsSelectClient] = useState({
     owner: false,
@@ -66,6 +66,7 @@ const Home = ({ dataPolicy }) => {
           dataPolicy={dataPolicy}
           userType={3}
           policyType={null}
+          dataCountry={dataCountry}
         />
       </CustomModal>
       <TopInitialSection
@@ -456,7 +457,23 @@ Home.getInitialProps = async (ctx) => {
     }
   );
   const responseResult = await response.json();
-  return { dataPolicy: responseResult.response };
+  const responseCountry = await fetch(
+    "http://localhost:3001/api/leads/catalog/getAllCountries",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: 1,
+      }),
+    }
+  );
+  const responseResultCountry = await responseCountry.json();
+  return {
+    dataPolicy: responseResult.response,
+    dataCountry: responseResultCountry.response,
+  };
 };
 
 export default Home;

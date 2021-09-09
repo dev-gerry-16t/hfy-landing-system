@@ -45,9 +45,10 @@ const CustomInput = ({
   labelWarning,
   name = "",
   autocomplete = "",
+  style = { margin: "0px 0px 35px 0px", position: "relative" },
 }) => {
   return (
-    <div style={{ margin: "0px 0px 35px 0px", position: "relative" }}>
+    <div style={style}>
       <InputStyle
         placeholder={placeHolder}
         type={type}
