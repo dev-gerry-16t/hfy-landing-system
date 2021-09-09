@@ -305,7 +305,24 @@ Home.getInitialProps = async (ctx) => {
     }
   );
   const responseResult = await response.json();
-  return { dataPolicy: responseResult.response };
+
+  const responseCountry = await fetch(
+    "http://localhost:3001/api/leads/catalog/getAllCountries",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        type: 1,
+      }),
+    }
+  );
+  const responseResultCountry = await responseCountry.json();
+  return {
+    dataPolicy: responseResult.response,
+    dataCountry: responseResultCountry.response,
+  };
 };
 
 export default Home;

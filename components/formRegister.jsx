@@ -212,9 +212,7 @@ const FormRegister = ({
     scheduleAtTime: "",
     comment: "",
     phoneNumber: "",
-    idCountry: null,
-    latitude: 0,
-    longitude: 0,
+    idCountry: "1",
   };
 
   const initialStatesError = {
@@ -230,6 +228,10 @@ const FormRegister = ({
   const [percentPayment, setPercentPayment] = useState(1);
   const [finishForm, setFinishForm] = useState(false);
   const [clickSend, setClickSend] = useState(false);
+  const [geolocation, setGeolocation] = useState({
+    latitude: 0,
+    longitude: 0,
+  });
   const [viewCodeSection, setViewCodeSection] = useState(false);
   const [callNowAndSchedule, setCallNowAndSchedule] = useState(false);
   const [errorApi, setErrorApi] = useState(initialStatesError);
@@ -296,8 +298,8 @@ const FormRegister = ({
 
   const geoSuccess = (position) => {
     const startPos = position;
-    setDataForm({
-      ...dataForm,
+    setGeolocation({
+      ...geolocation,
       latitude: startPos.coords.latitude,
       longitude: startPos.coords.longitude,
     });
@@ -337,6 +339,7 @@ const FormRegister = ({
   }, [policyType]);
 
   useEffect(() => {
+    console.log("userType", userType);
     if (isNil(userType) === false) {
       setDataForm({ ...dataForm, idProspectType: userType });
     }
@@ -763,41 +766,44 @@ const FormRegister = ({
                   } else {
                     ENVIRONMENT = "https://apitest.homify.ai";
                   }
-                  setClickSend(true);
-                  const result = await fetch(
-                    `${ENVIRONMENT}/api/leads/generateVerificationCode`,
-                    {
-                      method: "POST",
-                      body: JSON.stringify({
-                        phoneNumber: dataForm.phoneNumber,
-                        idCountry: dataForm.idCountry,
-                        latitude: dataForm.latitude,
-                        longitude: dataForm.longitude,
-                        uRLGMaps: `https://www.google.com/maps/embed/v1/place?key=AIzaSyBwWOmV2W9QVm7lN3EBK4wCysj2sLzPhiQ&q=${dataForm.latitude},${dataForm.longitude}&zoom=18`,
-                      }),
-                      headers: {
-                        "Content-Type": "application/json",
-                      },
+                  const next = await validateInformation(dataForm);
+                  if (next === true && clickSend === false) {
+                    setClickSend(true);
+                    const result = await fetch(
+                      `${ENVIRONMENT}/api/leads/generateVerificationCode`,
+                      {
+                        method: "POST",
+                        body: JSON.stringify({
+                          phoneNumber: dataForm.phoneNumber,
+                          idCountry: dataForm.idCountry,
+                          latitude: geolocation.latitude,
+                          longitude: geolocation.longitude,
+                          uRLGMaps: `https://www.google.com/maps/embed/v1/place?key=AIzaSyBwWOmV2W9QVm7lN3EBK4wCysj2sLzPhiQ&q=${geolocation.latitude},${geolocation.longitude}&zoom=18`,
+                        }),
+                        headers: {
+                          "Content-Type": "application/json",
+                        },
+                      }
+                    );
+                    const response = await result.json();
+                    if (result.status === 200) {
+                      setClickSend(false);
+                      setViewCodeSection(true);
+                    } else {
+                      setErrorApi({
+                        error: true,
+                        message:
+                          isNil(response.response) === false &&
+                          isNil(response.response.message) === false
+                            ? response.response.message
+                            : initialStatesError.message,
+                      });
+                      setClickSend(false);
+                      setTimeout(() => {
+                        setErrorApi(initialStatesError);
+                        setViewCodeSection(false);
+                      }, 10000);
                     }
-                  );
-                  const response = await result.json();
-                  if (result.status === 200) {
-                    setClickSend(false);
-                    setViewCodeSection(true);
-                  } else {
-                    setErrorApi({
-                      error: true,
-                      message:
-                        isNil(response.response) === false &&
-                        isNil(response.response.message) === false
-                          ? response.response.message
-                          : initialStatesError.message,
-                    });
-                    setClickSend(false);
-                    setTimeout(() => {
-                      setErrorApi(initialStatesError);
-                      setViewCodeSection(false);
-                    }, 10000);
                   }
                 }}
               >
@@ -862,41 +868,44 @@ const FormRegister = ({
                       } else {
                         ENVIRONMENT = "https://apitest.homify.ai";
                       }
-                      setClickSend(true);
-                      const result = await fetch(
-                        `${ENVIRONMENT}/api/leads/generateVerificationCode`,
-                        {
-                          method: "POST",
-                          body: JSON.stringify({
-                            phoneNumber: dataForm.phoneNumber,
-                            idCountry: dataForm.idCountry,
-                            latitude: dataForm.latitude,
-                            longitude: dataForm.longitude,
-                            uRLGMaps: `https://www.google.com/maps/embed/v1/place?key=AIzaSyBwWOmV2W9QVm7lN3EBK4wCysj2sLzPhiQ&q=${dataForm.latitude},${dataForm.longitude}&zoom=18`,
-                          }),
-                          headers: {
-                            "Content-Type": "application/json",
-                          },
+                      const next = await validateInformation(dataForm);
+                      if (next === true && clickSend === false) {
+                        setClickSend(true);
+                        const result = await fetch(
+                          `${ENVIRONMENT}/api/leads/generateVerificationCode`,
+                          {
+                            method: "POST",
+                            body: JSON.stringify({
+                              phoneNumber: dataForm.phoneNumber,
+                              idCountry: dataForm.idCountry,
+                              latitude: geolocation.latitude,
+                              longitude: geolocation.longitude,
+                              uRLGMaps: `https://www.google.com/maps/embed/v1/place?key=AIzaSyBwWOmV2W9QVm7lN3EBK4wCysj2sLzPhiQ&q=${geolocation.latitude},${geolocation.longitude}&zoom=18`,
+                            }),
+                            headers: {
+                              "Content-Type": "application/json",
+                            },
+                          }
+                        );
+                        const response = await result.json();
+                        if (result.status === 200) {
+                          setClickSend(false);
+                          setViewCodeSection(true);
+                        } else {
+                          setErrorApi({
+                            error: true,
+                            message:
+                              isNil(response.response) === false &&
+                              isNil(response.response.message) === false
+                                ? response.response.message
+                                : initialStatesError.message,
+                          });
+                          setClickSend(false);
+                          setTimeout(() => {
+                            setErrorApi(initialStatesError);
+                            setViewCodeSection(false);
+                          }, 10000);
                         }
-                      );
-                      const response = await result.json();
-                      if (result.status === 200) {
-                        setClickSend(false);
-                        setViewCodeSection(true);
-                      } else {
-                        setErrorApi({
-                          error: true,
-                          message:
-                            isNil(response.response) === false &&
-                            isNil(response.response.message) === false
-                              ? response.response.message
-                              : initialStatesError.message,
-                        });
-                        setClickSend(false);
-                        setTimeout(() => {
-                          setErrorApi(initialStatesError);
-                          setViewCodeSection(false);
-                        }, 10000);
                       }
                     }}
                   >
