@@ -57,6 +57,24 @@ const SelectStyleLittle = styled.select`
   }
 `;
 
+const TextArea = styled.textarea`
+  width: 100%;
+  border: 1px solid #d6d8e7;
+  box-sizing: border-box;
+  border-radius: 8px;
+  font-family: Poppins;
+  font-weight: bold;
+  padding: 5px 5px;
+  margin-bottom: 5px;
+  background: transparent;
+  &:focus {
+    outline: #c6cdfc;
+  }
+  &::placeholder {
+    font-weight: 100;
+  }
+`;
+
 const DivPriceAmount = styled.div`
   display: flex;
   flex-direction: column;
@@ -106,6 +124,18 @@ const LabelRent = styled.p`
   text-align: center;
   letter-spacing: 0.75px;
   color: #4e4b66;
+`;
+
+const ButtonBackCode = styled.button`
+  font-family: Poppins;
+  background: #ffffff;
+  color: #ff0282;
+  border-radius: 5px;
+  border: 1px solid #ff0282;
+  padding: 2px 20px;
+  margin: 0px 5px;
+  outline: none;
+  cursor: pointer;
 `;
 
 const ButtonSend = styled.button`
@@ -208,8 +238,8 @@ const FormRegister = ({
     code: "",
     requiresCall: false,
     scheduleAt: moment().format("YYYY-MM-DD HH:mm:ss"),
-    scheduleAtDate: "",
-    scheduleAtTime: "",
+    scheduleAtDate: moment().format("YYYY-MM-DD"),
+    scheduleAtTime: moment().format("HH:mm:ss"),
     comment: "",
     phoneNumber: "",
     idCountry: "1",
@@ -305,9 +335,7 @@ const FormRegister = ({
     });
   };
 
-  const getError = (error) => {
-    console.log("error", error);
-  };
+  const getError = (error) => {};
 
   useEffect(() => {
     if (isEmpty(dataForm.idPolicy) === false) {
@@ -339,7 +367,6 @@ const FormRegister = ({
   }, [policyType]);
 
   useEffect(() => {
-    console.log("userType", userType);
     if (isNil(userType) === false) {
       setDataForm({ ...dataForm, idProspectType: userType });
     }
@@ -535,64 +562,83 @@ const FormRegister = ({
                   </svg>
                 }
               />
-              <span>¿Cómo deseas que te contacte un asesor?</span>
+              <span>¿Cómo deseas ser contactado?</span>
               <br />
-              <input
-                type="radio"
-                id="whatsapp_input"
-                name="contact_agent"
-                onChange={(e) => {
-                  setDataForm({ ...dataForm, requiresCall: false });
-                }}
-              />
-                <label for="whatsapp_input">Via Whatsapp</label>
-              <br />
-              <input
-                type="radio"
-                id="call_input"
-                name="contact_agent"
-                onChange={(e) => {
-                  setDataForm({ ...dataForm, requiresCall: true });
-                }}
-              />
-                <label for="call_input">LLamada telefonica</label>
-              <br />
+              <div style={{ display: "flex", justifyContent: "space-around" }}>
+                <div>
+                  <input
+                    type="radio"
+                    id="whatsapp_input"
+                    name="contact_agent"
+                    onChange={(e) => {
+                      setDataForm({ ...dataForm, requiresCall: false });
+                      setCallNowAndSchedule(false);
+                    }}
+                  />
+                    <label for="whatsapp_input">Via Whatsapp</label>
+                </div>
+                <div>
+                  <input
+                    type="radio"
+                    id="call_input"
+                    name="contact_agent"
+                    onChange={(e) => {
+                      setDataForm({ ...dataForm, requiresCall: true });
+                    }}
+                  />
+                    <label for="call_input">LLamada telefonica</label>
+                </div>
+              </div>
               <br />
               {dataForm.requiresCall === true && (
                 <>
                   <span>¿Podemos contactarte ahora mismo?</span>
                   <br />
-                  <input
-                    type="radio"
-                    id="call_now_input"
-                    name="contact_call_agent"
-                    onChange={(e) => {
-                      setCallNowAndSchedule(false);
-                      const callNowMoment = moment().format(
-                        "YYYY-MM-DD HH:mm:ss"
-                      );
-                      setDataForm({
-                        ...dataForm,
-                        scheduleAt: callNowMoment,
-                      });
-                    }}
-                  />
-                    <label for="whatsapp_input">Si</label>
-                  <br />
-                  <input
-                    type="radio"
-                    id="call_date_input"
-                    name="contact_call_agent"
-                    onChange={(e) => {
-                      setCallNowAndSchedule(true);
-                    }}
-                  />
-                    <label for="call_input">Agendar llamada</label>
-                  <br />
+                  <div
+                    style={{ display: "flex", justifyContent: "space-around" }}
+                  >
+                    <div>
+                      <input
+                        type="radio"
+                        id="call_now_input"
+                        name="contact_call_agent"
+                        onChange={(e) => {
+                          setCallNowAndSchedule(false);
+                          const callNowMoment = moment().format(
+                            "YYYY-MM-DD HH:mm:ss"
+                          );
+                          setDataForm({
+                            ...dataForm,
+                            scheduleAt: callNowMoment,
+                          });
+                        }}
+                      />
+                        <label for="whatsapp_input">Si</label>
+                    </div>
+                    <div>
+                      <input
+                        type="radio"
+                        id="call_date_input"
+                        name="contact_call_agent"
+                        onChange={(e) => {
+                          const scheduleAtDate = moment().format("YYYY-MM-DD");
+                          const scheduleAtTime = moment().format("HH:mm:ss");
+                          setCallNowAndSchedule(true);
+                          setDataForm({
+                            ...dataForm,
+                            scheduleAt: `${scheduleAtDate} ${scheduleAtTime}`,
+                            scheduleAtDate: null,
+                            scheduleAtTime: null,
+                          });
+                        }}
+                      />
+                        <label for="call_input">Agendar llamada</label>
+                    </div>
+                  </div>
                   <br />
                 </>
               )}
-              {callNowAndSchedule === true && (
+              {callNowAndSchedule === true && dataForm.requiresCall === true && (
                 <DivTwoInputs>
                   Fecha
                   <CustomInput
@@ -628,6 +674,13 @@ const FormRegister = ({
                   />
                 </DivTwoInputs>
               )}
+              <TextArea
+                placeholder="Agrega un comentario"
+                value={dataForm.comment}
+                onChange={(e) => {
+                  setDataForm({ ...dataForm, comment: e.target.value });
+                }}
+              />
               {dataForm.idProspectType === 3 && (
                 <CustomInput
                   value={dataForm.realState}
@@ -790,6 +843,7 @@ const FormRegister = ({
                       setClickSend(false);
                       setViewCodeSection(true);
                     } else {
+                      setClickSend(false);
                       setErrorApi({
                         error: true,
                         message:
@@ -798,12 +852,15 @@ const FormRegister = ({
                             ? response.response.message
                             : initialStatesError.message,
                       });
-                      setClickSend(false);
                       setTimeout(() => {
                         setErrorApi(initialStatesError);
-                        setViewCodeSection(false);
                       }, 10000);
                     }
+                  } else {
+                    setTimeout(() => {
+                      setErrorApi(initialStatesError);
+                      setDataErrors(initialErrors);
+                    }, 10000);
                   }
                 }}
               >
@@ -826,7 +883,7 @@ const FormRegister = ({
             <DivForm>
               <div style={{ marginBottom: 25 }}>
                 <span>
-                  Hemos enviado un código de verificación a tu número
+                  Hemos enviado un código de confirmación a tu número
                   telefonico, ingresalo en el siguiente campo.
                 </span>
               </div>
@@ -839,23 +896,23 @@ const FormRegister = ({
                   onChange={(value) => {
                     setDataForm({ ...dataForm, code: value });
                   }}
-                  error={dataErrors.name}
                   warning={false}
                   labelError="Este campo es requerido"
                   style={{ margin: "0px 0px 5px 0px", position: "relative" }}
+                  styleError={false}
                 />
                 {errorApi.error === true && (
                   <DivErrorApi>{errorApi.message}</DivErrorApi>
                 )}
                 <div>
-                  <button
+                  <ButtonBackCode
                     onClick={() => {
                       setViewCodeSection(false);
                     }}
                   >
                     Modificar información
-                  </button>
-                  <button
+                  </ButtonBackCode>
+                  <ButtonBackCode
                     onClick={async () => {
                       let ENVIRONMENT = "http://localhost:3001";
                       if (
@@ -868,49 +925,47 @@ const FormRegister = ({
                       } else {
                         ENVIRONMENT = "https://apitest.homify.ai";
                       }
-                      const next = await validateInformation(dataForm);
-                      if (next === true && clickSend === false) {
-                        setClickSend(true);
-                        const result = await fetch(
-                          `${ENVIRONMENT}/api/leads/generateVerificationCode`,
-                          {
-                            method: "POST",
-                            body: JSON.stringify({
-                              phoneNumber: dataForm.phoneNumber,
-                              idCountry: dataForm.idCountry,
-                              latitude: geolocation.latitude,
-                              longitude: geolocation.longitude,
-                              uRLGMaps: `https://www.google.com/maps/embed/v1/place?key=AIzaSyBwWOmV2W9QVm7lN3EBK4wCysj2sLzPhiQ&q=${geolocation.latitude},${geolocation.longitude}&zoom=18`,
-                            }),
-                            headers: {
-                              "Content-Type": "application/json",
-                            },
-                          }
-                        );
-                        const response = await result.json();
-                        if (result.status === 200) {
-                          setClickSend(false);
-                          setViewCodeSection(true);
-                        } else {
-                          setErrorApi({
-                            error: true,
-                            message:
-                              isNil(response.response) === false &&
-                              isNil(response.response.message) === false
-                                ? response.response.message
-                                : initialStatesError.message,
-                          });
-                          setClickSend(false);
-                          setTimeout(() => {
-                            setErrorApi(initialStatesError);
-                            setViewCodeSection(false);
-                          }, 10000);
+
+                      setClickSend(true);
+                      const result = await fetch(
+                        `${ENVIRONMENT}/api/leads/generateVerificationCode`,
+                        {
+                          method: "POST",
+                          body: JSON.stringify({
+                            phoneNumber: dataForm.phoneNumber,
+                            idCountry: dataForm.idCountry,
+                            latitude: geolocation.latitude,
+                            longitude: geolocation.longitude,
+                            uRLGMaps: `https://www.google.com/maps/embed/v1/place?key=AIzaSyBwWOmV2W9QVm7lN3EBK4wCysj2sLzPhiQ&q=${geolocation.latitude},${geolocation.longitude}&zoom=18`,
+                          }),
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
                         }
+                      );
+                      const response = await result.json();
+                      if (result.status === 200) {
+                        setClickSend(false);
+                        setViewCodeSection(true);
+                      } else {
+                        setErrorApi({
+                          error: true,
+                          message:
+                            isNil(response.response) === false &&
+                            isNil(response.response.message) === false
+                              ? response.response.message
+                              : initialStatesError.message,
+                        });
+                        setClickSend(false);
+                        setTimeout(() => {
+                          setErrorApi(initialStatesError);
+                          setViewCodeSection(false);
+                        }, 10000);
                       }
                     }}
                   >
                     Reenviar código
-                  </button>
+                  </ButtonBackCode>
                 </div>
               </div>
             </DivForm>
@@ -937,8 +992,7 @@ const FormRegister = ({
                   }
                   const getCaptchaToken =
                     await recaptchaV3.current.executeAsync();
-                  const next = await validateInformation(dataForm);
-                  if (next === true && clickSend === false) {
+                  if (clickSend === false) {
                     setClickSend(true);
                     const result = await fetch(
                       `${ENVIRONMENT}/api/leads/addLandingProspect`,
@@ -1413,6 +1467,8 @@ const FormRegister = ({
               onClick={async () => {
                 onClose(false);
                 setFinishForm(false);
+                setViewCodeSection(false);
+                setCallNowAndSchedule(false);
               }}
             >
               Cerrar

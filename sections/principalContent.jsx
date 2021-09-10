@@ -125,12 +125,9 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
 
   const geoSuccess = (position) => {
     const startPos = position;
-    console.log("startPos", startPos);
   };
 
-  const getError = (error) => {
-    console.log("error", error);
-  };
+  const getError = (error) => {};
 
   useEffect(() => {
     if (isVisibleNav === true) {
@@ -416,16 +413,6 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
               <a>Inquilino</a>
             </Link>
             <a href="https://app.homify.ai">Iniciar Sesión</a>
-            <Link href="/">
-              <a
-                onClick={() => {
-                  setIsVisibleNav(!isVisibleNav);
-                  openModal(true);
-                }}
-              >
-                Contáctame
-              </a>
-            </Link>
             <Link href="/aviso-de-privacidad">
               <a>Aviso de privacidad</a>
             </Link>

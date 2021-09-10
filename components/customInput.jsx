@@ -46,6 +46,7 @@ const CustomInput = ({
   name = "",
   autocomplete = "",
   style = { margin: "0px 0px 35px 0px", position: "relative" },
+  styleError = true,
 }) => {
   return (
     <div style={style}>
@@ -68,9 +69,11 @@ const CustomInput = ({
       >
         {icon}
       </div>
-      <DivError error={error} warning={warning}>
-        {warning === true ? labelWarning : labelError}
-      </DivError>
+      {styleError === true && (
+        <DivError error={error} warning={warning}>
+          {warning === true ? labelWarning : labelError}
+        </DivError>
+      )}
     </div>
   );
 };

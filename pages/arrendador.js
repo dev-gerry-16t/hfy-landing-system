@@ -287,27 +287,35 @@ const Home = ({ dataPolicy, dataCountry }) => {
 };
 
 Home.getInitialProps = async (ctx) => {
-  const response = await fetch(
-    "https://api.homify.ai/api/catalogs/getAllPolicies",
-    {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        idCustomer: null,
-        idCustomerTenant: null,
-        idSystemUser: null,
-        idLoginHistory: null,
-        type: 3,
-        idProspectType: 2,
-      }),
-    }
-  );
-  const responseResult = await response.json();
+  let ENVIRONMENT = "http://localhost:3001";
+  // if (
+  //   window.location.hostname === "homify.ai" ||
+  //   window.location.hostname === "www.homify.ai"
+  // ) {
+  //   ENVIRONMENT = "https://api.homify.ai";
+  // } else if (window.location.hostname === "localhost") {
+  //   ENVIRONMENT = "http://localhost:3001";
+  // } else {
+  //   ENVIRONMENT = "https://apitest.homify.ai";
+  // }
 
+  const response = await fetch(`${ENVIRONMENT}/api/catalogs/getAllPolicies`, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      idCustomer: null,
+      idCustomerTenant: null,
+      idSystemUser: null,
+      idLoginHistory: null,
+      type: 3,
+      idProspectType: 2,
+    }),
+  });
+  const responseResult = await response.json();
   const responseCountry = await fetch(
-    "http://localhost:3001/api/leads/catalog/getAllCountries",
+    `${ENVIRONMENT}/api/leads/catalog/getAllCountries`,
     {
       method: "POST",
       headers: {
