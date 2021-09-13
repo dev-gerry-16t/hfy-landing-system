@@ -808,22 +808,11 @@ const FormRegister = ({
             >
               <ButtonSend
                 onClick={async () => {
-                  let ENVIRONMENT = "http://localhost:3001";
-                  if (
-                    window.location.hostname === "homify.ai" ||
-                    window.location.hostname === "www.homify.ai"
-                  ) {
-                    ENVIRONMENT = "https://api.homify.ai";
-                  } else if (window.location.hostname === "localhost") {
-                    ENVIRONMENT = "http://localhost:3001";
-                  } else {
-                    ENVIRONMENT = "https://apitest.homify.ai";
-                  }
                   const next = await validateInformation(dataForm);
                   if (next === true && clickSend === false) {
                     setClickSend(true);
                     const result = await fetch(
-                      `${ENVIRONMENT}/api/leads/generateVerificationCode`,
+                      `${process.env.ENVIRONMENT}/api/leads/generateVerificationCode`,
                       {
                         method: "POST",
                         body: JSON.stringify({
@@ -914,21 +903,9 @@ const FormRegister = ({
                   </ButtonBackCode>
                   <ButtonBackCode
                     onClick={async () => {
-                      let ENVIRONMENT = "http://localhost:3001";
-                      if (
-                        window.location.hostname === "homify.ai" ||
-                        window.location.hostname === "www.homify.ai"
-                      ) {
-                        ENVIRONMENT = "https://api.homify.ai";
-                      } else if (window.location.hostname === "localhost") {
-                        ENVIRONMENT = "http://localhost:3001";
-                      } else {
-                        ENVIRONMENT = "https://apitest.homify.ai";
-                      }
-
                       setClickSend(true);
                       const result = await fetch(
-                        `${ENVIRONMENT}/api/leads/generateVerificationCode`,
+                        `${process.env.ENVIRONMENT}/api/leads/generateVerificationCode`,
                         {
                           method: "POST",
                           body: JSON.stringify({
@@ -979,23 +956,12 @@ const FormRegister = ({
               <ButtonSend
                 onClick={async () => {
                   window.gtag_report_conversion();
-                  let ENVIRONMENT = "http://localhost:3001";
-                  if (
-                    window.location.hostname === "homify.ai" ||
-                    window.location.hostname === "www.homify.ai"
-                  ) {
-                    ENVIRONMENT = "https://api.homify.ai";
-                  } else if (window.location.hostname === "localhost") {
-                    ENVIRONMENT = "http://localhost:3001";
-                  } else {
-                    ENVIRONMENT = "https://apitest.homify.ai";
-                  }
                   const getCaptchaToken =
                     await recaptchaV3.current.executeAsync();
                   if (clickSend === false) {
                     setClickSend(true);
                     const result = await fetch(
-                      `${ENVIRONMENT}/api/leads/addLandingProspect`,
+                      `${process.env.ENVIRONMENT}/api/leads/addLandingProspect`,
                       {
                         method: "POST",
                         body: JSON.stringify({
@@ -1374,18 +1340,6 @@ const FormRegister = ({
             <ButtonSend
               onClick={async () => {
                 window.gtag_report_conversion();
-
-                let ENVIRONMENT = "http://localhost:3001";
-                if (
-                  window.location.hostname === "homify.ai" ||
-                  window.location.hostname === "www.homify.ai"
-                ) {
-                  ENVIRONMENT = "https://api.homify.ai";
-                } else if (window.location.hostname === "localhost") {
-                  ENVIRONMENT = "http://localhost:3001";
-                } else {
-                  ENVIRONMENT = "https://apitest.homify.ai";
-                }
                 const getCaptchaToken =
                   await recaptchaV3.current.executeAsync();
                 const next = await validateInformation(dataForm);
@@ -1393,7 +1347,7 @@ const FormRegister = ({
                 if (next === true && clickSend === false) {
                   setClickSend(true);
                   const result = await fetch(
-                    `${ENVIRONMENT}/api/leads/addLandingProspect`,
+                    `${process.env.ENVIRONMENT}/api/leads/addLandingProspect`,
                     {
                       method: "POST",
                       body: JSON.stringify({

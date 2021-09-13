@@ -40,29 +40,23 @@ const Home = ({ dataPolicy }) => {
 };
 
 Home.getInitialProps = async (ctx) => {
-  let ENVIRONMENT = "http://localhost:3001";
-  if (process.env.ENVIRONMENT === "prod") {
-    ENVIRONMENT = "https://api.homify.ai";
-  } else if (process.env.ENVIRONMENT === "test") {
-    ENVIRONMENT = "https://apitest.homify.ai";
-  } else {
-    ENVIRONMENT = "http://localhost:3001";
-  }
-
-  const response = await fetch(`${ENVIRONMENT}/api/catalogs/getAllPolicies`, {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      idCustomer: null,
-      idCustomerTenant: null,
-      idSystemUser: null,
-      idLoginHistory: null,
-      type: 3,
-      idProspectType: 2,
-    }),
-  });
+  const response = await fetch(
+    `${process.env.ENVIRONMENT}/api/catalogs/getAllPolicies`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idCustomer: null,
+        idCustomerTenant: null,
+        idSystemUser: null,
+        idLoginHistory: null,
+        type: 3,
+        idProspectType: 2,
+      }),
+    }
+  );
   const responseResult = await response.json();
   return { dataPolicy: responseResult.response };
 };
