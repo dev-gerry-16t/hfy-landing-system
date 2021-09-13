@@ -167,7 +167,7 @@ const AvisoDePrivacidad = ({ dataPolicy }) => {
 
 AvisoDePrivacidad.getInitialProps = async (ctx) => {
   const response = await fetch(
-    "https://api.homify.ai/api/catalogs/getAllPolicies",
+    `${process.env.ENVIRONMENT}/api/catalogs/getAllPolicies`,
     {
       method: "POST",
       headers: {
