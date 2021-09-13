@@ -799,11 +799,17 @@ const FormRegister = ({
                 </DivForm>
               </>
             )}
+            <div style={{ marginTop: 15, marginBottom: 5 }}>
+              <span style={{ fontSize: 12, marginTop: 15 }}>
+                Al hacer clic en "Enviar" aceptas nuestro Aviso de privacidad y
+                Términos y condiciones, seguido recibiras un SMS a tu teléfono
+                móvil con un código de confirmación.
+              </span>
+            </div>
             <div
               style={{
                 display: "flex",
                 justifyContent: "center",
-                marginTop: "35px",
               }}
             >
               <ButtonSend
