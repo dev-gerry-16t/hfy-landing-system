@@ -288,16 +288,13 @@ const Home = ({ dataPolicy, dataCountry }) => {
 
 Home.getInitialProps = async (ctx) => {
   let ENVIRONMENT = "http://localhost:3001";
-  // if (
-  //   window.location.hostname === "homify.ai" ||
-  //   window.location.hostname === "www.homify.ai"
-  // ) {
-  //   ENVIRONMENT = "https://api.homify.ai";
-  // } else if (window.location.hostname === "localhost") {
-  //   ENVIRONMENT = "http://localhost:3001";
-  // } else {
-  //   ENVIRONMENT = "https://apitest.homify.ai";
-  // }
+  if (process.env.ENVIRONMENT === "prod") {
+    ENVIRONMENT = "https://api.homify.ai";
+  } else if (process.env.ENVIRONMENT === "test") {
+    ENVIRONMENT = "https://apitest.homify.ai";
+  } else {
+    ENVIRONMENT = "http://localhost:3001";
+  }
 
   const response = await fetch(`${ENVIRONMENT}/api/catalogs/getAllPolicies`, {
     method: "POST",
