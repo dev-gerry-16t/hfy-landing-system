@@ -47,6 +47,8 @@ const CustomInput = ({
   autocomplete = "",
   style = { margin: "0px 0px 35px 0px", position: "relative" },
   styleError = true,
+  min = null,
+  onKeyDown = () => {},
 }) => {
   return (
     <div style={style}>
@@ -59,6 +61,8 @@ const CustomInput = ({
         }}
         name={name}
         autocomplete={autocomplete}
+        min={min}
+        onKeyDown={onKeyDown}
       />
       <div
         style={{
