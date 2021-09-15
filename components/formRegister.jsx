@@ -645,7 +645,7 @@ const FormRegister = ({
                     name="date"
                     autocomplete="date"
                     value={dataForm.scheduleAtDate}
-                    placeHolder="Fecha"
+                    placeHolder="dd-mm-yy"
                     type="date"
                     warning={false}
                     onChange={(value) => {
@@ -886,15 +886,24 @@ const FormRegister = ({
                 <CustomInput
                   name=""
                   autocomplete=""
+                  type="number"
+                  min="0"
                   value={dataForm.code}
-                  placeHolder="Código de verificación"
+                  placeHolder="Código de verificación (6 dígitos)"
                   onChange={(value) => {
-                    setDataForm({ ...dataForm, code: value });
+                    if (value.length <= 6) {
+                      setDataForm({ ...dataForm, code: value });
+                    }
                   }}
                   warning={false}
                   labelError="Este campo es requerido"
                   style={{ margin: "0px 0px 5px 0px", position: "relative" }}
                   styleError={false}
+                  onKeyDown={(e) => {
+                    if (e.keyCode === 109 || e.keyCode === 107) {
+                      e.preventDefault();
+                    }
+                  }}
                 />
                 {errorApi.error === true && (
                   <DivErrorApi>{errorApi.message}</DivErrorApi>
