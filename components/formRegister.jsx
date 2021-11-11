@@ -473,7 +473,7 @@ const FormRegister = ({
                 type="range"
                 step="100"
                 min="0"
-                max="25000"
+                max="150000"
                 onChange={(e) => {
                   setDataForm({
                     ...dataForm,
@@ -858,7 +858,7 @@ const FormRegister = ({
                   type="range"
                   step="100"
                   min="0"
-                  max="25000"
+                  max="150000"
                   onChange={(e) => {
                     setDataForm({
                       ...dataForm,
