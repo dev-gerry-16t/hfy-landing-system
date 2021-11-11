@@ -72,9 +72,9 @@ const Home = ({ dataPolicy }) => {
         openModal={(visible) => {
           setIsVisibleModal(visible);
         }}
-        title1="Se un aliado HOMIFY,"
-        title2="comisiones hasta el 30%"
-        subTitle="Renta más rápido con HOMIFY"
+        title1="¡Aumenta tus ganancias más rápido"
+        title2="y con garantía de pago!"
+        subTitle="Facilitamos tus procesos de cierre con nuestras herramientas"
         titleSection="Se un aliado HOMIFY, comisiones hasta el 30%"
       />
       <div style={{ background: "#fff" }}>
