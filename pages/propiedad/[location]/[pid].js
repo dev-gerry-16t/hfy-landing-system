@@ -8,7 +8,7 @@ import {
   Tab,
   ButtonIcon,
   ContentForm,
-} from "./styleProperty";
+} from "../../../styles/styleProperty";
 
 // export const getStaticPaths = async () => {
 //     return {};
@@ -16,11 +16,10 @@ import {
 
 const Property = ({ data }) => {
   const { metaTags, rest } = data;
-  console.log("metaTags", metaTags);
   return (
     <>
       <Head>
-      <title>{rest.identifier}</title>
+        <title>{rest.identifier}</title>
         {metaTags &&
           Object.entries(metaTags).map((entry) => (
             <meta property={entry[0]} content={entry[1]} />
