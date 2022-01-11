@@ -11,7 +11,7 @@ const PrincipalSection = styled.section`
 `;
 
 const TitleSection = styled.p`
-  font-family: url("https://fonts.googleapis.com/css2?family=Poppins:wght@700&display=swap");
+  font-family: Poppins;
   font-style: normal;
   font-weight: 700;
   font-size: 34px;

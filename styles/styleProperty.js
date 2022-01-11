@@ -6,6 +6,7 @@ const ButtonIcon = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 `;
 
 const Container = styled.div`
@@ -19,7 +20,7 @@ const Container = styled.div`
       letter-spacing: 0.5px;
       color: #4f4c66;
       span {
-        color: var(--color-primary);
+        color: #ff0282;
       }
     }
   }
@@ -181,8 +182,9 @@ const Content = styled.div`
   padding: 1em;
   letter-spacing: 0.75px;
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 1fr;
   position: relative;
+  font-size: 16px;
   @media screen and (max-width: 1160px) {
     display: flex;
     flex-direction: column;
@@ -229,15 +231,15 @@ const TabsProperty = styled.div`
 const Tab = styled.div`
   cursor: pointer;
   h1 {
+    font-size: 24px;
     font-weight: bold;
-    color: ${(props) =>
-      props.selected === true ? "var(--color-primary)" : "#4e4b66"};
+    color: ${(props) => (props.selected === true ? "#ff0282" : "#4e4b66")};
   }
   hr {
     width: 30%;
     background: #d6d8e7;
     margin: 0;
-    border: 2px solid var(--color-primary);
+    border: 2px solid #ff0282;
     display: ${(props) => (props.selected === true ? "block" : "none")};
   }
   @media screen and (max-width: 420px) {
@@ -246,10 +248,9 @@ const Tab = styled.div`
 `;
 
 const ButtonAction = styled.button`
-  background: ${(props) => (props.primary ? "var(--color-primary)" : "#FFF")};
-  border: ${(props) =>
-    props.primary ? "none" : "1px solid var(--color-primary)"};
-  color: ${(props) => (props.primary ? "#fff" : "var(--color-primary)")};
+  background: ${(props) => (props.primary ? "#ff0282" : "#FFF")};
+  border: ${(props) => (props.primary ? "none" : "1px solid #ff0282")};
+  color: ${(props) => (props.primary ? "#fff" : "#ff0282")};
   padding: 0.2em 2em;
   border-radius: 1em;
 `;
@@ -265,7 +266,7 @@ const GeneralCard = styled.div`
     padding: 1em;
     h1 {
       margin: 0;
-      color: var(--color-primary);
+      color: #ff0282;
       font-weight: 700;
     }
   }
@@ -312,7 +313,7 @@ const Card = styled.div`
           margin: 0px;
         }
         span {
-          color: var(--color-primary);
+          color: #ff0282;
         }
       }
     }
@@ -355,7 +356,7 @@ const Card = styled.div`
           width: 40px;
           height: 40px;
           border-radius: 50%;
-          background: var(--color-primary);
+          background: #ff0282;
           top: 4em;
           left: 4em;
           display: flex;
@@ -379,7 +380,7 @@ const Card = styled.div`
           margin: 0px;
         }
         span {
-          color: var(--color-primary);
+          color: #ff0282;
         }
       }
     }
@@ -407,11 +408,19 @@ const ContentRight = styled.div`
   }
 `;
 
+const LineSeparator = styled.hr`
+  width: 100%;
+  background: #d6d8e7;
+  top: 8%;
+  left: 9%;
+  margin: 2em 0;
+  opacity: ${(props) => (props.opacity ? props.opacity : "1")};
+`;
+
 const ButtonDocument = styled.button`
   border: none;
-  background: ${(props) =>
-    props.primary ? "var(--color-primary)" : "transparent"};
-  color: ${(props) => (props.primary ? "#fff" : "var(--color-primary)")};
+  background: ${(props) => (props.primary ? "#ff0282" : "transparent")};
+  color: ${(props) => (props.primary ? "#fff" : "#ff0282")};
   text-decoration: ${(props) => (props.primary ? "" : "underline")};
   font-weight: 600;
   border-radius: 1em;
@@ -437,7 +446,7 @@ const SeparateServices = styled.div`
     border-bottom: 0.5px solid #4e4b66;
     padding: 1em 2em;
     h1 {
-      color: var(--color-primary);
+      color: #ff0282;
       font-weight: 700;
     }
   }
@@ -473,7 +482,7 @@ const ContentForm = styled.div`
     justify-content: space-between;
     h1 {
       margin: 0;
-      color: var(--color-primary);
+      color: #ff0282;
       font-weight: 700;
     }
   }
@@ -534,4 +543,5 @@ export {
   SharedByUser,
   SeparateServices,
   ContentForm,
+  LineSeparator,
 };

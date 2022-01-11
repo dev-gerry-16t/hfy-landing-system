@@ -105,7 +105,7 @@ const HeaderSection = styled.header`
 `;
 
 const HeaderNavigation = styled.div`
-  font-family: url("https://fonts.googleapis.com/css2?family=Manrope:wght@600&display=swap");
+  font-family: Poppins;
   font-style: normal;
   font-weight: bold;
   font-size: 14px;

@@ -22,7 +22,7 @@ const DivError = styled.div`
   background: ${(props) => (props.warning === true ? "#FEEFEF" : "#fff4ec")};
   border-radius: 8px;
   color: ${(props) => (props.warning === true ? "#DA1414" : "#cf6e23")};
-  font-family: "Poppins";
+  font-family: Poppins;
   padding: 2px 10px;
   position: absolute;
   width: 100%;

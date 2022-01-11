@@ -15,6 +15,7 @@ const GeneralSection = styled.section`
 `;
 
 const TitleSection = styled.h1`
+  font-family: Poppins;
   font-style: normal;
   font-weight: 800;
   font-size: 40px;
