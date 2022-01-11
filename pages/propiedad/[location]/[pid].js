@@ -20,6 +20,25 @@ import SectionAmenities from "../../../sections/sectionAmenities";
 // export const getStaticPaths = async () => {
 //     return {};
 // };
+const parseUrlHomify = (str, id) => {
+  const normalize = str.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
+  const deleteComas = normalize.replace(/,/gi, "");
+  const addGuion = deleteComas.replace(/ /gi, "-");
+  const formatUrl = `https://www.homify.ai/propiedad/${addGuion}/${id}`;
+  return formatUrl;
+};
+
+const parseDescription = (str) => {
+  let stringShort = "";
+  if (isNil(str) === false && isEmpty(str) === false) {
+    if (str.length > 155) {
+      stringShort = str.substr(0, 155) + "...";
+    } else {
+      stringShort = str;
+    }
+  }
+  return stringShort;
+};
 
 const dataTabsProperty = [
   {
@@ -44,7 +63,6 @@ const Property = ({ data }) => {
     <>
       <Head>
         <title>{rest.identifier}</title>
-        <meta property="og:site_name" content={rest.shortAddress}></meta>
         {metaTags &&
           Object.entries(metaTags).map((entry) => (
             <meta property={entry[0]} content={entry[1]} />
@@ -56,6 +74,7 @@ const Property = ({ data }) => {
         />
         <meta property="og:image:width" content="300" />
         <meta property="og:image:height" content="300" />
+        <meta name="description" content={parseDescription(rest.description)} />
       </Head>
       <PrincipalContent openModal={(visible) => {}}>
         <Content>
@@ -140,14 +159,20 @@ export async function getServerSideProps(context) {
     isEmpty(responseRest.shortAddress) === false
       ? responseRest.shortAddress
       : "propiedad-homify";
-  const deleteComas = replaceAddress.replace(/,/gi, "");
-  const addGuion = deleteComas.replace(/ /gi, "-");
+
+  const formatUrl = parseUrlHomify(replaceAddress, responseRest.identifier);
   const metaTags = {
-    "og:title": responseRest.title,
-    "og:description": responseRest.title,
+    "og:title": isEmpty(responseRest) === false ? responseRest.title : "",
+    "og:description":
+      isEmpty(responseRest) === false
+        ? parseDescription(responseRest.description)
+        : "",
     "og:image:type": "image/jpeg",
-    "og:url": `https://homify.ai/propiedad/${addGuion}/${responseRest.identifier}`,
+    "og:url": isEmpty(responseRest) === false ? formatUrl : "",
     "og:type": "website",
+    "og:site_name": "Homify",
+    "og:country-name": "México",
+    "og:locale": "es_MX",
   };
   return { props: { data: { metaTags, rest: responseRest } } };
 }
