@@ -20,10 +20,18 @@ const Property = ({ data }) => {
     <>
       <Head>
         <title>{rest.identifier}</title>
+        <meta property="og:site_name" content={rest.shortAddress}></meta>
         {metaTags &&
           Object.entries(metaTags).map((entry) => (
             <meta property={entry[0]} content={entry[1]} />
           ))}
+        <meta
+          property="og:image:secure_url"
+          itemProp="image"
+          content={rest.documentMainPic}
+        />
+        <meta property="og:image:width" content="300" />
+        <meta property="og:image:height" content="300" />
       </Head>
       <Content>
         <ContentForm owner>
@@ -48,7 +56,6 @@ const Property = ({ data }) => {
 
 export async function getServerSideProps(context) {
   const { params } = context;
-  console.log("params", params);
   const response = await fetch(
     "https://apitest.homify.ai/api/property/getPropertyById",
     {
@@ -86,7 +93,6 @@ export async function getServerSideProps(context) {
   const metaTags = {
     "og:title": responseRest.title,
     "og:description": responseRest.description,
-    "og:image": responseRest.documentMainPic,
     "og:image:type": "image/jpeg",
     "og:url": `https://homify.ai/propiedad/${addGuion}/${responseRest.identifier}`,
     "og:type": "website",
