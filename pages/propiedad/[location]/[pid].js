@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import Head from "next/head";
 import isEmpty from "lodash/isEmpty";
 import isNil from "lodash/isNil";
@@ -9,13 +10,36 @@ import {
   ButtonIcon,
   ContentForm,
 } from "../../../styles/styleProperty";
+import IconHeartHfy from "../../../assets/svg/heart.svg";
+import SectionCarouselInfo from "../../../sections/sectionCarouselHz";
+import SectionFeatures from "../../../sections/sectionFeatures";
+import PrincipalContent from "../../../sections/principalContent";
+import SectionLocation from "../../../sections/sectionLocation";
+import SectionAmenities from "../../../sections/sectionAmenities";
 
 // export const getStaticPaths = async () => {
 //     return {};
 // };
 
+const dataTabsProperty = [
+  {
+    id: "1",
+    text: "Características",
+  },
+  {
+    id: "2",
+    text: "Ubicación",
+  },
+  {
+    id: "3",
+    text: "Amenidades",
+  },
+];
+
 const Property = ({ data }) => {
   const { metaTags, rest } = data;
+  const [tabSelect, setTabSelect] = useState("1");
+
   return (
     <>
       <Head>
@@ -33,23 +57,51 @@ const Property = ({ data }) => {
         <meta property="og:image:width" content="300" />
         <meta property="og:image:height" content="300" />
       </Head>
-      <Content>
-        <ContentForm owner>
-          <div className="header-title">
-            <h1 style={{ fontSize: "1.17em" }}>Detalle de inmueble</h1>
-            <ButtonIcon>
-              {/* <IconHeart
-                    backGround="transparent"
-                    color="var(--color-primary)"
-                  /> */}
-              {/* <IconShare
-                color="var(--color-primary)"
-                backGround="var(--color-primary)"
-              /> */}
-            </ButtonIcon>
-          </div>
-        </ContentForm>
-      </Content>
+      <PrincipalContent openModal={(visible) => {}}>
+        <Content>
+          <ContentForm owner>
+            <div className="header-title">
+              <h1 style={{ fontSize: "1.17em" }}>Detalle de inmueble</h1>
+              <ButtonIcon>
+                <IconHeartHfy fill="transparent" stroke="#ff0282" />
+              </ButtonIcon>
+            </div>
+            <div>
+              <SectionCarouselInfo
+                apartmentImages={
+                  isNil(rest) === false &&
+                  isNil(rest.apartmentDocuments) === false
+                    ? JSON.parse(rest.apartmentDocuments)
+                    : []
+                }
+                dataDetail={rest}
+              />
+              <ContainerDown>
+                <TabsProperty>
+                  {dataTabsProperty.map((row) => {
+                    return (
+                      <Tab
+                        selected={tabSelect === row.id}
+                        onClick={() => {
+                          setTabSelect(row.id);
+                        }}
+                      >
+                        <h1>{row.text}</h1>
+                        <hr />
+                      </Tab>
+                    );
+                  })}
+                </TabsProperty>
+                {tabSelect === "1" && (
+                  <SectionFeatures publicProperty dataDetail={rest} />
+                )}
+                {tabSelect === "2" && <SectionLocation dataDetail={rest} />}
+                {tabSelect === "3" && <SectionAmenities dataDetail={rest} />}
+              </ContainerDown>
+            </div>
+          </ContentForm>
+        </Content>
+      </PrincipalContent>
     </>
   );
 };
@@ -57,7 +109,7 @@ const Property = ({ data }) => {
 export async function getServerSideProps(context) {
   const { params } = context;
   const response = await fetch(
-    "https://apitest.homify.ai/api/property/getPropertyById",
+    "https://api.homify.ai/api/property/getPropertyById",
     {
       method: "POST",
       headers: {
@@ -92,7 +144,7 @@ export async function getServerSideProps(context) {
   const addGuion = deleteComas.replace(/ /gi, "-");
   const metaTags = {
     "og:title": responseRest.title,
-    "og:description": responseRest.description,
+    "og:description": responseRest.title,
     "og:image:type": "image/jpeg",
     "og:url": `https://homify.ai/propiedad/${addGuion}/${responseRest.identifier}`,
     "og:type": "website",

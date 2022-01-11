@@ -11,7 +11,7 @@ const DivErrorApi = styled.div`
   background: #fff4ec;
   border-radius: 8px;
   color: #cf6e23;
-  font-family: "Poppins";
+  font-family: Poppins;
   padding: 2px 10px;
   font-size: 14px;
   margin-top: 15px;
