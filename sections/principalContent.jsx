@@ -141,7 +141,6 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
   return (
     <>
       <Head>
-        <title>Homify - Mi Renta Segura</title>
         <link rel="icon" href="/favicon.ico" />
         {/* <script
           async
@@ -232,10 +231,6 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
           name="viewport"
           content="width=device-width, initial-scale=1, maximum-scale=1"
         />
-        <meta
-          name="description"
-          content="La mejor póliza jurídica de arrendamiento , si tu inquilino no paga nosotros te pagamos, tu renta segura, contrata hoy mismo al mejor precio del mercado."
-        ></meta>
       </Head>
       <HeaderSection>
         <div
