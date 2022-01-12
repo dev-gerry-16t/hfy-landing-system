@@ -63,6 +63,11 @@ const Property = ({ data }) => {
     <>
       <Head>
         <title>{rest.identifier}</title>
+        <meta name="description" content={parseDescription(rest.description)} />
+        <meta
+          property="og:image"
+          content={rest.documentMainPic}
+        />
         {metaTags &&
           Object.entries(metaTags).map((entry) => (
             <meta property={entry[0]} content={entry[1]} />
@@ -72,18 +77,15 @@ const Property = ({ data }) => {
           itemProp="image"
           content={rest.documentMainPic}
         />
-        <meta property="og:image:width" content="300" />
-        <meta property="og:image:height" content="300" />
-        <meta name="description" content={parseDescription(rest.description)} />
       </Head>
       <PrincipalContent openModal={(visible) => {}}>
         <Content>
           <ContentForm owner>
             <div className="header-title">
               <h1 style={{ fontSize: "1.17em" }}>Detalle de inmueble</h1>
-              <ButtonIcon>
+              {/* <ButtonIcon>
                 <IconHeartHfy fill="transparent" stroke="#ff0282" />
-              </ButtonIcon>
+              </ButtonIcon> */}
             </div>
             <div>
               <SectionCarouselInfo

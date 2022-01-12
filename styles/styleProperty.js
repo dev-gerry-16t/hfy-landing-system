@@ -244,6 +244,9 @@ const Tab = styled.div`
   }
   @media screen and (max-width: 420px) {
     line-height: 10px;
+    h1 {
+      font-size: 16px;
+    }
   }
 `;
 
