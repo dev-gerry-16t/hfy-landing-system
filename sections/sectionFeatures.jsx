@@ -114,6 +114,7 @@ const CardAmenity = styled.div`
     align-items: center;
     h1 {
       margin: 0;
+      font-size: 18px;
     }
   }
   @media screen and (max-width: 360px) {
