@@ -64,10 +64,7 @@ const Property = ({ data }) => {
       <Head>
         <title>{rest.identifier}</title>
         <meta name="description" content={parseDescription(rest.description)} />
-        <meta
-          property="og:image"
-          content={rest.documentMainPic}
-        />
+        <meta property="og:image" content={rest.documentMainPic} />
         {metaTags &&
           Object.entries(metaTags).map((entry) => (
             <meta property={entry[0]} content={entry[1]} />
@@ -79,6 +76,11 @@ const Property = ({ data }) => {
         />
       </Head>
       <PrincipalContent openModal={(visible) => {}}>
+        <div
+          style={{
+            height: "70px",
+          }}
+        ></div>
         <Content>
           <ContentForm owner>
             <div className="header-title">

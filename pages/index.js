@@ -30,6 +30,11 @@ const Home = ({ dataPolicy }) => {
           amountPolicy={null}
         />
       </CustomModal>
+      <div
+        style={{
+          height: "70px",
+        }}
+      ></div>
       <TopInitialYourInterest
         openModal={(visible) => {
           setIsVisibleModal(visible);

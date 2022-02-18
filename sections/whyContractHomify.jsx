@@ -26,10 +26,10 @@ const LabelQuestion = styled.p`
 `;
 
 const PrincipalSection = styled.section`
-  padding: "0px 8%";
-
+  padding: 1em 8%;
+  background: #f7f8fa;
   @media screen and (max-width: 970px) {
-    padding: "0px 0px";
+    padding: 0px 0px;
   }
 `;
 

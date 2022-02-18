@@ -4,6 +4,7 @@ import styled from "styled-components";
 const ProcessSection = styled.section`
   padding: 4em 7em;
   margin-top: 3%;
+  background: #f7f8fa;
   @media screen and (max-width: 970px) {
     padding: 4em 1em;
   }
