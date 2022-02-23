@@ -65,6 +65,11 @@ const TerminosYCondiciones = ({ dataPolicy }) => {
             amountPolicy={null}
           />
         </CustomModal>
+        <div
+          style={{
+            height: "70px",
+          }}
+        ></div>
         <div style={{ marginBottom: "5rem" }}>
           <ArticleSection>
             <section title="Términos y Condiciones">

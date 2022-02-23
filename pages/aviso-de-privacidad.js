@@ -65,6 +65,11 @@ const AvisoDePrivacidad = ({ dataPolicy }) => {
             amountPolicy={null}
           />
         </CustomModal>
+        <div
+          style={{
+            height: "70px",
+          }}
+        ></div>
         <div style={{ marginBottom: "5rem" }}>
           <ArticleSection>
             <section title="Aviso de privacidad">

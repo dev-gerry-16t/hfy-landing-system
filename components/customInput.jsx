@@ -14,7 +14,7 @@ const InputStyle = styled.input`
     outline: #c6cdfc;
   }
   &::placeholder {
-    font-weight: 100;
+    font-weight: 400;
   }
 `;
 

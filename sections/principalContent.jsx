@@ -7,7 +7,7 @@ import stylesHeader from "../styles/headSection.module.scss";
 import styled from "styled-components";
 
 const Footer = styled.footer`
-  background: #ff0282;
+  background: #282828;
   font-family: Poppins;
 `;
 
@@ -102,6 +102,10 @@ const HeaderSection = styled.header`
   padding: 1rem 0%;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  position: fixed;
+  background: #fff;
+  z-index: 2;
+  width: 100%;
 `;
 
 const HeaderNavigation = styled.div`
@@ -120,7 +124,12 @@ const HeaderNavigation = styled.div`
   }
 `;
 
-const PrincipalContent = ({ children, openModal, visibleFooter }) => {
+const PrincipalContent = ({
+  children,
+  openModal,
+  visibleFooter,
+  userType = null,
+}) => {
   const [isVisibleNav, setIsVisibleNav] = useState(false);
 
   useEffect(() => {
@@ -350,10 +359,14 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
         <div className={stylesHeader.secondaryButton}>
           <button
             onClick={() => {
-              window.location.href = "https://app.homify.ai";
+              if (isNil(userType) === false && userType === 3) {
+                window.location.href = "https://app.homify.ai/registro-asesor";
+              } else {
+                window.location.href = "https://app.homify.ai/registro";
+              }
             }}
           >
-            Iniciar sesión
+            Registrarme
           </button>
           <button
             onClick={() => {
@@ -507,7 +520,7 @@ const PrincipalContent = ({ children, openModal, visibleFooter }) => {
           </Navegation>
           <BottomInformation>
             <div style={{ color: "#D9DBE1", fontSize: 12 }}>
-              © 2021 RENTAL PAYMENTS S.A. DE C.V. Todos los derechos reservados.
+              © 2022 RENTAL PAYMENTS S.A. DE C.V. Todos los derechos reservados.
             </div>
           </BottomInformation>
         </Footer>
