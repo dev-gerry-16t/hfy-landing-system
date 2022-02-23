@@ -5,7 +5,11 @@ const ProcessSection = styled.section`
   padding: 4em 7em;
   margin-top: 3%;
   background: #f7f8fa;
-  @media screen and (max-width: 970px) {
+  @media screen and (max-width: 1024px) {
+    padding: 4em 2em;
+  }
+
+  @media screen and (max-width: 960px) {
     padding: 4em 1em;
   }
 `;
@@ -13,7 +17,7 @@ const ProcessSection = styled.section`
 const TitleSection = styled.h1`
   font-style: normal;
   font-weight: 800;
-  font-size: 40px;
+  font-size: 2.5em;
   line-height: 54px;
   color: #4e4b66;
   margin: 0px;
@@ -26,7 +30,7 @@ const SubTitleSection = styled.p`
   font-family: Poppins;
   font-style: normal;
   font-weight: 500;
-  font-size: 40px;
+  font-size: 2.5em;
   line-height: 64px;
   color: #4e4b66;
   margin: 0px;
@@ -35,9 +39,11 @@ const SubTitleSection = styled.p`
 const DivWidgets = styled.div`
   display: flex;
   justify-content: space-around;
+  flex-wrap: wrap;
   margin-top: 5%;
   position: relative;
-  @media screen and (max-width: 970px) {
+  gap: 1em;
+  @media screen and (max-width: 960px) {
     flex-wrap: wrap;
   }
   @media screen and (max-width: 470px) {

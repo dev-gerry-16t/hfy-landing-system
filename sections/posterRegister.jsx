@@ -3,51 +3,33 @@ import styled, { keyframes } from "styled-components";
 
 const wave = keyframes`
 0% {
-    transform: translate3d(10px,10px,0);
-  }
-
-  25%{
-    transform: translate3d(45px,15px,0);
-
+    transform: translate3d(0%,0%,0);
   }
   50% {
-    transform: translate3d(85px,25px,0);
+    transform: translate3d(20%,20%,0);
   }
-  75%{
-    transform: translate3d(45px,35px,0);
-
-  }
+  
   100%{
-    transform: translate3d(10px,10px,0);
+    transform: translate3d(0%,0%,0);
 
   }
 `;
 
 const wave2 = keyframes`
 0% {
-    transform: translate3d(10px,10px,0);
-  }
-
-  25%{
-    transform: translate3d(-15px,-15px,0);
-
+    transform: translate3d(-0%,-0%,0);
   }
   50% {
-    transform: translate3d(-20px,-25px,-30px);
-  }
-  75%{
-    transform: translate3d(-15px,-35px,0);
-
+    transform: translate3d(-10%,-30%,0);
   }
   100%{
-    transform: translate3d(10px,10px,0);
-
+    transform: translate3d(-0%,-0%,0);
   }
 `;
 
 const Waves = styled.svg`
   path {
-    animation: ${wave} linear 10s infinite;
+    animation: ${wave} linear 20s infinite;
   }
 `;
 
@@ -55,7 +37,7 @@ const Waves2 = styled.svg`
   position: relative;
   right: -30px;
   path {
-    animation: ${wave2} linear 15s infinite;
+    animation: ${wave2} linear 20s infinite;
   }
 `;
 
@@ -96,9 +78,7 @@ const PosterRegister = ({ openModal, title, titleCard, titleCard2 }) => {
           className="section-event-register"
         >
           <p>
-            {titleCard}
-            <br />
-            {titleCard2}
+            {titleCard} {titleCard2}
           </p>
           <button
             onClick={() => {

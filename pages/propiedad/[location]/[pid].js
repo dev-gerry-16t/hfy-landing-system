@@ -9,6 +9,9 @@ import {
   Tab,
   ButtonIcon,
   ContentForm,
+  ContentRight,
+  GeneralCard,
+  Card,
 } from "../../../styles/styleProperty";
 import IconHeartHfy from "../../../assets/svg/heart.svg";
 import SectionCarouselInfo from "../../../sections/sectionCarouselHz";
@@ -26,6 +29,14 @@ const parseUrlHomify = (str, id) => {
   const addGuion = deleteComas.replace(/ /gi, "-");
   const formatUrl = `https://www.homify.ai/propiedad/${addGuion}/${id}`;
   return formatUrl;
+};
+
+const letterInitialName = (name) => {
+  let nameInitial = "";
+  if (isEmpty(name) === false) {
+    nameInitial = name[0].toUpperCase();
+  }
+  return nameInitial;
 };
 
 const parseDescription = (str) => {
@@ -75,7 +86,7 @@ const Property = ({ data }) => {
           content={rest.documentMainPic}
         />
       </Head>
-      <PrincipalContent openModal={(visible) => {}}>
+      <PrincipalContent openModal={(visible) => {}} visibleFooter={false}>
         <div
           style={{
             height: "70px",
@@ -123,6 +134,54 @@ const Property = ({ data }) => {
               </ContainerDown>
             </div>
           </ContentForm>
+          <ContentRight>
+            <GeneralCard>
+              <div className="header-title">
+                <h1>Datos de contacto</h1>
+              </div>
+              <div className="content-card">
+                <Card>
+                  <div className="card-user">
+                    <div className="top-info">
+                      <div className="icon-info-circle">
+                        <div>
+                          <span>{letterInitialName(rest.contactName)}</span>
+                        </div>
+                      </div>
+                      <div className="name-info">
+                        <h3>{rest.contactName}</h3>
+                        <span>{rest.contactPhoneNumberFormat}</span>
+                      </div>
+                    </div>
+                  </div>
+                </Card>
+              </div>
+            </GeneralCard>
+            <GeneralCard>
+              <div className="header-title">
+                <h1>Publicación</h1>
+              </div>
+              <div className="content-card">
+                <Card>
+                  <div className="card-user">
+                    <h1 className="title-publication">{rest.title}</h1>
+                    <br />
+                    <p>
+                      <div
+                        className="description-publication"
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            isNil(rest.description) === false
+                              ? rest.description.replace(/\n/g, "<br />")
+                              : "",
+                        }}
+                      />
+                    </p>
+                  </div>
+                </Card>
+              </div>
+            </GeneralCard>
+          </ContentRight>
         </Content>
       </PrincipalContent>
     </>

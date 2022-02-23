@@ -25,6 +25,12 @@ import IconWhats from "../assets/svg/iconWhats.svg";
 const Content = styled.div`
   font-size: 16px;
   font-family: Poppins;
+  @media screen and (max-width: 1024px) {
+    font-size: 14px;
+  }
+  @media screen and (max-width: 460px) {
+    font-size: 12px;
+  }
 `;
 
 const DivLines = styled.div`
@@ -267,6 +273,13 @@ const RatingUsers = styled.div`
         }
       }
     }
+    @media screen and (max-width: 460px) {
+      .general-rating {
+        .star {
+          font-size: 1.5em;
+        }
+      }
+    }
   }
   .section-cards-comments {
     display: flex;
@@ -351,6 +364,9 @@ const PricingHomify = styled.div`
       }
     }
   }
+  @media screen and (max-width: 1024px) {
+    padding: 1em 2em;
+  }
 `;
 
 const ToolsApp = styled.div`
@@ -376,6 +392,25 @@ const ToolsApp = styled.div`
     display: flex;
     justify-content: space-around;
   }
+  .content-functionalities-small-mobile {
+    display: none;
+  }
+  @media screen and (max-width: 1024px) {
+    padding: 1em 2em;
+  }
+  @media screen and (max-width: 960px) {
+    padding: 1em 1em;
+  }
+
+  @media screen and (max-width: 600px) {
+    .content-functionalities-small {
+      display: none;
+    }
+    .content-functionalities-small-mobile {
+      display: flex;
+      flex-direction: column;
+    }
+  }
 `;
 
 const CardFunctions = styled.div`
@@ -390,6 +425,23 @@ const CardFunctions = styled.div`
       }
     }
   }
+  @media screen and (max-width: 1024px) {
+    justify-content: space-between;
+    img {
+      width: 22em;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    flex-direction: ${(props) => (props.reverse ? "column-reverse" : "column")};
+    align-items: flex-start;
+    .info-functionality {
+      max-width: 100%;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
 `;
 
 const CardFunctionsSmall = styled.div`
@@ -397,7 +449,7 @@ const CardFunctionsSmall = styled.div`
   flex-direction: column;
   align-items: center;
   img {
-    width: 140px;
+    width: 8.75em;
   }
   .info-functionality {
     max-width: 315px;
@@ -407,6 +459,15 @@ const CardFunctionsSmall = styled.div`
         color: #ff0282;
       }
     }
+  }
+  @media screen and (max-width: 1024px) {
+    img {
+      width: 7em;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    min-width: 100%;
+    width: 100%;
   }
 `;
 
@@ -553,6 +614,7 @@ const Home = ({ dataPolicy, dataReviews }) => {
     owner: false,
     tenant: false,
   });
+  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -828,14 +890,14 @@ const Home = ({ dataPolicy, dataReviews }) => {
               </p>
             </div>
           </RatingUsers>
-          <ToolsApp>
+          <ToolsApp left={`-${count * 300}px`}>
             <h1 className="title-section-functionalities">
               ¡<span>Todo lo que necesitas</span> en un mismo lugar!
             </h1>
             <span className="register-now"></span>
             <div className="content-functionalities">
               <Fade left>
-                <CardFunctions>
+                <CardFunctions reverse={false}>
                   <img
                     src="/card-function-property.png"
                     alt="detalle de la propiedad"
@@ -853,10 +915,10 @@ const Home = ({ dataPolicy, dataReviews }) => {
                 </CardFunctions>
               </Fade>
               <Fade right>
-                <CardFunctions>
+                <CardFunctions reverse={true}>
                   <div className="info-functionality">
                     <h2>
-                      <span>Protege</span> tu propiedad
+                      <span>Protege</span> a tus clientes
                     </h2>
                     <p>
                       Solicita pólizas jurídicas y{" "}
@@ -870,7 +932,7 @@ const Home = ({ dataPolicy, dataReviews }) => {
                 </CardFunctions>
               </Fade>
               <Fade left>
-                <CardFunctions>
+                <CardFunctions reverse={false}>
                   <img
                     src="/card-function-contract.png"
                     alt="detalle de la propiedad"
@@ -887,7 +949,7 @@ const Home = ({ dataPolicy, dataReviews }) => {
                 </CardFunctions>
               </Fade>
               <Fade right>
-                <CardFunctions>
+                <CardFunctions reverse={true}>
                   <div className="info-functionality">
                     <h2>
                       <span>Agrega</span> inquilinos
@@ -905,6 +967,7 @@ const Home = ({ dataPolicy, dataReviews }) => {
                 </CardFunctions>
               </Fade>
             </div>
+
             <h1 className="title-section-functionalities">... Y mucho más</h1>
             <Zoom bottom>
               <div className="content-functionalities-small">
@@ -955,6 +1018,53 @@ const Home = ({ dataPolicy, dataReviews }) => {
                 </CardFunctionsSmall>
               </div>
             </Zoom>
+            <div className="content-functionalities-small-mobile">
+              <CardFunctionsSmall>
+                <img
+                  src="/card-function-agent.png"
+                  alt="detalle de la propiedad"
+                ></img>
+                <div className="info-functionality">
+                  <h2>
+                    <span>Comparte</span> con otros asesores
+                  </h2>
+                  <p>
+                    <strong>Conecta con otros asesores</strong> y comparte
+                    comisión.
+                  </p>
+                </div>
+              </CardFunctionsSmall>
+              <CardFunctionsSmall>
+                <img
+                  src="/card-function-alert.png"
+                  alt="detalle de la propiedad"
+                ></img>
+                <div className="info-functionality">
+                  <h2>
+                    <span>Recibe</span> alertas
+                  </h2>
+                  <p>
+                    <strong>Te notificamos 60 días antes</strong> del
+                    vencimiento de contratos.
+                  </p>
+                </div>
+              </CardFunctionsSmall>
+              <CardFunctionsSmall>
+                <img
+                  src="/card-function-cert.png"
+                  alt="detalle de la propiedad"
+                ></img>
+                <div className="info-functionality">
+                  <h2>
+                    Conviértete <span>en asesor verificado</span>
+                  </h2>
+                  <p>
+                    Un <strong>asesor verificado brinda confianza</strong> a
+                    otros usuarios.
+                  </p>
+                </div>
+              </CardFunctionsSmall>
+            </div>
           </ToolsApp>
           <SectionProcessHomify>
             <WidgetStepProcess
@@ -1076,7 +1186,7 @@ const Home = ({ dataPolicy, dataReviews }) => {
           />
           <PricingHomify>
             <h1 className="title-section-functionalities">
-              ¡Panes <span>Homify</span>!
+              ¡Planes <span>Homify</span>!
             </h1>
             <span className="register-now">
               Los mejores precios del mercado
@@ -1443,7 +1553,12 @@ const Home = ({ dataPolicy, dataReviews }) => {
               <div className="cloud-2">
                 <img src="./cloud-2.png"></img>
               </div>
-              <img src="./city-scape-homify.png"></img>
+              <img
+                style={{
+                  width: "100%",
+                }}
+                src="./city-scape-homify.png"
+              ></img>
             </div>
           </MessageToUser>
         </Content>

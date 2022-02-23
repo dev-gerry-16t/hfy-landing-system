@@ -182,7 +182,7 @@ const Content = styled.div`
   padding: 1em;
   letter-spacing: 0.75px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 3fr 1fr;
   position: relative;
   font-size: 16px;
   @media screen and (max-width: 1160px) {
@@ -271,6 +271,7 @@ const GeneralCard = styled.div`
       margin: 0;
       color: #ff0282;
       font-weight: 700;
+      font-size: 1em;
     }
   }
   .content-cards {
@@ -328,6 +329,9 @@ const Card = styled.div`
 
   .card-user {
     padding: 1em;
+    .title-publication {
+      font-size: 1.2em;
+    }
     .top-info {
       display: flex;
       gap: 10px;
