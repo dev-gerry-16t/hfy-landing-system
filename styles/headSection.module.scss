@@ -35,7 +35,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  button:nth-child(1) {
+  .btn-register {
     border: 1px solid #ff0282;
     font-family: Poppins;
     box-sizing: border-box;
@@ -57,7 +57,7 @@
   //   outline: none;
   //   cursor: pointer;
   // }
-  button:nth-child(2) {
+  .btn-menu {
     background: transparent;
     border: none;
     outline: none;
