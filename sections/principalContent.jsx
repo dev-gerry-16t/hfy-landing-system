@@ -99,13 +99,24 @@ const BottomInformation = styled.div`
 const HeaderSection = styled.header`
   display: flex;
   justify-content: space-between;
-  padding: 1rem 0%;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  padding: 1rem 15px;
   position: fixed;
   background: #fff;
   z-index: 2;
   width: 100%;
+  .short-navigation {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .logo-hfy {
+    text-align: center;
+  }
+  @media screen and (max-width: 750px) {
+    .short-navigation {
+      display: none;
+    }
+  }
 `;
 
 const HeaderNavigation = styled.div`
@@ -117,9 +128,52 @@ const HeaderNavigation = styled.div`
   a {
     margin: 0px 10px;
   }
-  @media screen and (max-width: 750px) {
-    & {
+`;
+
+const SecondaryButton = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .btn-register {
+    border: none;
+    font-family: Poppins;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background: #ff0282;
+    padding: 2px 5px;
+    margin: 0px 5px;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+  }
+  .btn-login {
+    border: 1px solid #ff0282;
+    font-family: Poppins;
+    box-sizing: border-box;
+    border-radius: 16px;
+    background: #fff;
+    padding: 2px 5px;
+    margin: 0px 5px;
+    outline: none;
+    color: #ff0282;
+    cursor: pointer;
+  }
+  .btn-menu {
+    background: transparent;
+    border: none;
+    outline: none;
+    display: none;
+  }
+
+  @media screen and (max-width: 470px) {
+    .btn-register {
       display: none;
+    }
+    .btn-login {
+      display: none;
+    }
+    .btn-menu {
+      display: block;
     }
   }
 `;
@@ -242,12 +296,7 @@ const PrincipalContent = ({
         />
       </Head>
       <HeaderSection>
-        <div
-          style={{
-            justifySelf: "center",
-            alignSelf: "center",
-          }}
-        >
+        <div className="short-navigation">
           <HeaderNavigation>
             <Link href="/asesor">
               <a>Asesor</a>
@@ -260,7 +309,7 @@ const PrincipalContent = ({
             </Link>
           </HeaderNavigation>
         </div>
-        <div style={{ justifySelf: "center" }}>
+        <div className="logo-hfy">
           <svg
             width="130"
             height="39"
@@ -356,8 +405,17 @@ const PrincipalContent = ({
             />
           </svg>
         </div>
-        <div className={stylesHeader.secondaryButton}>
+        <SecondaryButton>
           <button
+            className="btn-login"
+            onClick={() => {
+              window.location.href = "https://app.homify.ai";
+            }}
+          >
+            Iniciar sesión
+          </button>
+          <button
+            className="btn-register"
             onClick={() => {
               if (isNil(userType) === false && userType === 3) {
                 window.location.href = "https://app.homify.ai/registro-asesor";
@@ -369,6 +427,7 @@ const PrincipalContent = ({
             Registrarme
           </button>
           <button
+            className="btn-menu"
             onClick={() => {
               setIsVisibleNav(!isVisibleNav);
             }}
@@ -431,7 +490,7 @@ const PrincipalContent = ({
               <a>Términos y Condiciones</a>
             </Link>
           </div>
-        </div>
+        </SecondaryButton>
       </HeaderSection>
       <main>{children}</main>
       {isNil(visibleFooter) === true && (
