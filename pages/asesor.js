@@ -1533,10 +1533,13 @@ const Home = ({ dataPolicy, dataReviews }) => {
                   <div className="button-pricing">
                     <button
                       onClick={() => {
-                        setIsVisibleModal(true);
+                        window.open(
+                          "https://app.homify.ai/registro-asesor",
+                          "_blank"
+                        );
                       }}
                     >
-                      Contáctanos
+                      Prueba gratis
                     </button>
                   </div>
                 </div>
