@@ -1302,7 +1302,7 @@ const Home = ({ dataPolicy, dataReviews }) => {
                     setSelectInfoSubscription(3);
                   }}
                 >
-                  <div>$1,800</div>
+                  <div>$799</div>
                 </div>
               </div>
               <TablePricing>
