@@ -135,7 +135,7 @@ const Property = ({ data }) => {
             </div>
           </ContentForm>
           <ContentRight>
-            <GeneralCard>
+            {/* <GeneralCard>
               <div className="header-title">
                 <h1>Datos de contacto</h1>
               </div>
@@ -156,7 +156,7 @@ const Property = ({ data }) => {
                   </div>
                 </Card>
               </div>
-            </GeneralCard>
+            </GeneralCard> */}
             <GeneralCard>
               <div className="header-title">
                 <h1>Publicación</h1>
