@@ -1343,12 +1343,12 @@ const Home = ({ dataPolicy, dataReviews }) => {
                   <div className="tr-price">
                     <span>10 Publicaciones en Mercado Libre</span>
                   </div>
-                  <div className="tr-price">
+                  {/* <div className="tr-price">
                     <span>10 Publicaciones en Lamudi</span>
                   </div>
                   <div className="tr-price">
                     <span>10 Publicaciones en propiedades.com</span>
-                  </div>
+                  </div> */}
                   <div className="tr-price">
                     <span>Acceso a capacitación</span>
                   </div>
@@ -1394,8 +1394,8 @@ const Home = ({ dataPolicy, dataReviews }) => {
                   <div className="tr-price"></div>
                   <div className="tr-price"></div>
                   <div className="tr-price"></div>
-                  <div className="tr-price"></div>
-                  <div className="tr-price"></div>
+                  {/* <div className="tr-price"></div>
+                  <div className="tr-price"></div> */}
                   <div className="tr-price"></div>
                   <div className="tr-price"></div>
                   <div className="tr-price"></div>
@@ -1452,8 +1452,8 @@ const Home = ({ dataPolicy, dataReviews }) => {
                     <IconCheckFill />
                   </div>
                   <div className="tr-price"></div>
-                  <div className="tr-price"></div>
-                  <div className="tr-price"></div>
+                  {/* <div className="tr-price"></div>
+                  <div className="tr-price"></div> */}
                   <div className="tr-price"></div>
                   <div className="tr-price"></div>
                   <div className="tr-price"></div>
@@ -1509,12 +1509,12 @@ const Home = ({ dataPolicy, dataReviews }) => {
                   <div className="tr-price">
                     <IconCheckFill />
                   </div>
-                  <div className="tr-price">
+                  {/* <div className="tr-price">
                     <IconCheckFill />
                   </div>
                   <div className="tr-price">
                     <IconCheckFill />
-                  </div>
+                  </div> */}
                   <div className="tr-price">
                     <IconCheckFill />
                   </div>
