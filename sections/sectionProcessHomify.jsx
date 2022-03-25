@@ -39,7 +39,7 @@ const SubTitleSection = styled.p`
 const DivWidgets = styled.div`
   display: flex;
   justify-content: space-around;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   margin-top: 5%;
   position: relative;
   gap: 1em;
