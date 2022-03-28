@@ -301,7 +301,7 @@ const PrincipalContent = ({
             <Link href="/asesor">
               <a>Asesor</a>
             </Link>
-            <Link href="/arrendador">
+            <Link href="/poliza-juridica-de-arrendamiento">
               <a>Propietario</a>
             </Link>
             <Link href="/inquilino">
@@ -466,7 +466,7 @@ const PrincipalContent = ({
             <Link href="/asesor">
               <a>Asesor</a>
             </Link>
-            <Link href="/arrendador">
+            <Link href="/poliza-juridica-de-arrendamiento">
               <a>Propietario</a>
             </Link>
             <Link href="/inquilino">

@@ -20,7 +20,7 @@ const TopInitialYourInterest = ({ openModal }) => {
     let hrefTo = "/";
     switch (idRedirect) {
       case 1:
-        hrefTo = "/arrendador";
+        hrefTo = "/poliza-juridica-de-arrendamiento";
         break;
       case 2:
         hrefTo = "/inquilino";
@@ -50,7 +50,7 @@ const TopInitialYourInterest = ({ openModal }) => {
         title="Homify piensa en todos propietarios inquilinos y asesores inmobiliarios"
         className={stylesCardsUser.cards1}
       >
-        <Link href="/arrendador" passHref>
+        <Link href="/poliza-juridica-de-arrendamiento" passHref>
           <div
             style={{ position: "relative", marginBottom: 40 }}
             title="Arrendador"
