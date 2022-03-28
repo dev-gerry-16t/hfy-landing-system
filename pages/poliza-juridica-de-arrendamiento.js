@@ -40,11 +40,25 @@ const Home = ({ dataPolicy, dataReviews }) => {
   return (
     <>
       <Head>
-        <title>Homify - Arrendador</title>
+        <title>Homify - póliza jurídica</title>
         <meta
           name="description"
           content="La mejor póliza jurídica de arrendamiento , si tu inquilino no paga nosotros te pagamos, tu renta segura, contrata hoy mismo al mejor precio del mercado."
         ></meta>
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            (function(h,o,t,j,a,r){
+              h.hj=h.hj||function(){(h.hj.q=h.hj.q||[]).push(arguments)};
+              h._hjSettings={hjid:2897969,hjsv:6};
+              a=o.getElementsByTagName('head')[0];
+              r=o.createElement('script');r.async=1;
+              r.src=t+h._hjSettings.hjid+j+h._hjSettings.hjsv;
+              a.appendChild(r);
+          })(window,document,'https://static.hotjar.com/c/hotjar-','.js?sv=');
+`,
+          }}
+        />
       </Head>
       <PrincipalContent
         openModal={(visible) => {
