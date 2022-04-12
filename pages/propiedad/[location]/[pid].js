@@ -105,7 +105,7 @@ const Property = ({ data }) => {
                 apartmentImages={
                   isNil(rest) === false &&
                   isNil(rest.apartmentDocuments) === false
-                    ? JSON.parse(rest.apartmentDocuments)
+                    ? rest.apartmentDocuments
                     : []
                 }
                 dataDetail={rest}
@@ -248,6 +248,7 @@ export async function getServerSideProps(context) {
   const responseResult = await response.json();
   const responseResultPictures = await responsePictures.json();
   const responseResultAmenities = await responseAmenities.json();
+
   const responseRest =
     isEmpty(responseResult.response) === false &&
     isNil(responseResult.response[0]) === false &&
@@ -255,6 +256,21 @@ export async function getServerSideProps(context) {
     isEmpty(responseResult.response[0][0]) === false
       ? responseResult.response[0][0]
       : {};
+  const responseRestPictures =
+    isEmpty(responseResultPictures.response) === false &&
+    isNil(responseResultPictures.response[0]) === false
+      ? responseResultPictures.response[0]
+      : [];
+  const responseRestAmenities1 =
+    isEmpty(responseResultAmenities.response) === false &&
+    isNil(responseResultAmenities.response[0]) === false
+      ? responseResultAmenities.response[0]
+      : [];
+  const responseRestAmenities2 =
+    isEmpty(responseResultAmenities.response) === false &&
+    isNil(responseResultAmenities.response[1]) === false
+      ? responseResultAmenities.response[1]
+      : [];
   const replaceAddress =
     isEmpty(responseRest) === false &&
     isNil(responseRest.shortAddress) === false &&
@@ -276,7 +292,19 @@ export async function getServerSideProps(context) {
     "og:country-name": "México",
     "og:locale": "es_MX",
   };
-  return { props: { data: { metaTags, rest: responseRest } } };
+  return {
+    props: {
+      data: {
+        metaTags,
+        rest: {
+          ...responseRest,
+          propertyAmenities: responseRestAmenities1,
+          propertyGeneralCharacteristics: responseRestAmenities2,
+          apartmentDocuments: responseRestPictures,
+        },
+      },
+    },
+  };
 }
 
 export default Property;
