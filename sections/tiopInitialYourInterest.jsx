@@ -52,7 +52,7 @@ const TopInitialYourInterest = ({ openModal }) => {
       >
         <Link href="/poliza-juridica-de-arrendamiento" passHref>
           <div
-            style={{ position: "relative", marginBottom: 40 }}
+            style={{ position: "relative", marginBottom: 80 }}
             title="Arrendador"
             type={selectUserType === 1 ? "select" : "unselect"}
           >
@@ -69,7 +69,7 @@ const TopInitialYourInterest = ({ openModal }) => {
         </Link>
         <Link href="/inquilino" passHref>
           <div
-            style={{ position: "relative", marginBottom: 40 }}
+            style={{ position: "relative", marginBottom: 80 }}
             title="Arrendatario"
             type={selectUserType === 2 ? "select" : "unselect"}
           >

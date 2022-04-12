@@ -4,7 +4,6 @@ import isNil from "lodash/isNil";
 import styled from "styled-components";
 import { Container } from "../styles/styleProperty";
 
-
 const ContentAmenities = styled(Container)`
   font-size: 16px;
   .container-chips {
@@ -74,13 +73,13 @@ const SectionAmenities = ({ dataDetail }) => {
 
   const amenities =
     isNil(propertyAmenities) === false && isEmpty(propertyAmenities) === false
-      ? JSON.parse(propertyAmenities)
+      ? propertyAmenities
       : [];
 
   const general =
     isNil(propertyGeneralCharacteristics) === false &&
     isEmpty(propertyGeneralCharacteristics) === false
-      ? JSON.parse(propertyGeneralCharacteristics)
+      ? propertyGeneralCharacteristics
       : [];
 
   return (

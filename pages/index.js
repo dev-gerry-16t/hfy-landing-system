@@ -34,7 +34,6 @@ const Home = ({ dataPolicy }) => {
         openModal={(visible) => {
           setIsVisibleModal(visible);
         }}
-        visibleFooter={false}
       >
         <CustomModal
           isVisible={isVisibleModal}
