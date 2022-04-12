@@ -208,7 +208,46 @@ export async function getServerSideProps(context) {
       }),
     }
   );
+  const responsePictures = await fetch(
+    "https://api.homify.ai/api/property/getPropertyPictures",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idProperty: null,
+        idApartment: null,
+        identifier: params.pid,
+        idCustomer: null,
+        idSystemUser: null,
+        idLoginHistory: null,
+        offset: "-06:00",
+      }),
+    }
+  );
+  const responseAmenities = await fetch(
+    "https://api.homify.ai/api/property/getAmenitiesByProperty",
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        idProperty: null,
+        idApartment: null,
+        identifier: params.pid,
+        idCustomer: null,
+        idSystemUser: null,
+        idLoginHistory: null,
+        offset: "-06:00",
+      }),
+    }
+  );
+
   const responseResult = await response.json();
+  const responseResultPictures = await responsePictures.json();
+  const responseResultAmenities = await responseAmenities.json();
   const responseRest =
     isEmpty(responseResult.response) === false &&
     isNil(responseResult.response[0]) === false &&

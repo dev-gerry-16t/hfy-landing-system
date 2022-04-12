@@ -230,6 +230,19 @@ const TerminosYCondiciones = ({ dataPolicy }) => {
                   otro servicio que el usuario elija y marque en contratos
                   firmado en común acuerdo entre el usuario y el proveedor.
                 </p>
+                <p>
+                  <strong>Términos y condiciones de la comunicación.</strong>
+                </p>
+                <p>
+                  El usuario recibirá comunicación a través de correo
+                  electrónico, mensaje de texto (SMS), WhatsApp o cualquier otro
+                  medio disponible en *.Homify.ai.
+                </p>
+                <p>
+                  Si el usuario desea cancelar la comunicación por alguno de los
+                  medios antes mencionados lo puede hacer enviando un correo a
+                  contacto@homify.ai.
+                </p>
               </div>
             </section>
           </ArticleSection>
