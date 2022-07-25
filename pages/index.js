@@ -29,6 +29,13 @@ const Home = ({ dataPolicy }) => {
 `,
           }}
         />
+        <script
+          type="text/javascript"
+          id="hs-script-loader"
+          async
+          defer
+          src="//js.hs-scripts.com/21737012.js"
+        ></script>
       </Head>
       <PrincipalContent
         openModal={(visible) => {

@@ -42,6 +42,13 @@ const AvisoDePrivacidad = ({ dataPolicy }) => {
       <Head>
         <title>Homify - aviso de privacidad</title>
         <meta name="description" content="Aviso de privacidad."></meta>
+        <script
+          type="text/javascript"
+          id="hs-script-loader"
+          async
+          defer
+          src="//js.hs-scripts.com/21737012.js"
+        ></script>
       </Head>
       <PrincipalContent
         openModal={(visible) => {

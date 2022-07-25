@@ -55,6 +55,13 @@ const Home = ({ dataPolicy }) => {
           name="description"
           content="Crea fichas y comparte con otros asesores, solicita contratos o Pólizas Jurídicas en menos de 1 hora."
         ></meta>
+        <script
+          type="text/javascript"
+          id="hs-script-loader"
+          async
+          defer
+          src="//js.hs-scripts.com/21737012.js"
+        ></script>
       </Head>
       <PrincipalContent
         openModal={(visible) => {
