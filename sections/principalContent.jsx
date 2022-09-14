@@ -221,10 +221,6 @@ const PrincipalContent = ({
 
         <script
           async
-          src="https://www.googletagmanager.com/gtag/js?id=G-V3GXMT81EX"
-        ></script>
-        <script
-          async
           src="https://www.googletagmanager.com/gtag/js?id=UA-240521365-1"
         ></script>
         <script
@@ -237,7 +233,7 @@ const PrincipalContent = ({
           `,
           }}
         />
-        <script
+        {/* <script
           dangerouslySetInnerHTML={{
             __html: `window.dataLayer = window.dataLayer || [];
             function gtag(){dataLayer.push(arguments);}
@@ -279,7 +275,7 @@ const PrincipalContent = ({
             }
           `,
           }}
-        />
+        /> */}
 
         <script
           dangerouslySetInnerHTML={{
