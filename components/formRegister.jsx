@@ -565,57 +565,59 @@ const FormRegister = ({
         >
           <ButtonSend
             onClick={async () => {
-              window.gtag_report_conversion();
-              let ENVIRONMENT = "http://localhost:3001";
-              if (
-                window.location.hostname === "homify.ai" ||
-                window.location.hostname === "www.homify.ai"
-              ) {
-                ENVIRONMENT = "https://api.homify.ai";
-              } else if (window.location.hostname === "localhost") {
-                ENVIRONMENT = "http://localhost:3001";
-              } else {
-                ENVIRONMENT = "https://apitest.homify.ai";
-              }
-              const getCaptchaToken = await recaptchaV3.current.executeAsync();
-              const next = await validateInformation(dataForm);
-              if (next === true && clickSend === false) {
-                setClickSend(true);
-                const result = await fetch(
-                  `${ENVIRONMENT}/api/leads/addLandingProspect`,
-                  {
-                    method: "POST",
-                    body: JSON.stringify({
-                      ...dataForm,
-                      captchaToken: getCaptchaToken,
-                    }),
-                    headers: {
-                      "Content-Type": "application/json",
-                    },
-                  }
-                );
-                const response = await result.json();
-                if (response.response.stateCode === 200) {
-                  setFinishForm(true);
-                  setDataForm({ ...initialStates, idProspectType: userType });
-                  setDataErrors(initialErrors);
-                  window.fbq("track", "CompleteRegistration");
-                  window.fbq("track", "Lead");
+              try {
+                let ENVIRONMENT = "http://localhost:3001";
+                if (
+                  window.location.hostname === "homify.ai" ||
+                  window.location.hostname === "www.homify.ai"
+                ) {
+                  ENVIRONMENT = "https://api.homify.ai";
+                } else if (window.location.hostname === "localhost") {
+                  ENVIRONMENT = "http://localhost:3001";
                 } else {
-                  setErrorApi({
-                    error: true,
-                    message:
-                      isNil(response.response) === false &&
-                      isNil(response.response.message) === false
-                        ? response.response.message
-                        : initialStatesError.message,
-                  });
-                  setTimeout(() => {
-                    setErrorApi(initialStatesError);
-                  }, 10000);
+                  ENVIRONMENT = "https://apitest.homify.ai";
                 }
-                setClickSend(false);
-              }
+                const getCaptchaToken =
+                  await recaptchaV3.current.executeAsync();
+                const next = await validateInformation(dataForm);
+                if (next === true && clickSend === false) {
+                  setClickSend(true);
+                  const result = await fetch(
+                    `${ENVIRONMENT}/api/leads/addLandingProspect`,
+                    {
+                      method: "POST",
+                      body: JSON.stringify({
+                        ...dataForm,
+                        captchaToken: getCaptchaToken,
+                      }),
+                      headers: {
+                        "Content-Type": "application/json",
+                      },
+                    }
+                  );
+                  const response = await result.json();
+                  if (response.response.stateCode === 200) {
+                    setFinishForm(true);
+                    setDataForm({ ...initialStates, idProspectType: userType });
+                    setDataErrors(initialErrors);
+                    window.fbq("track", "CompleteRegistration");
+                    window.fbq("track", "Lead");
+                  } else {
+                    setErrorApi({
+                      error: true,
+                      message:
+                        isNil(response.response) === false &&
+                        isNil(response.response.message) === false
+                          ? response.response.message
+                          : initialStatesError.message,
+                    });
+                    setTimeout(() => {
+                      setErrorApi(initialStatesError);
+                    }, 10000);
+                  }
+                  setClickSend(false);
+                }
+              } catch (error) {}
             }}
           >
             Enviar
@@ -950,8 +952,6 @@ const FormRegister = ({
           >
             <ButtonSend
               onClick={async () => {
-                window.gtag_report_conversion();
-
                 let ENVIRONMENT = "http://localhost:3001";
                 if (
                   window.location.hostname === "homify.ai" ||
