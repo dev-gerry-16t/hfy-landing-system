@@ -310,11 +310,11 @@ const SectionQuotePolicy = ({ dataPolicy, onSelectPolicy }) => {
                       {namePolicy.text1} <br />
                       <span>{namePolicy.text2}</span>
                     </TitleCard>
-                    {rowMap.requiresEndorsement === false &&
+                    {/* {rowMap.requiresEndorsement === false &&
                       rowMap.idPolicy ===
                         "54C9414E-3B8E-42B5-8F80-940F2641F888" && (
                         <NotAval>(No se necesita aval)</NotAval>
-                      )}
+                      )} */}
                   </div>
                   {isNil(dataForm.budgeAmount) === false &&
                   rowMap.minimunAmount >
@@ -412,11 +412,11 @@ const SectionQuotePolicy = ({ dataPolicy, onSelectPolicy }) => {
                       {rowMap.requiresEndorsement === true && (
                         <NotAval>(Se necesita aval)</NotAval>
                       )}
-                      {rowMap.requiresEndorsement === false &&
+                      {/* {rowMap.requiresEndorsement === false &&
                         rowMap.idPolicy ===
                           "54C9414E-3B8E-42B5-8F80-940F2641F888" && (
                           <NotAval>(No se necesita aval)</NotAval>
-                        )}
+                        )} */}
                     </div>
                     {isNil(dataForm.budgeAmount) === false &&
                     rowMap.minimunAmount >
